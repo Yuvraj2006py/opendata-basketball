@@ -16,8 +16,8 @@
 - Window series: `is_model_5hz_frame` only
 - Use/late timing: release frames (forced OK; off-lattice OK)
 
-- Series rows this run: **18968**
-- Window rows this run: **1386**
+- Series rows this run: **176004**
+- Window rows this run: **12827**
 
 ## Deferred to Stage 7
 

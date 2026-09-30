@@ -13,21 +13,21 @@
 | `configs/stage5_windows.yaml` | Done (procedure locked) |
 | `tests/test_stage5.py` | **19 passed** (S5-B03,B05–B08,B10,B11,B15 + extras) |
 | 1-game smoke (`--games 114086`) | Done: 18968 series rows, 1386 window rows |
-| `STAGE5_VERIFICATION.md` / `STAGE5_HANDOFF_STAGE6.md` / manifest | Written from smoke |
+| **Full 10-game `--force` run** | **Done:** series=**176004**, windows=**12827** |
+| `STAGE5_VERIFICATION.md` / `STAGE5_HANDOFF_STAGE6.md` / manifest | Updated from full 10-game run |
 | README Stage 5 status | Updated to MVP |
 
 ### Smoke label counts (game 114086)
 
 `never_open` 1152 · `unused` 176 · `late` 35 · `used` 23
 
-### Full 10-game command (not run this session)
+### Full 10-game command (completed)
 
 ```powershell
 cd analysis\passing_windows
-.\.venv\Scripts\python.exe pipelines\05_segment_windows.py --force
-.\.venv\Scripts\python.exe -m pytest tests\test_stage5.py -q
+python pipelines\05_segment_windows.py --force
+python -m pytest tests\test_stage5.py -q
 ```
-
 ## Binding rules locked in code
 
 - Series: `is_model_5hz_frame` only; persistence ≥ 0.20s = **≥2 consecutive 5 Hz samples**

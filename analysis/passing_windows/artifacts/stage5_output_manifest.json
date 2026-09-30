@@ -1,40 +1,40 @@
 {
-  "n_files": 11,
+  "n_files": 38,
   "files": [
     {
       "path": "tables\\stage5_candidate_series.parquet",
-      "bytes": 4125981,
-      "sha256": "dee3776b31659f08dbdc15190564c14044fa42a3d4b703a87be1484afee7a134"
+      "bytes": 37353653,
+      "sha256": "20edefa5345cafca3429b476c14bf9d373f41ccbbddb65c0650d74a51449aa9c"
     },
     {
       "path": "tables\\stage5_windows.parquet",
-      "bytes": 40102,
-      "sha256": "cbea292f2857d98ac0303a3d6b9cf4152a1076b176610c8ebdbbdea06a065c35"
+      "bytes": 242828,
+      "sha256": "dd646846c5d968b65b69931e63d61279de7a98db257f3ab75f221e5071764513"
     },
     {
       "path": "tables\\stage5_option_set_frames.parquet",
-      "bytes": 297700,
-      "sha256": "79de80ac037975411398605d9b4484710aa9c9d41ba702eb2a45e693b98b6762"
+      "bytes": 2699122,
+      "sha256": "e3c5ad9414cd4b6c54d9e5eb683c71f28fc4d5465e49fc382387ff0a355d07da"
     },
     {
       "path": "tables\\stage5_threshold_selections.parquet",
-      "bytes": 8700,
-      "sha256": "fed43e36ea4dd23b8d681e2c31352b9b1fd3c5fda479a9be084343e10de80596"
+      "bytes": 9221,
+      "sha256": "80b0b75ca78054f06954862f21aa0c5faf0a37416c292fa330825874aeb5d736"
     },
     {
       "path": "artifacts\\stage5_fold_thresholds.json",
-      "bytes": 1862,
-      "sha256": "715fcbbb110a84f3815b2155ef0d9f66cc8b678cd703fb540ea72566fdb6c3ba"
+      "bytes": 16342,
+      "sha256": "82e64be43dc96aa64651512a3f0b2be6a2b7c5a80c9272c9f431500d9491e033"
     },
     {
       "path": "artifacts\\STAGE5_VERIFICATION.md",
-      "bytes": 966,
-      "sha256": "1387ee0bdc24c9bb4348624c92fa79171eea16c495002ce69f0f03ec2aefad85"
+      "bytes": 1809,
+      "sha256": "42114d77394d983ca2d0d469d5a78ac8900918067cb3c7779ec365772807e62a"
     },
     {
       "path": "artifacts\\STAGE5_HANDOFF_STAGE6.md",
-      "bytes": 1100,
-      "sha256": "416c2b8ead42bd50a5b62cc5f4b7d02d8a9f3baae9184b003509421b0a74bf7b"
+      "bytes": 1102,
+      "sha256": "34bf490705f3e3abedf5bee86925d5cd237499487b310521df42bee4632a8529"
     },
     {
       "path": "artifacts\\STAGE5_REGRESSION_LOCK.md",
@@ -42,19 +42,154 @@
       "sha256": "7e99e59b9d3ebd400fcb3b21077114c12f75ead35f13fdd036a4e950a516367a"
     },
     {
+      "path": "tables\\by_game\\114243\\stage5_candidate_series.parquet",
+      "bytes": 3665553,
+      "sha256": "3fd4ec80e5f7d8daaae9e19419d3225fbbfeaeb9d24a0d9563bddba7d1d968e1"
+    },
+    {
+      "path": "tables\\by_game\\114243\\stage5_windows.parquet",
+      "bytes": 37228,
+      "sha256": "ce3bc7028373a9d2bdf8d308b1dad96febf7ba1cbd673b6359d2ac281ac4e253"
+    },
+    {
+      "path": "tables\\by_game\\114243\\stage5_option_set_frames.parquet",
+      "bytes": 265435,
+      "sha256": "d4e2baf2aa87286e6245d590a9c60f3ce44be018f8e4ffde1b21bec5196f96ef"
+    },
+    {
+      "path": "tables\\by_game\\114234\\stage5_candidate_series.parquet",
+      "bytes": 3667338,
+      "sha256": "4911d017abfcd45800c537f1ec0b7f15a2f57879a31eb3176b87f4db74220f93"
+    },
+    {
+      "path": "tables\\by_game\\114234\\stage5_windows.parquet",
+      "bytes": 39430,
+      "sha256": "50796e87d4dfe3b8c978694a70c623b6822eeaeafa07be03bbf72b50df8eb3b1"
+    },
+    {
+      "path": "tables\\by_game\\114234\\stage5_option_set_frames.parquet",
+      "bytes": 267168,
+      "sha256": "b13a7b7b6eb1e403e753670a6b236193cde7835150078b12921043edfa268ef6"
+    },
+    {
+      "path": "tables\\by_game\\114169\\stage5_candidate_series.parquet",
+      "bytes": 3588700,
+      "sha256": "3e4c7f6dbd9baec0371f83061d40e6f80d10b2acae5efba8d448497e9144d44a"
+    },
+    {
+      "path": "tables\\by_game\\114169\\stage5_windows.parquet",
+      "bytes": 37853,
+      "sha256": "6f69ea86b587fbe2f9980be0cd40aa85a5d798f7a3d4a2bd25f937275b89726d"
+    },
+    {
+      "path": "tables\\by_game\\114169\\stage5_option_set_frames.parquet",
+      "bytes": 261457,
+      "sha256": "5b11415e780060949019d2579ba808d400464a19060432f16cf8050a001f4738"
+    },
+    {
+      "path": "tables\\by_game\\114099\\stage5_candidate_series.parquet",
+      "bytes": 3942916,
+      "sha256": "2745c5c178a3a4a38616b0ce453732d0efe6db9364d9188ec55d07cd6f439aad"
+    },
+    {
+      "path": "tables\\by_game\\114099\\stage5_windows.parquet",
+      "bytes": 43808,
+      "sha256": "91af18a4037a0c7b389f20d4aba3a69dbf69eb273456d7641c5531ed31450313"
+    },
+    {
+      "path": "tables\\by_game\\114099\\stage5_option_set_frames.parquet",
+      "bytes": 286082,
+      "sha256": "0edea2883a5293f9fee68f8cb0578a5c25be005ea2aeb3b80f577d9f1ca54524"
+    },
+    {
       "path": "tables\\by_game\\114086\\stage5_candidate_series.parquet",
       "bytes": 4125981,
-      "sha256": "dee3776b31659f08dbdc15190564c14044fa42a3d4b703a87be1484afee7a134"
+      "sha256": "056f7c60e25074c706768be0356eb44e9a80501eddcfb9d22d7e584d6b62a442"
     },
     {
       "path": "tables\\by_game\\114086\\stage5_windows.parquet",
       "bytes": 40102,
-      "sha256": "cbea292f2857d98ac0303a3d6b9cf4152a1076b176610c8ebdbbdea06a065c35"
+      "sha256": "77c193a0d6fe98ac7b6e5c1cba1cfd05e5c2afd132dce63a72b761075a73f89f"
     },
     {
       "path": "tables\\by_game\\114086\\stage5_option_set_frames.parquet",
       "bytes": 297700,
-      "sha256": "79de80ac037975411398605d9b4484710aa9c9d41ba702eb2a45e693b98b6762"
+      "sha256": "fac6490ae4d8e2ebe514a08a64945b2eefc29088b06f7be6289a48d41e3f6cb4"
+    },
+    {
+      "path": "tables\\by_game\\178442\\stage5_candidate_series.parquet",
+      "bytes": 3885073,
+      "sha256": "595acc9904056097a3aa3160e5e7be64e21ea4a4f8574603e8addd109856cb2e"
+    },
+    {
+      "path": "tables\\by_game\\178442\\stage5_windows.parquet",
+      "bytes": 39861,
+      "sha256": "beabd756614884b4c4e6a6403961e78877ed2da30cf79ba0e81e7a60c17ea4a3"
+    },
+    {
+      "path": "tables\\by_game\\178442\\stage5_option_set_frames.parquet",
+      "bytes": 284199,
+      "sha256": "a3086939177d5adb9d6e08eca4bc15408d711f2a16be8c202520ee08f8eb0e3b"
+    },
+    {
+      "path": "tables\\by_game\\179612\\stage5_candidate_series.parquet",
+      "bytes": 3722735,
+      "sha256": "5698a690bcfde279a16a25e556c2d08eb45f1071a205299b548dff90dbb9ce8d"
+    },
+    {
+      "path": "tables\\by_game\\179612\\stage5_windows.parquet",
+      "bytes": 41216,
+      "sha256": "7b1b3d173b24036cd9e8d64bc5a2db3dc3bf16021f2a4de8df14fba07ed3a4ff"
+    },
+    {
+      "path": "tables\\by_game\\179612\\stage5_option_set_frames.parquet",
+      "bytes": 270991,
+      "sha256": "bda15da444874e2f5c1db85db193a52eead5705161bd00d2de7de2ff5eba08d4"
+    },
+    {
+      "path": "tables\\by_game\\184439\\stage5_candidate_series.parquet",
+      "bytes": 3409699,
+      "sha256": "c986d702d7e6a8d2fae775f340995a9eea2b3d044770483a19ea9c343dcb3492"
+    },
+    {
+      "path": "tables\\by_game\\184439\\stage5_windows.parquet",
+      "bytes": 38771,
+      "sha256": "2b289cbb9cb7778e2b211f75e1dee2ce26d04b361c4ba4280d6fd35be5fa5680"
+    },
+    {
+      "path": "tables\\by_game\\184439\\stage5_option_set_frames.parquet",
+      "bytes": 248637,
+      "sha256": "b626e4abd385799af4bf16a0d7468b8100d0403db30da43bd487a0792efc585e"
+    },
+    {
+      "path": "tables\\by_game\\188630\\stage5_candidate_series.parquet",
+      "bytes": 4277595,
+      "sha256": "118cf8141a5c55d4565a00083e9c91c6adf6af58ed954147f494c20dc2fe2256"
+    },
+    {
+      "path": "tables\\by_game\\188630\\stage5_windows.parquet",
+      "bytes": 39902,
+      "sha256": "9bdd54aa0b1ad1cac5297e7b0addcfdaf0c45edf3f16744160e9546c7514c0dd"
+    },
+    {
+      "path": "tables\\by_game\\188630\\stage5_option_set_frames.parquet",
+      "bytes": 305678,
+      "sha256": "ac2fd39f4fa99b1fa7bef2ebcfb4d7c7817ef51defdc90d0aedb3a7d64fccd9a"
+    },
+    {
+      "path": "tables\\by_game\\191313\\stage5_candidate_series.parquet",
+      "bytes": 3733894,
+      "sha256": "07041ef7ebabcb503113714ab9f0679ec373004a55fafbb4c5f2dddb430bd123"
+    },
+    {
+      "path": "tables\\by_game\\191313\\stage5_windows.parquet",
+      "bytes": 39397,
+      "sha256": "8b580e6ea2bbf6ee34b3f56e6ce6e2717ea2273c17058f620cece8f720c1068f"
+    },
+    {
+      "path": "tables\\by_game\\191313\\stage5_option_set_frames.parquet",
+      "bytes": 271372,
+      "sha256": "09aed088c379c5395330a43a4ccfbe959413d201822a3d015f2db7fa6bb6adaf"
     }
   ],
   "verification": "`files` must hash-verify exactly (see verify_output_manifest). `sign_off_files` are expected to change when a human records approval, so they are provenance only."
