@@ -1,0 +1,61 @@
+{
+  "n_files": 11,
+  "files": [
+    {
+      "path": "tables\\stage5_candidate_series.parquet",
+      "bytes": 4125981,
+      "sha256": "dee3776b31659f08dbdc15190564c14044fa42a3d4b703a87be1484afee7a134"
+    },
+    {
+      "path": "tables\\stage5_windows.parquet",
+      "bytes": 40102,
+      "sha256": "cbea292f2857d98ac0303a3d6b9cf4152a1076b176610c8ebdbbdea06a065c35"
+    },
+    {
+      "path": "tables\\stage5_option_set_frames.parquet",
+      "bytes": 297700,
+      "sha256": "79de80ac037975411398605d9b4484710aa9c9d41ba702eb2a45e693b98b6762"
+    },
+    {
+      "path": "tables\\stage5_threshold_selections.parquet",
+      "bytes": 8700,
+      "sha256": "fed43e36ea4dd23b8d681e2c31352b9b1fd3c5fda479a9be084343e10de80596"
+    },
+    {
+      "path": "artifacts\\stage5_fold_thresholds.json",
+      "bytes": 1862,
+      "sha256": "715fcbbb110a84f3815b2155ef0d9f66cc8b678cd703fb540ea72566fdb6c3ba"
+    },
+    {
+      "path": "artifacts\\STAGE5_VERIFICATION.md",
+      "bytes": 966,
+      "sha256": "1387ee0bdc24c9bb4348624c92fa79171eea16c495002ce69f0f03ec2aefad85"
+    },
+    {
+      "path": "artifacts\\STAGE5_HANDOFF_STAGE6.md",
+      "bytes": 1100,
+      "sha256": "416c2b8ead42bd50a5b62cc5f4b7d02d8a9f3baae9184b003509421b0a74bf7b"
+    },
+    {
+      "path": "artifacts\\STAGE5_REGRESSION_LOCK.md",
+      "bytes": 722,
+      "sha256": "7e99e59b9d3ebd400fcb3b21077114c12f75ead35f13fdd036a4e950a516367a"
+    },
+    {
+      "path": "tables\\by_game\\114086\\stage5_candidate_series.parquet",
+      "bytes": 4125981,
+      "sha256": "dee3776b31659f08dbdc15190564c14044fa42a3d4b703a87be1484afee7a134"
+    },
+    {
+      "path": "tables\\by_game\\114086\\stage5_windows.parquet",
+      "bytes": 40102,
+      "sha256": "cbea292f2857d98ac0303a3d6b9cf4152a1076b176610c8ebdbbdea06a065c35"
+    },
+    {
+      "path": "tables\\by_game\\114086\\stage5_option_set_frames.parquet",
+      "bytes": 297700,
+      "sha256": "79de80ac037975411398605d9b4484710aa9c9d41ba702eb2a45e693b98b6762"
+    }
+  ],
+  "verification": "`files` must hash-verify exactly (see verify_output_manifest). `sign_off_files` are expected to change when a human records approval, so they are provenance only."
+}

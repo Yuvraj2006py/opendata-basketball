@@ -1,0 +1,30 @@
+# Stage 5 window segmentation config (procedure locked a priori; values per fold after selection)
+freeze_id: passing_windows_stage0_20250924
+narrow_path_lock_id: passing_windows_stage2_narrow_path_20260924
+upstream_model_version: stage4_sklearn_logo_v3
+
+smoothing:
+  method: causal_ewma
+  alpha: 0.5
+  causality: no_future_frames
+
+persistence:
+  min_persistence_seconds: 0.20
+  rule: require_ge_2_consecutive_5hz_samples
+  model_dt_seconds: 0.20
+
+threshold_procedure:
+  id: train_release_q_median_close_delta_0p05_late_nov_p25
+  open: median_q_on_train_release_completion_eligible
+  close_delta: 0.05
+  late_nov_quantile: 0.25
+  late_after_close_epsilon_s: 0.20
+
+option_set:
+  soft_total: logsumexp_Q_smooth_non_rejected
+  viable: raw_open_signal_excluding_rejected
+  temperature: 1.0
+
+existence_probability:
+  status: deferred_stage7
+  note: Full geometry MC remains Stage 7; Stage 5 ships NaN + status column.

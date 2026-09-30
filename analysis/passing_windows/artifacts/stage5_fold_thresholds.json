@@ -1,0 +1,63 @@
+{
+  "procedure": "train_release_q_median_close_delta_0p05_late_nov_p25",
+  "folds": [
+    {
+      "fold_id": "fold_holdout_114086",
+      "held_out_game_id": 114086,
+      "train_game_ids": [
+        114243,
+        114234,
+        114169,
+        114099,
+        178442,
+        179612,
+        184439,
+        188630,
+        191313
+      ],
+      "open_threshold": 0.08471637716969888,
+      "close_threshold": 0.03471637716969887,
+      "late_use_material_loss_delta": 0.01,
+      "late_after_close_epsilon_s": 0.2,
+      "procedure": "train_release_q_median_close_delta_0p05_late_nov_p25",
+      "diagnostics": {
+        "n_train_rows": 169868,
+        "n_release_eligible": 15664,
+        "n_q_vals": 15664,
+        "open_completion_target": 0.5,
+        "close_delta": 0.05,
+        "q_col": "q_passability_model",
+        "nov_col": "NOV_model"
+      },
+      "robustness_grid": [
+        {
+          "open_threshold": 0.0,
+          "close_threshold": 0.0,
+          "delta_from_primary": -0.1
+        },
+        {
+          "open_threshold": 0.03471637716969887,
+          "close_threshold": 0.0,
+          "delta_from_primary": -0.05
+        },
+        {
+          "open_threshold": 0.08471637716969888,
+          "close_threshold": 0.03471637716969887,
+          "delta_from_primary": 0.0
+        },
+        {
+          "open_threshold": 0.13471637716969886,
+          "close_threshold": 0.08471637716969886,
+          "delta_from_primary": 0.05
+        },
+        {
+          "open_threshold": 0.18471637716969888,
+          "close_threshold": 0.13471637716969886,
+          "delta_from_primary": 0.1
+        }
+      ]
+    }
+  ],
+  "robustness_grid_note": "Primary selection per fold; grid deltas in ThresholdSelection.robustness_grid()",
+  "existence_prob_status": "deferred_stage7"
+}

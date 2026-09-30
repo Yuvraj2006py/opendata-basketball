@@ -11,7 +11,8 @@ Self-contained study workspace for the SkillCorner ACB open-data **Passing Windo
 | 2 — Failed-pass target inference | **Accepted under the narrow path** (human audit deferred; labels provisional) |
 | 3 — Candidate pass reconstruction | **Complete** (narrow-path handoff ready for Stage 4) |
 | 4 — Cross-fitted component models | **Complete** (LOGO q / V_catch / V_keep / Q / NOV; handoff ready for Stage 5) |
-| 5+ | Not started |
+| 5 — Window segmentation | **MVP** (unit tests green; 1-game smoke; full 10-game run pending) |
+| 6+ | Not started |
 
 ## Setup
 
@@ -19,10 +20,12 @@ Self-contained study workspace for the SkillCorner ACB open-data **Passing Windo
 cd analysis\passing_windows
 python -m venv .venv
 .\.venv\Scripts\pip.exe install -r requirements.txt
-.\.venv\Scripts\python.exe -m pytest tests\test_stage1.py tests\test_stage2.py tests\test_stage3.py tests\test_stage4.py -q
+.\.venv\Scripts\python.exe -m pytest tests\test_stage1.py tests\test_stage2.py tests\test_stage3.py tests\test_stage4.py tests\test_stage5.py -q
 .\.venv\Scripts\python.exe pipelines\01_build_canonical_data.py
 .\.venv\Scripts\python.exe pipelines\02_infer_failed_pass_targets.py
 .\.venv\Scripts\python.exe pipelines\03_build_candidate_states.py
+.\.venv\Scripts\python.exe pipelines\04_fit_component_models.py
+.\.venv\Scripts\python.exe pipelines\05_segment_windows.py
 .\.venv\Scripts\python.exe pipelines\04_fit_component_models.py
 ```
 
@@ -170,3 +173,20 @@ Stage 4 fits nested leave-one-game-out passability (5 ablations), V_catch,
 V_keep, Q/NOV, and a descriptive release-time choice model. Sklearn B-spline +
 L2 logistic/Ridge substitutes for the freeze GAM (documented in verification).
 Counterfactual `Q`/`NOV` are NaN where `rejected_outside_support`.
+
+## Stage 5 artifacts
+
+| Artifact | Path |
+|---|---|
+| Candidate series (5 Hz, smoothed) | `tables/stage5_candidate_series.parquet` |
+| Windows (+ never_open stubs) | `tables/stage5_windows.parquet` |
+| Option-set frames | `tables/stage5_option_set_frames.parquet` |
+| Threshold selections | `tables/stage5_threshold_selections.parquet` |
+| Fold thresholds JSON | [`artifacts/stage5_fold_thresholds.json`](artifacts/stage5_fold_thresholds.json) |
+| Verification | [`artifacts/STAGE5_VERIFICATION.md`](artifacts/STAGE5_VERIFICATION.md) |
+| Stage 6 handoff | [`artifacts/STAGE5_HANDOFF_STAGE6.md`](artifacts/STAGE5_HANDOFF_STAGE6.md) |
+| Builder status / gaps | [`artifacts/STAGE5_BUILDER_STATUS.md`](artifacts/STAGE5_BUILDER_STATUS.md) |
+| Output manifest | [`artifacts/stage5_output_manifest.json`](artifacts/stage5_output_manifest.json) |
+
+Stage 5 segments causal, LOGO-thresholded windows from Stage 4 OOS scores.
+Do not refit component models. Full 10-game run: `pipelines/05_segment_windows.py`.
