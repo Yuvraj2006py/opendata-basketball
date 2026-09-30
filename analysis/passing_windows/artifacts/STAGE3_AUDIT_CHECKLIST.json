@@ -1,0 +1,94 @@
+{
+  "verdict": "SAFE_TO_ACCEPT",
+  "freeze_id": "passing_windows_stage0_20250924",
+  "lock_id": "passing_windows_stage2_narrow_path_20260924",
+  "live_audit_ok": true,
+  "pytest_passed": 142,
+  "release_label_coverage": {
+    "hit": 4397,
+    "total": 4530,
+    "pct": 97.1
+  },
+  "n_candidate_rows": 190348,
+  "n_frames": 47587,
+  "gate_columns_complete": true,
+  "blockers_remaining": [],
+  "stage4_may_begin": true,
+  "live_verification": {
+    "ran": true,
+    "checks": {
+      "ok": true,
+      "stage3_present": true,
+      "four_candidates_per_frame": {
+        "ok": true,
+        "n_bad": 0,
+        "mode": 4
+      },
+      "model_5hz_stride": {
+        "ok": true,
+        "n_diffs": 40843
+      },
+      "null_velocity_is_missing": {
+        "ok": true
+      },
+      "narrow_path_labels": {
+        "ok": true,
+        "n_labels": 4530,
+        "failed_eligible": 0
+      },
+      "stage3_gate_columns": {
+        "ok": true,
+        "present": [
+          "narrow_path_active",
+          "target_inference_mode",
+          "target_reliability_status",
+          "human_audit_status",
+          "usable_as_receiver_completion_label",
+          "usable_as_named_failed_target",
+          "named_failed_target_requires_sensitivity_check",
+          "usable_for_touch_level_turnover",
+          "receiver_specific_eligible",
+          "label_gate_reason"
+        ],
+        "missing": []
+      },
+      "release_label_yield": {
+        "ok": true,
+        "n_labels": 4530,
+        "n_labels_with_release_row": 4397,
+        "n_true_receiver_rows": 4397,
+        "n_completion_label_eligible_rows": 17588,
+        "threshold": ">=90% of 4530 labels must have a release feature row"
+      },
+      "no_failed_completion_labels": {
+        "ok": true,
+        "n_bad": 0
+      },
+      "trajectory_rule": {
+        "ok": true
+      },
+      "fold_safe_flight_time": {
+        "ok": true,
+        "n_folds": 10
+      },
+      "manifest": {
+        "n_files": 18,
+        "n_missing": 0,
+        "n_mismatched": 0,
+        "n_duplicate_paths": 0,
+        "missing": [],
+        "mismatched": [],
+        "duplicate_paths": [],
+        "ok": true
+      },
+      "markers": {
+        "ok": true,
+        "n_done": 10,
+        "n_games": 10
+      },
+      "narrow_path_lock_id": "passing_windows_stage2_narrow_path_20260924",
+      "n_candidate_rows": 190348
+    }
+  },
+  "stage3_artifacts_present": true
+}

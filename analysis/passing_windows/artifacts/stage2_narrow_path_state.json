@@ -1,0 +1,175 @@
+{
+  "lock_id": "passing_windows_stage2_narrow_path_20260924",
+  "narrow_path_active": true,
+  "target_inference_mode": "narrow_path",
+  "locked_mode": "narrow_path",
+  "human_audit_status": "deferred_waived",
+  "kill_threshold_pct": 10.0,
+  "unresolved_strict_pct": 2.247191011235955,
+  "unresolved_pre_audit_pct": 32.58426966292135,
+  "triggers": [
+    "pre_audit_unresolved_rate_exceeds_frozen_threshold",
+    "human_audit_status_is_not_complete"
+  ],
+  "completed_pass_proxy_role": "diagnostic_only",
+  "n_passes": 4619,
+  "n_failed": 89,
+  "n_completed": 4530,
+  "n_receiver_completion_labels": 4530,
+  "n_named_failed_targets_optional": 60,
+  "n_receiver_specific_eligible": 4530,
+  "n_touch_level_only": 89,
+  "reliability_mix": {
+    "known_receiver": 4530,
+    "inferred_provisional_unaudited": 60,
+    "ambiguous_unreviewed": 27,
+    "no_evidence": 2
+  },
+  "lock": {
+    "stage": 2,
+    "lock_id": "passing_windows_stage2_narrow_path_20260924",
+    "freeze_id": "passing_windows_stage0_20250924",
+    "locked_date": "2026-09-24",
+    "status": "locked",
+    "amends": "configs/stage0_freeze.yaml",
+    "amends_key": "failed_pass_target_inference.on_inadequate_reliability",
+    "audit_ref": "artifacts/STAGE2_AUDIT_REPORT.md",
+    "narrative_ref": "artifacts/STAGE2_NARROW_PATH_LOCK.md",
+    "target_inference_mode": "narrow_path",
+    "activation": {
+      "binding": true,
+      "narrow_path_active_when_any": [
+        "pre_audit_unresolved_rate_exceeds_frozen_threshold",
+        "human_audit_status_is_not_complete"
+      ],
+      "machine_enforced_in": "src/passing_windows/narrow_path.py",
+      "gate_table": "tables/stage2_label_eligibility.parquet"
+    },
+    "kill_criterion": {
+      "id": "unresolved_failed_targets",
+      "frozen_rule": "unresolved failed-pass targets exceed 10% OR audit reliability is poor",
+      "frozen_threshold_pct": 10,
+      "n_failed_passes": 89,
+      "measured_unresolved_strict_pct": 2.2,
+      "measured_unresolved_pre_audit_pct": 32.6,
+      "breached_by": "unresolved_pre_audit",
+      "audit_reliability": "unknown_no_human_review_performed",
+      "consequence": "narrow_path"
+    },
+    "human_audit": {
+      "status": "deferred_waived",
+      "waived_by": "user_directed_autonomous_execution",
+      "waived_date": "2026-09-24",
+      "reviewer_columns_remain_blank": true,
+      "fabricated_reviewer_values_forbidden": true,
+      "reason": "No blinded human review of failed-pass targets has been performed. The reviewer columns of artifacts/stage2_ambiguous_audit.csv are blank and must stay blank; inventing reviewer_decision, reviewer_confidence, reviewer_is_intended_target, or reviewer_reason values would manufacture evidence that does not exist. Stage 2 is therefore accepted under the narrow path instead of under the frozen audit gate.\n",
+      "reopens_lock_only_if": "A blinded human review of every ambiguous failure, the required random auto-accepted sample, and the completed controls is recorded; per-fold decision rules are re-selected against training-fold audit labels; the strict and pre-audit unresolved rates are recomputed; and a new Stage 2 lock revision is issued.\n"
+    },
+    "label_policy": {
+      "reliable_receiver_specific_outcomes": [
+        "completed passes with a known receiver inside the candidate set"
+      ],
+      "conditionally_reliable": [
+        {
+          "id": "auto_accepted_failed_targets",
+          "allowed": "false_by_default",
+          "requires": "A downstream stage may add auto-accepted inferred failures to a receiver-specific analysis only if that stage also reports the same analysis with them excluded (explicit sensitivity check), and labels them provisional/unaudited in every table and figure.\n",
+          "never": "treated as an audited failed-pass precision claim"
+        }
+      ],
+      "stage3_default_completion_label_training_set": "completed_passes_known_receiver_only",
+      "failed_ambiguous_unresolved_usable_for": [
+        "touch_level_turnover_modeling",
+        "pass_attempt_features",
+        "possession_outcome_features_not_attributed_to_a_named_receiver"
+      ],
+      "failed_ambiguous_unresolved_forbidden_for": [
+        "named_receiver_completion_labels",
+        "receiver_specific_calibration",
+        "receiver_specific_headline_claims"
+      ],
+      "never_under_any_path": [
+        "toReceiverId_or_interceptor_as_intended_target"
+      ]
+    },
+    "completed_pass_proxy": {
+      "role": "diagnostic_only",
+      "measures": "top-1 agreement and auto-accept precision on held-out COMPLETED passes",
+      "does_not_measure": "failed-pass target precision",
+      "forbidden_uses": [
+        "citing held-out completed-pass auto-accept precision as failed-pass precision",
+        "citing it as evidence that inferred failed targets are audited or validated",
+        "using it to justify receiver-specific failed-pass claims"
+      ],
+      "required_caveat": "A completed pass reaches its receiver and is geometrically easier than an intercepted pass, so this number is an optimistic upper bound on failed-pass precision, not an estimate of it. The project self-check failed_residuals_within_completed_support already fails, showing accepted failures sit outside the completed-correct residual support.\n"
+    },
+    "gate_columns": {
+      "required": [
+        "narrow_path_active",
+        "target_inference_mode",
+        "target_reliability_status",
+        "human_audit_status",
+        "usable_as_receiver_completion_label",
+        "usable_as_named_failed_target",
+        "named_failed_target_requires_sensitivity_check",
+        "usable_for_touch_level_turnover",
+        "receiver_specific_eligible",
+        "label_gate_reason"
+      ],
+      "reliability_statuses": [
+        "known_receiver",
+        "inferred_provisional_unaudited",
+        "ambiguous_unreviewed",
+        "no_evidence"
+      ],
+      "written_to": [
+        "tables/stage2_label_eligibility.parquet",
+        "tables/stage2_failed_pass_assignments.parquet",
+        "tables/stage2_completed_pass_validation.parquet",
+        "tables/stage2_target_probabilities.parquet"
+      ]
+    },
+    "assertions": [
+      {
+        "id": "interceptor_never_target",
+        "rule": "no candidate row and no inferred_targetId may equal interceptorId",
+        "severity": "fatal"
+      },
+      {
+        "id": "completion_labels_have_known_receiver",
+        "rule": "usable_as_receiver_completion_label may only be True where target_reliability_status == known_receiver and true_receiverId is not null\n",
+        "severity": "fatal"
+      },
+      {
+        "id": "named_failed_targets_are_accepted",
+        "rule": "usable_as_named_failed_target may only be True where decision == auto_accept and inferred_targetId is not null\n",
+        "severity": "fatal"
+      },
+      {
+        "id": "gate_columns_present",
+        "rule": "every required gate column exists on every gated table",
+        "severity": "fatal"
+      },
+      {
+        "id": "no_fabricated_reviewer_values",
+        "rule": "while human_audit.status != complete, every reviewer column in artifacts/stage2_ambiguous_audit.csv must be blank\n",
+        "severity": "fatal"
+      }
+    ],
+    "stage3": {
+      "status": "not_started",
+      "may_begin_under": "narrow_path",
+      "must": [
+        "join tables/stage2_label_eligibility.parquet and filter on the gate columns",
+        "train passability completion labels on receiver_specific_eligible == True only",
+        "treat every failed pass as touch-level turnover evidence, not receiver-attributed",
+        "carry target_reliability_status through to any receiver-level output"
+      ],
+      "must_not": [
+        "use ambiguous or unresolved failed passes as named-receiver completion labels",
+        "report receiver-specific failed-pass rates without the exclusion sensitivity check",
+        "describe Stage 2 failed-pass targets as audited or validated"
+      ]
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "verdict": "PASS",
+  "checks": {
+    "kill_rates": "PASS",
+    "narrow_path_triggers": "PASS",
+    "gate_columns": "PASS",
+    "assert_narrow_path_gates": "PASS",
+    "interceptor_rule": "PASS",
+    "label_policy": "PASS",
+    "reviewer_blank": "PASS",
+    "simplex": "PASS",
+    "logo_folds": "PASS",
+    "eligibility_unique": "PASS",
+    "report_phrasing": "PASS"
+  },
+  "issues": [],
+  "notes": [
+    "failed count matches lock (89)",
+    "eligibility: all 10 gate columns present",
+    "failed: all 10 gate columns present",
+    "completed: all 10 gate columns present",
+    "probabilities: all 10 gate columns present",
+    "assert_narrow_path_gates OK (eligible=4530, touch_only=89)",
+    "probabilities: interceptor never in candidate set",
+    "Stage 3 training labels = 4530 completed known-receiver passes",
+    "audit sheet reviewer columns blank on disk",
+    "probabilities form simplex per pass (target_probability)",
+    "fold_id encodes leave-one-game-out holdout game",
+    "eligibility passId unique",
+    "no forbidden failed-precision phrasing in 6 reports",
+    "completed diagnostic columns present: ['auto_accept_rule_p_min', 'auto_accept_rule_prob_margin', 'auto_accept_rule_geom_margin_ft', 'auto_accept_rule_provisional']"
+  ],
+  "counts": {
+    "failed": 89,
+    "auto_accept": 60,
+    "ambiguous": 27,
+    "unresolved": 2,
+    "pre_audit_unresolved_pct": 32.5843,
+    "strict_unresolved_pct": 2.2472,
+    "completed": 4530,
+    "probability_rows": 18476,
+    "eligibility_rows": 4619,
+    "stage3_training_labels": 4530,
+    "audit_sheet_rows": 596
+  },
+  "narrow_path_state_live": {
+    "lock_id": "passing_windows_stage2_narrow_path_20260924",
+    "narrow_path_active": true,
+    "target_inference_mode": "narrow_path",
+    "locked_mode": "narrow_path",
+    "human_audit_status": "deferred_waived",
+    "kill_threshold_pct": 10.0,
+    "unresolved_strict_pct": 2.247191011235955,
+    "unresolved_pre_audit_pct": 32.58426966292135,
+    "triggers": [
+      "pre_audit_unresolved_rate_exceeds_frozen_threshold",
+      "human_audit_status_is_not_complete"
+    ],
+    "completed_pass_proxy_role": "diagnostic_only"
+  }
+}

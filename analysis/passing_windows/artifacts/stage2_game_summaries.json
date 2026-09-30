@@ -1,0 +1,172 @@
+{
+  "gameId_summaries": [
+    {
+      "gameId": 114243,
+      "n_passes_total": 525,
+      "n_failed": 8,
+      "n_completed_usable": 507,
+      "n_unknown_outcome": 4,
+      "n_states": 2060,
+      "n_skipped_completed": 0,
+      "skipped": [],
+      "n_failed_with_ball_flight": 8
+    },
+    {
+      "gameId": 114234,
+      "n_passes_total": 461,
+      "n_failed": 14,
+      "n_completed_usable": 432,
+      "n_unknown_outcome": 7,
+      "n_states": 1784,
+      "n_skipped_completed": 0,
+      "skipped": [],
+      "n_failed_with_ball_flight": 14
+    },
+    {
+      "gameId": 114169,
+      "n_passes_total": 460,
+      "n_failed": 6,
+      "n_completed_usable": 439,
+      "n_unknown_outcome": 9,
+      "n_states": 1780,
+      "n_skipped_completed": 0,
+      "skipped": [],
+      "n_failed_with_ball_flight": 5
+    },
+    {
+      "gameId": 114099,
+      "n_passes_total": 469,
+      "n_failed": 12,
+      "n_completed_usable": 444,
+      "n_unknown_outcome": 5,
+      "n_states": 1820,
+      "n_skipped_completed": 1,
+      "skipped": [
+        {
+          "gameId": 114099,
+          "passId": "pass-114099-4-408",
+          "pass_outcome_class": "complete",
+          "reason": "candidate_set_not_four",
+          "n_candidates": 0
+        }
+      ],
+      "n_failed_with_ball_flight": 11
+    },
+    {
+      "gameId": 114086,
+      "n_passes_total": 510,
+      "n_failed": 12,
+      "n_completed_usable": 484,
+      "n_unknown_outcome": 5,
+      "n_states": 1984,
+      "n_skipped_completed": 0,
+      "skipped": [],
+      "n_failed_with_ball_flight": 12
+    },
+    {
+      "gameId": 178442,
+      "n_passes_total": 475,
+      "n_failed": 9,
+      "n_completed_usable": 448,
+      "n_unknown_outcome": 5,
+      "n_states": 1800,
+      "n_skipped_completed": 7,
+      "skipped": [
+        {
+          "gameId": 178442,
+          "passId": "pass-178442-4-324",
+          "pass_outcome_class": "complete",
+          "reason": "candidate_set_not_four",
+          "n_candidates": 0
+        },
+        {
+          "gameId": 178442,
+          "passId": "pass-178442-4-325",
+          "pass_outcome_class": "complete",
+          "reason": "candidate_set_not_four",
+          "n_candidates": 0
+        },
+        {
+          "gameId": 178442,
+          "passId": "pass-178442-4-326",
+          "pass_outcome_class": "complete",
+          "reason": "candidate_set_not_four",
+          "n_candidates": 0
+        },
+        {
+          "gameId": 178442,
+          "passId": "pass-178442-4-327",
+          "pass_outcome_class": "complete",
+          "reason": "candidate_set_not_four",
+          "n_candidates": 0
+        },
+        {
+          "gameId": 178442,
+          "passId": "pass-178442-4-328",
+          "pass_outcome_class": "complete",
+          "reason": "candidate_set_not_four",
+          "n_candidates": 0
+        },
+        {
+          "gameId": 178442,
+          "passId": "pass-178442-4-427",
+          "pass_outcome_class": "complete",
+          "reason": "receiver_outside_candidate_set",
+          "n_candidates": 4
+        },
+        {
+          "gameId": 178442,
+          "passId": "pass-178442-4-428",
+          "pass_outcome_class": "complete",
+          "reason": "candidate_set_not_four",
+          "n_candidates": 0
+        }
+      ],
+      "n_failed_with_ball_flight": 9
+    },
+    {
+      "gameId": 179612,
+      "n_passes_total": 533,
+      "n_failed": 6,
+      "n_completed_usable": 507,
+      "n_unknown_outcome": 6,
+      "n_states": 2052,
+      "n_skipped_completed": 0,
+      "skipped": [],
+      "n_failed_with_ball_flight": 6
+    },
+    {
+      "gameId": 184439,
+      "n_passes_total": 448,
+      "n_failed": 5,
+      "n_completed_usable": 427,
+      "n_unknown_outcome": 10,
+      "n_states": 1728,
+      "n_skipped_completed": 0,
+      "skipped": [],
+      "n_failed_with_ball_flight": 5
+    },
+    {
+      "gameId": 188630,
+      "n_passes_total": 472,
+      "n_failed": 8,
+      "n_completed_usable": 443,
+      "n_unknown_outcome": 10,
+      "n_states": 1804,
+      "n_skipped_completed": 0,
+      "skipped": [],
+      "n_failed_with_ball_flight": 8
+    },
+    {
+      "gameId": 191313,
+      "n_passes_total": 433,
+      "n_failed": 9,
+      "n_completed_usable": 407,
+      "n_unknown_outcome": 7,
+      "n_states": 1664,
+      "n_skipped_completed": 0,
+      "skipped": [],
+      "n_failed_with_ball_flight": 9
+    }
+  ]
+}

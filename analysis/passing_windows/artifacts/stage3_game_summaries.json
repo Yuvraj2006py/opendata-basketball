@@ -1,0 +1,361 @@
+{
+  "overall": {
+    "n_candidate_rows": 190348,
+    "n_games": 10,
+    "n_touches": 5650,
+    "n_frames": 47587,
+    "candidates_per_frame_mode": 4,
+    "pct_rejected_outside_support": 12.012209216802908,
+    "pct_missing_matchup": 6.259587702523799,
+    "pct_receiver_velocity_missing": 0.5952255868199298,
+    "trajectory_mix": {
+      "lead": 189215,
+      "direct": 1133
+    },
+    "n_completion_label_eligible_rows": 17588,
+    "n_true_receiver_rows": 4397,
+    "n_forced_release_frames": 4615,
+    "n_model_5hz_frames": 44001,
+    "court_region_mix": {
+      "wing": 88895,
+      "corner": 42066,
+      "slot": 35706,
+      "paint": 18052,
+      "backcourt": 4824,
+      "unknown": 805
+    },
+    "elapsed_seconds_total": 1953.5
+  },
+  "games": [
+    {
+      "gameId": 114243,
+      "cached": false,
+      "elapsed_seconds": 130.15,
+      "fold_id": "fold_holdout_114243",
+      "n_train_completed_for_flight": 4023,
+      "distance_support_max_ft": 40.75727783157096,
+      "flight_bundle_hash": "bd021b7d3ae1c6ff21ed",
+      "n_candidate_rows": 18376,
+      "n_games": 1,
+      "n_touches": 613,
+      "n_frames": 4594,
+      "candidates_per_frame_mode": 4,
+      "pct_rejected_outside_support": 10.715063125816283,
+      "pct_missing_matchup": 5.300391815411406,
+      "pct_receiver_velocity_missing": 0.21767522855899,
+      "trajectory_mix": {
+        "lead": 18336,
+        "direct": 40
+      },
+      "n_completion_label_eligible_rows": 1968,
+      "n_true_receiver_rows": 492,
+      "n_forced_release_frames": 510,
+      "n_model_5hz_frames": 4208,
+      "court_region_mix": {
+        "wing": 8404,
+        "corner": 3937,
+        "slot": 3518,
+        "paint": 2093,
+        "backcourt": 412,
+        "unknown": 12
+      }
+    },
+    {
+      "gameId": 114234,
+      "cached": false,
+      "elapsed_seconds": 128.38,
+      "fold_id": "fold_holdout_114234",
+      "n_train_completed_for_flight": 4098,
+      "distance_support_max_ft": 40.69435298989053,
+      "flight_bundle_hash": "f51df8aefe789fd776a0",
+      "n_candidate_rows": 18344,
+      "n_games": 1,
+      "n_touches": 547,
+      "n_frames": 4586,
+      "candidates_per_frame_mode": 4,
+      "pct_rejected_outside_support": 11.32795464457043,
+      "pct_missing_matchup": 5.636720453554296,
+      "pct_receiver_velocity_missing": 0.19624945486262538,
+      "trajectory_mix": {
+        "lead": 18308,
+        "direct": 36
+      },
+      "n_completion_label_eligible_rows": 1660,
+      "n_true_receiver_rows": 415,
+      "n_forced_release_frames": 443,
+      "n_model_5hz_frames": 4235,
+      "court_region_mix": {
+        "wing": 8093,
+        "corner": 4382,
+        "slot": 3337,
+        "paint": 2025,
+        "backcourt": 495,
+        "unknown": 12
+      }
+    },
+    {
+      "gameId": 114169,
+      "cached": false,
+      "elapsed_seconds": 126.9,
+      "fold_id": "fold_holdout_114169",
+      "n_train_completed_for_flight": 4091,
+      "distance_support_max_ft": 40.71639763849447,
+      "flight_bundle_hash": "6bd2ce47c37437df4c39",
+      "n_candidate_rows": 18076,
+      "n_games": 1,
+      "n_touches": 552,
+      "n_frames": 4519,
+      "candidates_per_frame_mode": 4,
+      "pct_rejected_outside_support": 11.235892896658553,
+      "pct_missing_matchup": 7.523788448771852,
+      "pct_receiver_velocity_missing": 0.4868333702146493,
+      "trajectory_mix": {
+        "lead": 17988,
+        "direct": 88
+      },
+      "n_completion_label_eligible_rows": 1704,
+      "n_true_receiver_rows": 426,
+      "n_forced_release_frames": 446,
+      "n_model_5hz_frames": 4158,
+      "court_region_mix": {
+        "wing": 8931,
+        "corner": 3737,
+        "slot": 3268,
+        "paint": 1668,
+        "backcourt": 412,
+        "unknown": 60
+      }
+    },
+    {
+      "gameId": 114099,
+      "cached": false,
+      "elapsed_seconds": 171.48,
+      "fold_id": "fold_holdout_114099",
+      "n_train_completed_for_flight": 4087,
+      "distance_support_max_ft": 40.575911308875774,
+      "flight_bundle_hash": "62a08366f3ea12a5f23f",
+      "n_candidate_rows": 19604,
+      "n_games": 1,
+      "n_touches": 547,
+      "n_frames": 4901,
+      "candidates_per_frame_mode": 4,
+      "pct_rejected_outside_support": 12.94123648235054,
+      "pct_missing_matchup": 5.861048765558049,
+      "pct_receiver_velocity_missing": 0.3264639869414405,
+      "trajectory_mix": {
+        "lead": 19540,
+        "direct": 64
+      },
+      "n_completion_label_eligible_rows": 1692,
+      "n_true_receiver_rows": 423,
+      "n_forced_release_frames": 444,
+      "n_model_5hz_frames": 4553,
+      "court_region_mix": {
+        "wing": 8895,
+        "corner": 4520,
+        "slot": 3798,
+        "paint": 1830,
+        "backcourt": 549,
+        "unknown": 12
+      }
+    },
+    {
+      "gameId": 114086,
+      "cached": false,
+      "elapsed_seconds": 253.19,
+      "fold_id": "fold_holdout_114086",
+      "n_train_completed_for_flight": 4046,
+      "distance_support_max_ft": 40.75246850959096,
+      "flight_bundle_hash": "eff590d404bdbc4948dc",
+      "n_candidate_rows": 20480,
+      "n_games": 1,
+      "n_touches": 604,
+      "n_frames": 5120,
+      "candidates_per_frame_mode": 4,
+      "pct_rejected_outside_support": 10.908203125,
+      "pct_missing_matchup": 5.556640625,
+      "pct_receiver_velocity_missing": 0.29296875,
+      "trajectory_mix": {
+        "lead": 20420,
+        "direct": 60
+      },
+      "n_completion_label_eligible_rows": 1924,
+      "n_true_receiver_rows": 481,
+      "n_forced_release_frames": 505,
+      "n_model_5hz_frames": 4742,
+      "court_region_mix": {
+        "wing": 9674,
+        "corner": 4592,
+        "slot": 3763,
+        "paint": 1974,
+        "backcourt": 449,
+        "unknown": 28
+      }
+    },
+    {
+      "gameId": 178442,
+      "cached": false,
+      "elapsed_seconds": 243.27,
+      "fold_id": "fold_holdout_178442",
+      "n_train_completed_for_flight": 4089,
+      "distance_support_max_ft": 40.55170402453198,
+      "flight_bundle_hash": "94edb9b8c6bc04915478",
+      "n_candidate_rows": 19580,
+      "n_games": 1,
+      "n_touches": 567,
+      "n_frames": 4895,
+      "candidates_per_frame_mode": 4,
+      "pct_rejected_outside_support": 13.94279877425945,
+      "pct_missing_matchup": 6.041879468845761,
+      "pct_receiver_velocity_missing": 0.49029622063329925,
+      "trajectory_mix": {
+        "lead": 19484,
+        "direct": 96
+      },
+      "n_completion_label_eligible_rows": 1716,
+      "n_true_receiver_rows": 429,
+      "n_forced_release_frames": 456,
+      "n_model_5hz_frames": 4532,
+      "court_region_mix": {
+        "wing": 9237,
+        "corner": 4080,
+        "slot": 3844,
+        "paint": 1818,
+        "backcourt": 533,
+        "unknown": 68
+      }
+    },
+    {
+      "gameId": 179612,
+      "cached": false,
+      "elapsed_seconds": 223.2,
+      "fold_id": "fold_holdout_179612",
+      "n_train_completed_for_flight": 4023,
+      "distance_support_max_ft": 40.538022906647036,
+      "flight_bundle_hash": "0c825b812d83c239b053",
+      "n_candidate_rows": 18972,
+      "n_games": 1,
+      "n_touches": 614,
+      "n_frames": 4743,
+      "candidates_per_frame_mode": 4,
+      "pct_rejected_outside_support": 14.12608053974278,
+      "pct_missing_matchup": 7.9485557663925785,
+      "pct_receiver_velocity_missing": 1.6656124815517606,
+      "trajectory_mix": {
+        "lead": 18656,
+        "direct": 316
+      },
+      "n_completion_label_eligible_rows": 1956,
+      "n_true_receiver_rows": 489,
+      "n_forced_release_frames": 506,
+      "n_model_5hz_frames": 4348,
+      "court_region_mix": {
+        "wing": 9043,
+        "corner": 4045,
+        "slot": 3277,
+        "paint": 1807,
+        "backcourt": 524,
+        "unknown": 276
+      }
+    },
+    {
+      "gameId": 184439,
+      "cached": false,
+      "elapsed_seconds": 205.02,
+      "fold_id": "fold_holdout_184439",
+      "n_train_completed_for_flight": 4103,
+      "distance_support_max_ft": 40.65567116217353,
+      "flight_bundle_hash": "5ec8209abda757b85d75",
+      "n_candidate_rows": 17288,
+      "n_games": 1,
+      "n_touches": 530,
+      "n_frames": 4322,
+      "candidates_per_frame_mode": 4,
+      "pct_rejected_outside_support": 11.64391485423415,
+      "pct_missing_matchup": 5.6628875520592326,
+      "pct_receiver_velocity_missing": 0.3065710319296622,
+      "trajectory_mix": {
+        "lead": 17235,
+        "direct": 53
+      },
+      "n_completion_label_eligible_rows": 1684,
+      "n_true_receiver_rows": 421,
+      "n_forced_release_frames": 438,
+      "n_model_5hz_frames": 3985,
+      "court_region_mix": {
+        "wing": 7528,
+        "corner": 4222,
+        "slot": 3740,
+        "paint": 1295,
+        "backcourt": 470,
+        "unknown": 33
+      }
+    },
+    {
+      "gameId": 188630,
+      "cached": false,
+      "elapsed_seconds": 244.78,
+      "fold_id": "fold_holdout_188630",
+      "n_train_completed_for_flight": 4087,
+      "distance_support_max_ft": 40.598663810949475,
+      "flight_bundle_hash": "598074f8e889a94b626b",
+      "n_candidate_rows": 21128,
+      "n_games": 1,
+      "n_touches": 560,
+      "n_frames": 5282,
+      "candidates_per_frame_mode": 4,
+      "pct_rejected_outside_support": 11.212608860280197,
+      "pct_missing_matchup": 6.233434305187429,
+      "pct_receiver_velocity_missing": 1.4956455887921243,
+      "trajectory_mix": {
+        "lead": 20812,
+        "direct": 316
+      },
+      "n_completion_label_eligible_rows": 1716,
+      "n_true_receiver_rows": 429,
+      "n_forced_release_frames": 454,
+      "n_model_5hz_frames": 4934,
+      "court_region_mix": {
+        "wing": 10490,
+        "corner": 4307,
+        "slot": 4013,
+        "paint": 1541,
+        "backcourt": 485,
+        "unknown": 292
+      }
+    },
+    {
+      "gameId": 191313,
+      "cached": false,
+      "elapsed_seconds": 216.41,
+      "fold_id": "fold_holdout_191313",
+      "n_train_completed_for_flight": 4123,
+      "distance_support_max_ft": 40.540207926679784,
+      "flight_bundle_hash": "6ca29553b62f1fed11cb",
+      "n_candidate_rows": 18500,
+      "n_games": 1,
+      "n_touches": 516,
+      "n_frames": 4625,
+      "candidates_per_frame_mode": 4,
+      "pct_rejected_outside_support": 12.021621621621621,
+      "pct_missing_matchup": 6.8810810810810805,
+      "pct_receiver_velocity_missing": 0.34594594594594597,
+      "trajectory_mix": {
+        "lead": 18436,
+        "direct": 64
+      },
+      "n_completion_label_eligible_rows": 1568,
+      "n_true_receiver_rows": 392,
+      "n_forced_release_frames": 413,
+      "n_model_5hz_frames": 4306,
+      "court_region_mix": {
+        "wing": 8600,
+        "corner": 4244,
+        "slot": 3148,
+        "paint": 2001,
+        "backcourt": 495,
+        "unknown": 12
+      }
+    }
+  ]
+}

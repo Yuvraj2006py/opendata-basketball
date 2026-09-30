@@ -1,0 +1,14 @@
+# Local / generated (do not commit large binaries by default)
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+tables/by_game/
+tables/*.parquet
+artifacts/stage1_output_manifest.json
+artifacts/stage1_environment.json
+artifacts/stage2_output_manifest.json
+artifacts/stage3_output_manifest.json
+artifacts/_stage3_rebuild_log.txt
+artifacts/STAGE3_LIVE_AUDIT.json
+*.whl

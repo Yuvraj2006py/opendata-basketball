@@ -1,0 +1,429 @@
+# Stage 0 freeze — Passing Windows study
+# Machine-readable locks. Human narrative: stage0_analysis_spec.md
+# Frozen: 2026-09-24. Do not change without a new Stage 0 revision + re-hash.
+
+stage: 0
+freeze_id: passing_windows_stage0_20250924
+freeze_date: "2026-09-24"
+plan_ref: .cursor/plans/passing-windows-study_aff10b97.plan.md
+status: frozen
+
+# ---------------------------------------------------------------------------
+# Thesis
+# ---------------------------------------------------------------------------
+thesis: >
+  Basketball possessions are sequences of disappearing passing windows.
+  At each moment, the ball-handler has a changing set of receiver options with
+  distinct delivery risk and post-catch value; these options can be measured
+  from tracking, have finite lifetimes, and contain predictive information
+  beyond ordinary ball, clock, and spacing features.
+
+claims_allowed:
+  - Passing opportunities vary materially within a touch rather than being static properties of court location.
+  - Passability and post-catch value are distinct dimensions.
+  - High-value windows have measurable lifetimes and are sometimes used before peak, near peak, after peak, or not used.
+  - The quality and breadth of the live option set improve held-out prediction of near-term offensive outcomes.
+
+claims_forbidden:
+  - A modeled alternative pass would causally have produced more points.
+  - An unused modeled option proves a player made a mistake.
+  - Ten games support stable player or team rankings.
+  - A single scalar represents the universally correct pass.
+  - Language such as "correct pass", "bad decision", or "points left on the table".
+
+article_language_required:
+  - model-preferred
+  - available under the model
+  - unused
+
+# ---------------------------------------------------------------------------
+# Games, seeds, coordinates
+# ---------------------------------------------------------------------------
+competition: Liga ACB
+season: "2025-2026"
+game_ids:
+  - 114243
+  - 114234
+  - 114169
+  - 114099
+  - 114086
+  - 178442
+  - 179612
+  - 184439
+  - 188630
+  - 191313
+
+rng:
+  master_seed: 20250924
+  fold_seeds:
+    fold_holdout_114243: 2025092401
+    fold_holdout_114234: 2025092402
+    fold_holdout_114169: 2025092403
+    fold_holdout_114099: 2025092404
+    fold_holdout_114086: 2025092405
+    fold_holdout_178442: 2025092406
+    fold_holdout_179612: 2025092407
+    fold_holdout_184439: 2025092408
+    fold_holdout_188630: 2025092409
+    fold_holdout_191313: 2025092410
+  monte_carlo_tracking_perturbation_seed: 2025092499
+  example_selection_seed: 2025092488
+
+coordinate_conventions:
+  units: feet
+  origin: court_center
+  x_axis: length_of_court
+  y_axis: width_of_court
+  z_players: always_0
+  z_ball: real_height
+  event_attacking_hoop: negative_x
+  event_defensive_hoop: positive_x
+  when_attacking_left_is: positive_y
+  when_attacking_right_is: negative_y
+  analysis_normalization: >
+    Normalize every possession to one attacking direction only after verifying
+    hoop orientation against event locations; add left/right mirroring tests.
+  frame_rate_hz: 25
+  frame_index: frameIdx_aligned_with_event_frames
+
+# ---------------------------------------------------------------------------
+# Populations
+# ---------------------------------------------------------------------------
+populations:
+  primary:
+    id: primary_live_frontcourt_nontransition
+    description: >
+      Live, frontcourt, non-transition touches in chances with usable==true
+      and all ten players present.
+    requirements:
+      chance_usable: true            # qualityIndex >= 3
+      chance_transition: false
+      live_clock: true               # gameClockStopped == false at modeled frames
+      frontcourt: true               # frameIdx >= chance.frontcourtFrame; ball/handler in frontcourt
+      ten_players_tracked: true      # 5 home + 5 away with identifiable ball-handler
+      unit: chance                   # not full possession
+      exclude_inbounds: true
+      exclude_substitution_boundary: true
+    secondary_note: Confirmatory analyses use this population unless marked exploratory.
+
+  secondary:
+    - id: transition
+      description: Same as primary but chance.transition == true
+      role: sensitivity_and_context
+    - id: lower_quality_tracking
+      description: Include usable==false and/or higher predError strata
+      role: robustness
+    - id: inbounds
+      description: Passes/touches with passes.inbounds == true
+      role: sensitivity_exclude_from_primary
+    - id: full_possession
+      description: Analysis unit = possession rather than chance
+      role: sensitivity
+
+# ---------------------------------------------------------------------------
+# Temporal sampling
+# ---------------------------------------------------------------------------
+temporal_sampling:
+  model_hz: 5
+  render_hz: 25
+  model_frame_stride: 5   # every 5th 25 Hz frame
+  velocity_causality: past_and_current_only
+  smoothing_causality: no_future_frames
+
+# ---------------------------------------------------------------------------
+# Outcomes and baselines
+# ---------------------------------------------------------------------------
+outcomes:
+  primary:
+    - id: next_3s_offensive_points
+      definition: >
+        Expected offensive points scored in the next 3 seconds of the same chance,
+        reconstructed from shots and free_throws (never from chances.ptsScored).
+  secondary:
+    - id: open_or_lightly_contested_shot_within_3s
+    - id: any_shot_within_3s
+    - id: paint_touch_within_3s
+    - id: terminal_chance_points
+      role: longer_horizon_sensitivity
+    - id: observed_shotQuality
+      role: validation_target_only_when_shot_occurs
+      forbidden_as_contemporaneous_feature: true
+
+baselines:
+  predictive_ladder:
+    - ball_handler_location_shot_clock_transition_score_passer_pressure_defender_distances_spacing
+    - plus_ordinary_realized_action_features
+    - plus_static_candidate_geometry
+    - plus_passability_summaries
+    - plus_full_option_set_window_summaries
+  passability_ablation:
+    - distance_only
+    - nearest_defender_distance
+    - static_lane_geometry_no_velocity
+    - kinematic_geometry_no_uncertainty
+    - full_model
+
+# ---------------------------------------------------------------------------
+# Core scores (exact formulas)
+# ---------------------------------------------------------------------------
+scores:
+  passability:
+    symbol: q
+    formula: "q(j,t) = P(pass reaches candidate j | release-time state)"
+  catch_value:
+    symbol: V_catch
+    definition: Predictive value at projected catch using only information available at catch projection time
+  fail_value:
+    symbol: V_fail
+    primary: 0
+    note: Optional possession-cost sensitivity analysis; do not invent opponent transition value from this sample
+  keep_value:
+    symbol: V_keep
+    formula: "V_keep(t) = predictive value of continuing the current touch from current/past state (matched no-pass states)"
+  option_value:
+    symbol: Q
+    formula: "Q(j,t) = q(j,t) * V_catch(j,t) + [1 - q(j,t)] * V_fail(t)"
+  net_option_value:
+    symbol: NOV
+    formula: "NOV(j,t) = Q(j,t) - V_keep(t)"
+  presentation_rule: >
+    Do not collapse the article immediately to NOV; show passability and catch
+    value separately before combining them.
+
+# ---------------------------------------------------------------------------
+# Window persistence / hysteresis
+# ---------------------------------------------------------------------------
+windows:
+  min_persistence_seconds: 0.20
+  min_persistence_frames_at_25hz: 5
+  hysteresis:
+    open_threshold: TBD_TRAINING_FOLD
+    close_threshold: TBD_TRAINING_FOLD
+    rule: >
+      Separate opening and closing thresholds to prevent one-frame flicker.
+      Select thresholds from calibration/decision considerations inside each
+      training fold only; then repeat headline findings across a prespecified
+      threshold grid.
+  open_label_rule: >
+    Open if passability exceeds the fold-calibrated open threshold AND NOV > 0,
+    with persistence >= 0.20s.
+  labels:
+    - open
+    - used
+    - late
+    - unused
+    - never_open
+  continuous_outputs:
+    - opening_time
+    - peak_time
+    - closing_time
+    - duration
+    - peak_NOV
+    - integrated_NOV
+    - delay_opening_or_peak_to_release
+    - value_at_use_vs_peak
+    - window_existence_probability_under_tracking_perturbation
+  threshold_grid_policy: >
+    After fold-internal selection of primary open/close thresholds, re-run all
+    headline findings on a fixed grid documented at Stage 5 freeze time.
+    Grid values themselves remain TBD_TRAINING_FOLD until Stage 4/5.
+
+# ---------------------------------------------------------------------------
+# Exclusions and failed-pass target inference
+# ---------------------------------------------------------------------------
+exclusions:
+  always_exclude_or_flag:
+    - self_passes  # passerId == receiverId (~91 in 10 games)
+    - malformed_chance_frame_order  # endFrame < startFrame (~3)
+    - zero_elapsed_game_clock_chances  # audit/flag (~21)
+    - chances_ptsScored_as_team_score_or_outcome_source  # unreliable; use shots+free_throws
+    - toReceiverId_as_intended_receiver  # interceptor, never target
+    - season_aggregate_csv_as_contemporaneous_covariate
+  primary_population_excludes:
+    - usable_false
+    - transition_true
+    - dead_clock_frames
+    - backcourt_pre_frontcourtFrame
+    - fewer_than_ten_tracked_players
+    - inbounds_passes
+    - substitution_boundaries
+    - tracking_errors_above_predeclared_limits  # limits TBD_TRAINING_FOLD
+  multi_pass_touches:
+    count_in_10_games: 6
+    policy: audit_and_deterministically_split_or_exclude
+  tracking_error_caps:
+    passer_predError_max: TBD_TRAINING_FOLD
+    receiver_predError_max: TBD_TRAINING_FOLD
+    lane_defender_predError_max: TBD_TRAINING_FOLD
+    selection_procedure: >
+      Choose caps inside training folds to keep eligible decision-state loss
+      under kill criterion (<20% fail tracking); document chosen caps per fold.
+
+failed_pass_target_inference:
+  never_use_toReceiverId_as_target: true
+  method: >
+    At release, form four teammate candidates; compare position/projected
+    movement to receiverLoc, ball trajectory when usable, pass direction, and
+    empirical flight-time support; produce a probability distribution.
+  auto_accept_margin: TBD_TRAINING_FOLD
+  auto_accept_margin_selection: >
+    Geometric margin over runner-up chosen inside training folds to maximize
+    audit agreement while keeping unresolved rate measurable; freeze chosen
+    margin before outer-fold scoring of headlines.
+  unresolved_kill_threshold_pct: 10
+  on_inadequate_reliability: >
+    Retain failed passes only for touch-level turnover modeling; restrict
+    receiver-specific completion calibration to outcomes with reliable targets.
+  # Stage 2 amendment (2026-09-24). No frozen value above is changed; this
+  # records that `on_inadequate_reliability` FIRED and points at the binding
+  # lock. Trigger: pre-audit unresolved 29/89 = 32.6% > 10%, and the required
+  # human audit was not performed. See artifacts/STAGE2_AUDIT_REPORT.md.
+  stage2_amendment:
+    lock_id: passing_windows_stage2_narrow_path_20260924
+    config: configs/stage2_narrow_path.yaml
+    narrative: artifacts/STAGE2_NARROW_PATH_LOCK.md
+    target_inference_mode: narrow_path
+    on_inadequate_reliability_triggered: true
+    human_audit_status: deferred_waived
+
+# ---------------------------------------------------------------------------
+# Validation
+# ---------------------------------------------------------------------------
+validation:
+  design: nested_leave_one_game_out
+  forbidden_splits:
+    - random_frame_split
+    - random_touch_split
+    - random_chance_split
+  outer_folds:
+    - fold_id: fold_holdout_114243
+      held_out_gameId: 114243
+      train_gameIds: [114234, 114169, 114099, 114086, 178442, 179612, 184439, 188630, 191313]
+    - fold_id: fold_holdout_114234
+      held_out_gameId: 114234
+      train_gameIds: [114243, 114169, 114099, 114086, 178442, 179612, 184439, 188630, 191313]
+    - fold_id: fold_holdout_114169
+      held_out_gameId: 114169
+      train_gameIds: [114243, 114234, 114099, 114086, 178442, 179612, 184439, 188630, 191313]
+    - fold_id: fold_holdout_114099
+      held_out_gameId: 114099
+      train_gameIds: [114243, 114234, 114169, 114086, 178442, 179612, 184439, 188630, 191313]
+    - fold_id: fold_holdout_114086
+      held_out_gameId: 114086
+      train_gameIds: [114243, 114234, 114169, 114099, 178442, 179612, 184439, 188630, 191313]
+    - fold_id: fold_holdout_178442
+      held_out_gameId: 178442
+      train_gameIds: [114243, 114234, 114169, 114099, 114086, 179612, 184439, 188630, 191313]
+    - fold_id: fold_holdout_179612
+      held_out_gameId: 179612
+      train_gameIds: [114243, 114234, 114169, 114099, 114086, 178442, 184439, 188630, 191313]
+    - fold_id: fold_holdout_184439
+      held_out_gameId: 184439
+      train_gameIds: [114243, 114234, 114169, 114099, 114086, 178442, 179612, 188630, 191313]
+    - fold_id: fold_holdout_188630
+      held_out_gameId: 188630
+      train_gameIds: [114243, 114234, 114169, 114099, 114086, 178442, 179612, 184439, 191313]
+    - fold_id: fold_holdout_191313
+      held_out_gameId: 191313
+      train_gameIds: [114243, 114234, 114169, 114099, 114086, 178442, 179612, 184439, 188630]
+  rule: >
+    For each outer fold, fit, tune, threshold, and calibrate using only the
+    other nine games; write predictions for the untouched game.
+
+confirmatory_vs_exploratory:
+  confirmatory:
+    - Analysis 1 reliability/calibration
+    - Analysis 2 passability vs value distinctness
+    - Analysis 3 option count/value distributions
+    - Analysis 4 window lifetimes
+    - Analysis 5 usage timing
+    - Analysis 6 predictive falsification test
+    - Analysis 7 used/late/unused descriptive comparisons
+  exploratory:
+    - Analysis 8 context chapters (drives, picks, paint, skips, closeouts, late clock)
+  promote_exploratory_to_headline_only_if: stable_across_games_and_robustness_specs
+
+# ---------------------------------------------------------------------------
+# Kill criteria
+# ---------------------------------------------------------------------------
+kill_criteria:
+  - id: unresolved_failed_targets
+    rule: unresolved failed-pass targets exceed 10% OR audit reliability is poor
+  - id: tracking_eligibility_loss
+    rule: more than 20% of otherwise eligible decision states fail tracking criteria
+  - id: completion_calibration
+    rule: completion calibration slope outside roughly 0.75–1.25 OR reliability visibly poor
+  - id: counterfactual_support
+    rule: over 10% of evaluated counterfactuals lie outside training support
+  - id: window_label_instability
+    rule: window labels change by more than 15% under plausible tracking perturbations
+  - id: predictive_improvement
+    rule: >
+      predictive improvement fails in at least 7 of 10 held-out games
+      (central claim requires full option set beats state baseline in >= 7/10
+      and exceeds matched nulls)
+  - id: null_comparable
+    rule: result is comparable to time-shifted/permuted nulls
+  - id: single_game_driver
+    rule: one game drives the headline OR tracking-quality restrictions reverse it
+
+# ---------------------------------------------------------------------------
+# Data policy
+# ---------------------------------------------------------------------------
+data_policy:
+  use:
+    - data/matches.json
+    - data/player_id_aliases.csv
+    - data/matches/{gameId}/{gameId}_game_data.json
+    - data/matches/{gameId}/{gameId}_dynamic_events.json
+    - data/matches/{gameId}/{gameId}_tracking_data.jsonl.gz
+  forbid_as_contemporaneous_covariates:
+    - data/aggregates/acb_shotsaggregates_20252026.csv
+    - data/aggregates/acb_drivesaggregates_20252026.csv
+    - data/aggregates/acb_picksaggregates_20252026.csv
+  forbid_reason: >
+    Season aggregates contain information from outside and after the ten games.
+  player_ids: >
+    Normalize via player_id_aliases.csv for person-level merges; preserve
+    original IDs for within-game event joins.
+  points_reconstruction: shots + free_throws only; never chances.ptsScored for scores/outcomes
+
+# ---------------------------------------------------------------------------
+# Package / environment pins (Stage 0 snapshot; full lockfile in Stage 1)
+# ---------------------------------------------------------------------------
+environment:
+  python_min: "3.11"
+  stage0_host_snapshot:
+    python: "3.13.7"
+    packages:
+      numpy: "2.1.3"
+      pandas: "2.3.3"
+      scipy: "1.15.3"
+      scikit-learn: "1.8.0"
+      statsmodels: "0.14.5"
+      matplotlib: "3.10.0"
+    missing_at_stage0:
+      - pygam
+      - pyyaml
+  full_requirements_lock: deferred_to_stage1
+
+# ---------------------------------------------------------------------------
+# TBD_TRAINING_FOLD registry (selection procedures locked; values not)
+# ---------------------------------------------------------------------------
+tbd_training_fold:
+  - name: window_open_threshold
+    procedure: Calibrate inside each outer-fold training set from decision/calibration curve; apply to held-out game only.
+  - name: window_close_threshold
+    procedure: Choose separately from open threshold for hysteresis; fold-internal only.
+  - name: window_threshold_robustness_grid
+    procedure: Prespecify grid after seeing training-fold calibration support; apply identically to all folds for specification curve.
+  - name: failed_pass_auto_accept_geometric_margin
+    procedure: Maximize training-fold audit agreement subject to unresolved-rate observability; freeze before headline scoring.
+  - name: tracking_predError_caps
+    procedure: Choose to keep eligible-state tracking failure rate under 20% kill line; document per fold.
+  - name: pass_distance_support_rejection
+    procedure: Reject candidates beyond attempted-pass distance support in that training fold.
+  - name: imbalance_loss_weights
+    procedure: Compute only inside training folds for passability model.
+  - name: late_use_material_loss_delta
+    procedure: Predeclare from training-fold NOV distribution quantiles before labeling late use on held-out games.
