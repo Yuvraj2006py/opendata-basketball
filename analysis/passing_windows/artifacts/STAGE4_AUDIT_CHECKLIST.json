@@ -1,0 +1,600 @@
+{
+  "verdict": "SAFE_TO_ACCEPT",
+  "freeze_id": "passing_windows_stage0_20250924",
+  "lock_id": "passing_windows_stage2_narrow_path_20260924",
+  "stage": 4,
+  "auditor_role": "independent_adversarial",
+  "builder_status": "complete_10_logo_folds",
+  "live_audit_ok": true,
+  "pytest_passed": 69,
+  "stage4_artifacts_present": true,
+  "stage4_pipeline_present": true,
+  "stage4_tests_present": true,
+  "blockers_remaining": [],
+  "checklist": [
+    {
+      "id": "S4-B01",
+      "severity": "BLOCKER",
+      "family": "logo_leakage",
+      "rule": "validation.design nested LOGO; forbid random frame/touch/chance splits",
+      "check": "no_random_frame_touch_chance_split",
+      "status": "PASS",
+      "regression_test": "test_stage4_no_random_group_split"
+    },
+    {
+      "id": "S4-B02",
+      "severity": "BLOCKER",
+      "family": "logo_leakage",
+      "rule": "fit/tune/calibrate on nine games; predict holdout only",
+      "check": "holdout_excluded_from_fit_weights_calibration",
+      "status": "PASS",
+      "regression_test": "test_stage4_logo_holdout_isolation"
+    },
+    {
+      "id": "S4-B03",
+      "severity": "BLOCKER",
+      "family": "logo_leakage",
+      "rule": "freeze fold seeds 2025092401-10; master 20250924",
+      "check": "fold_seeds_match_freeze",
+      "status": "PASS",
+      "regression_test": "test_stage4_fold_seeds_match_freeze"
+    },
+    {
+      "id": "S4-M01",
+      "severity": "MAJOR",
+      "family": "logo_leakage",
+      "rule": "inner CV never peeks at outer holdout",
+      "check": "inner_cv_excludes_outer_holdout",
+      "status": "PASS",
+      "regression_test": "test_stage4_inner_cv_excludes_outer_holdout"
+    },
+    {
+      "id": "S4-B04",
+      "severity": "BLOCKER",
+      "family": "dual_sampling",
+      "rule": "q at release-time state; dual sampling contract",
+      "check": "passability_trained_on_release_completion_eligible",
+      "status": "PASS",
+      "regression_test": "test_stage4_passability_uses_release_frames"
+    },
+    {
+      "id": "S4-B05",
+      "severity": "BLOCKER",
+      "family": "dual_sampling",
+      "rule": ">=90% of 4530 labels have release feature rows",
+      "check": "release_label_yield_ge_90pct",
+      "status": "PASS",
+      "regression_test": "test_stage4_release_label_yield"
+    },
+    {
+      "id": "S4-M02",
+      "severity": "MAJOR",
+      "family": "dual_sampling",
+      "rule": "window series uses is_model_5hz_frame",
+      "check": "scoring_series_model_5hz",
+      "status": "PASS",
+      "regression_test": "test_stage4_model_5hz_series_separate_from_release"
+    },
+    {
+      "id": "S4-N01",
+      "severity": "MINOR",
+      "family": "dual_sampling",
+      "rule": "sampling_role provenance",
+      "check": "sampling_role_documented",
+      "status": "PASS",
+      "regression_test": "test_stage4_sampling_role_values"
+    },
+    {
+      "id": "S4-B06",
+      "severity": "BLOCKER",
+      "family": "narrow_path",
+      "rule": "completion via receiver_completion_training_labels only",
+      "check": "zero_failed_completion_training_rows",
+      "status": "PASS",
+      "regression_test": "test_stage4_no_failed_completion_labels"
+    },
+    {
+      "id": "S4-B07",
+      "severity": "BLOCKER",
+      "family": "narrow_path",
+      "rule": "never interceptor/toReceiverId as intended target",
+      "check": "interceptor_never_training_target",
+      "status": "PASS",
+      "regression_test": "test_stage4_interceptor_never_target"
+    },
+    {
+      "id": "S4-B08",
+      "severity": "BLOCKER",
+      "family": "narrow_path",
+      "rule": "GATE_COLUMNS on Stage 4 scored outputs",
+      "check": "gate_columns_present",
+      "status": "PASS",
+      "regression_test": "test_stage4_gate_columns_present"
+    },
+    {
+      "id": "S4-B09",
+      "severity": "BLOCKER",
+      "family": "narrow_path",
+      "rule": "human_audit deferred_waived; no fabricated reviewers",
+      "check": "reviewer_columns_blank_no_audited_claim",
+      "status": "PASS",
+      "regression_test": "test_stage4_no_fabricated_audit_claims"
+    },
+    {
+      "id": "S4-B10",
+      "severity": "BLOCKER",
+      "family": "narrow_path",
+      "rule": "completed-pass proxy diagnostic only",
+      "check": "no_failed_precision_proxy_citation",
+      "status": "PASS",
+      "regression_test": "test_stage4_no_failed_precision_claim"
+    },
+    {
+      "id": "S4-M03",
+      "severity": "MAJOR",
+      "family": "narrow_path",
+      "rule": "named failed opt-in requires exclusion sensitivity",
+      "check": "named_failed_sensitivity_if_used",
+      "status": "PASS",
+      "regression_test": "test_stage4_named_failed_sensitivity"
+    },
+    {
+      "id": "S4-B11",
+      "severity": "BLOCKER",
+      "family": "passability",
+      "rule": "regularized logistic GAM full model; OOS q written",
+      "check": "q_passability_model_oos_filled",
+      "status": "PASS",
+      "regression_test": "test_stage4_q_oos_predictions_present"
+    },
+    {
+      "id": "S4-M04",
+      "severity": "MAJOR",
+      "family": "passability",
+      "rule": "ablation ladder distance\u2192\u2026\u2192full",
+      "check": "ablation_ladder_reported",
+      "status": "PASS",
+      "regression_test": "test_stage4_passability_ablation_ladder"
+    },
+    {
+      "id": "S4-B12",
+      "severity": "BLOCKER",
+      "family": "passability",
+      "rule": "imbalance weights fold-internal only",
+      "check": "imbalance_weights_train_only",
+      "status": "PASS",
+      "regression_test": "test_stage4_imbalance_weights_fold_internal"
+    },
+    {
+      "id": "S4-M05",
+      "severity": "MAJOR",
+      "family": "passability",
+      "rule": "held-out logloss/Brier/PR/calibration/reliability",
+      "check": "heldout_passability_metrics",
+      "status": "PASS",
+      "regression_test": "test_stage4_passability_heldout_metrics"
+    },
+    {
+      "id": "S4-B13",
+      "severity": "BLOCKER",
+      "family": "passability",
+      "rule": "calibration slope ~0.75-1.25 kill",
+      "check": "calibration_slope_kill_documented",
+      "status": "PASS",
+      "regression_test": "test_stage4_calibration_slope_reported"
+    },
+    {
+      "id": "S4-M06",
+      "severity": "MAJOR",
+      "family": "passability",
+      "rule": "fold-internal logistic recalibration preferred",
+      "check": "recalibration_train_only",
+      "status": "PASS",
+      "regression_test": "test_stage4_recalibration_fold_internal"
+    },
+    {
+      "id": "S4-B14",
+      "severity": "BLOCKER",
+      "family": "catch_value",
+      "rule": "V_catch at projected catch time only",
+      "check": "no_future_leak_in_vcatch_features",
+      "status": "PASS",
+      "regression_test": "test_stage4_vcatch_no_future_features"
+    },
+    {
+      "id": "S4-B15",
+      "severity": "BLOCKER",
+      "family": "catch_value",
+      "rule": "next-3s points from shots+FT; never chances.ptsScored",
+      "check": "outcome_from_shots_ft_not_ptsScored",
+      "status": "PASS",
+      "regression_test": "test_stage4_outcome_not_from_ptsScored"
+    },
+    {
+      "id": "S4-B16",
+      "severity": "BLOCKER",
+      "family": "catch_value",
+      "rule": "shotQuality never contemporaneous feature",
+      "check": "shotQuality_not_in_feature_matrix",
+      "status": "PASS",
+      "regression_test": "test_stage4_shotQuality_not_feature"
+    },
+    {
+      "id": "S4-M07",
+      "severity": "MAJOR",
+      "family": "catch_value",
+      "rule": "secondary targets or explicit deferral",
+      "check": "secondary_outcomes_present_or_deferred",
+      "status": "PASS",
+      "regression_test": "test_stage4_secondary_outcomes_documented"
+    },
+    {
+      "id": "S4-B17",
+      "severity": "BLOCKER",
+      "family": "keep_nov",
+      "rule": "V_keep from matched no-pass; current/past only",
+      "check": "vkeep_causal_matched_nopass",
+      "status": "PASS",
+      "regression_test": "test_stage4_vkeep_causal"
+    },
+    {
+      "id": "S4-B18",
+      "severity": "BLOCKER",
+      "family": "keep_nov",
+      "rule": "V_fail=0 primary; no invented transition value",
+      "check": "vfail_zero_primary",
+      "status": "PASS",
+      "regression_test": "test_stage4_vfail_primary_zero"
+    },
+    {
+      "id": "S4-B19",
+      "severity": "BLOCKER",
+      "family": "keep_nov",
+      "rule": "NOV=Q-V_keep; show q and V_catch separately",
+      "check": "components_exposed_not_nov_only",
+      "status": "PASS",
+      "regression_test": "test_stage4_components_not_collapsed_to_nov"
+    },
+    {
+      "id": "S4-M08",
+      "severity": "MAJOR",
+      "family": "catch_value",
+      "rule": "catch-value baseline ladder; proper losses",
+      "check": "vcatch_baseline_ladder",
+      "status": "PASS",
+      "regression_test": "test_stage4_vcatch_baseline_ladder"
+    },
+    {
+      "id": "S4-M09",
+      "severity": "MAJOR",
+      "family": "choice",
+      "rule": "conditional choice at release; rank + logloss",
+      "check": "choice_model_release_heldout_metrics",
+      "status": "PASS",
+      "regression_test": "test_stage4_choice_model_metrics"
+    },
+    {
+      "id": "S4-B20",
+      "severity": "BLOCKER",
+      "family": "choice",
+      "rule": "descriptive selection; forbidden optimality language",
+      "check": "no_correct_pass_language",
+      "status": "PASS",
+      "regression_test": "test_stage4_forbidden_claim_language"
+    },
+    {
+      "id": "S4-B21",
+      "severity": "BLOCKER",
+      "family": "geometry",
+      "rule": "trajectory lead_if_velocity_ok_else_direct; never score-max",
+      "check": "no_silent_trajectory_score_max",
+      "status": "PASS",
+      "regression_test": "test_stage4_trajectory_rule_unchanged"
+    },
+    {
+      "id": "S4-B22",
+      "severity": "BLOCKER",
+      "family": "geometry",
+      "rule": "mask rejected_outside_support; CF support kill >10%",
+      "check": "rejected_outside_support_masked",
+      "status": "PASS",
+      "regression_test": "test_stage4_support_rejection_masked"
+    },
+    {
+      "id": "S4-M10",
+      "severity": "MAJOR",
+      "family": "geometry",
+      "rule": "causal velocities; NaN stays NaN",
+      "check": "null_velocity_not_zero_filled",
+      "status": "PASS",
+      "regression_test": "test_stage4_null_velocity_is_missing"
+    },
+    {
+      "id": "S4-N02",
+      "severity": "MINOR",
+      "family": "geometry",
+      "rule": "direct_* and lead_* retained",
+      "check": "both_trajectory_families_present",
+      "status": "PASS",
+      "regression_test": "test_stage4_both_trajectory_families"
+    },
+    {
+      "id": "S4-B23",
+      "severity": "BLOCKER",
+      "family": "data_policy",
+      "rule": "season aggregates forbidden as covariates",
+      "check": "no_season_aggregate_covariates",
+      "status": "PASS",
+      "regression_test": "test_stage4_no_season_aggregates"
+    },
+    {
+      "id": "S4-M11",
+      "severity": "MAJOR",
+      "family": "data_policy",
+      "rule": "primary population for confirmatory fits",
+      "check": "primary_population_gates",
+      "status": "PASS",
+      "regression_test": "test_stage4_primary_population_filter"
+    },
+    {
+      "id": "S4-N03",
+      "severity": "MINOR",
+      "family": "data_policy",
+      "rule": "self-passes/malformed excluded",
+      "check": "inherited_exclusions",
+      "status": "PASS",
+      "regression_test": "test_stage4_exclusions_inherited"
+    },
+    {
+      "id": "S4-B24",
+      "severity": "BLOCKER",
+      "family": "outputs",
+      "rule": "04_fit_component_models.py + test_stage4.py",
+      "check": "pipeline_and_tests_exist",
+      "status": "PASS",
+      "regression_test": "test_stage4_pipeline_entrypoint_exists"
+    },
+    {
+      "id": "S4-B25",
+      "severity": "BLOCKER",
+      "family": "outputs",
+      "rule": "stage4 tables/artifacts/manifest",
+      "check": "stage4_outputs_present",
+      "status": "PASS",
+      "regression_test": "test_stage4_output_manifest_complete"
+    },
+    {
+      "id": "S4-B26",
+      "severity": "BLOCKER",
+      "family": "outputs",
+      "rule": "every blocker has regression lock",
+      "check": "regression_lock_complete",
+      "status": "PASS",
+      "regression_test": "test_stage4_regression_lock_covers_blockers"
+    },
+    {
+      "id": "S4-M12",
+      "severity": "MAJOR",
+      "family": "outputs",
+      "rule": "replace Stage 3 NaN model placeholders",
+      "check": "model_placeholders_filled_oos",
+      "status": "PASS",
+      "regression_test": "test_stage4_model_columns_not_all_nan"
+    },
+    {
+      "id": "S4-N04",
+      "severity": "MINOR",
+      "family": "outputs",
+      "rule": "STAGE4_VERIFICATION narrative",
+      "check": "verification_doc_present",
+      "status": "PASS",
+      "regression_test": "test_stage4_verification_artifact_exists"
+    }
+  ],
+  "live_verification": {
+    "ran": true,
+    "checks": {
+      "ok": true,
+      "stage4_present": true,
+      "missing": {
+        "pipeline": [],
+        "tests": [],
+        "tables": [],
+        "artifacts": []
+      },
+      "source_scan": {
+        "ok": true,
+        "n_files": 11,
+        "files": [
+          "pipelines/04_fit_component_models.py",
+          "src/passing_windows/models/__init__.py",
+          "src/passing_windows/models/catch_value.py",
+          "src/passing_windows/models/choice.py",
+          "src/passing_windows/models/features.py",
+          "src/passing_windows/models/keep_state.py",
+          "src/passing_windows/models/leakage.py",
+          "src/passing_windows/models/metrics.py",
+          "src/passing_windows/models/option_value.py",
+          "src/passing_windows/models/outcomes.py",
+          "src/passing_windows/models/passability.py"
+        ]
+      },
+      "no_random_group_split": {
+        "ok": true,
+        "detail": "flag raw ShuffleSplit/train_test_split if used without LOGO wrapper"
+      },
+      "no_season_aggregates": {
+        "ok": true
+      },
+      "outcome_not_ptsScored_as_feature": {
+        "ok": true,
+        "detail": "ptsScored may appear only as prohibition text"
+      },
+      "shotQuality_not_feature": {
+        "ok": true,
+        "detail": "shotQuality may appear only in forbidden lists / comments"
+      },
+      "trajectory_rule_preserved": {
+        "ok": true,
+        "detail": "require lead_if_velocity_ok_else_direct in code; prohibition phrasing OK"
+      },
+      "narrow_path_lock_id": "passing_windows_stage2_narrow_path_20260924",
+      "freeze_id": "passing_windows_stage0_20250924",
+      "stage4_tables": {
+        "ok": true,
+        "files": [
+          "stage4_candidate_predictions.parquet",
+          "stage4_passability_ablations_long.parquet"
+        ]
+      },
+      "primary_table": {
+        "ok": true,
+        "path": "stage4_candidate_predictions.parquet",
+        "n_rows": 190348,
+        "columns": [
+          "gameId",
+          "touchId",
+          "frameIdx",
+          "candidateId",
+          "fold_id",
+          "chanceId",
+          "possessionId",
+          "passId",
+          "is_pass_release_frame",
+          "is_model_5hz_frame",
+          "is_forced_release_frame",
+          "completion_label_eligible",
+          "is_true_receiver",
+          "rejected_outside_support",
+          "trajectory_choice",
+          "trajectory_choice_rule",
+          "pass_distance_ft",
+          "receiver_sep_ft",
+          "dist_to_rim_ft",
+          "geometry_passability_score",
+          "flight_time_s",
+          "sampling_role",
+          "model_version",
+          "stage4_schema_version",
+          "q_ablation_distance_only",
+          "q_ablation_nearest_defender_distance",
+          "q_ablation_static_lane_geometry_no_velocity",
+          "q_ablation_kinematic_geometry_no_uncertainty",
+          "q_passability_model",
+          "V_catch_model",
+          "V_catch_sec_any_shot_next_3s",
+          "V_catch_sec_open_shot_next_3s",
+          "V_keep_model",
+          "V_fail",
+          "Q_option_model",
+          "NOV_model",
+          "choice_prob_model",
+          "narrow_path_active",
+          "target_inference_mode",
+          "target_reliability_status",
+          "human_audit_status",
+          "usable_as_receiver_completion_label",
+          "usable_as_named_failed_target",
+          "named_failed_target_requires_sensitivity_check",
+          "usable_for_touch_level_turnover",
+          "receiver_specific_eligible",
+          "label_gate_reason",
+          "cohort",
+          "true_receiverId",
+          "interceptorId"
+        ]
+      },
+      "gate_columns": {
+        "ok": true,
+        "present": [
+          "narrow_path_active",
+          "target_inference_mode",
+          "target_reliability_status",
+          "human_audit_status",
+          "usable_as_receiver_completion_label",
+          "usable_as_named_failed_target",
+          "named_failed_target_requires_sensitivity_check",
+          "usable_for_touch_level_turnover",
+          "receiver_specific_eligible",
+          "label_gate_reason"
+        ],
+        "missing": []
+      },
+      "no_failed_completion_labels": {
+        "ok": true,
+        "n_bad": 0
+      },
+      "q_oos_predictions": {
+        "ok": true,
+        "column": "q_passability_model",
+        "n_finite": 190348
+      },
+      "components_not_nov_only": {
+        "ok": true,
+        "columns": [
+          "V_catch_model",
+          "NOV_model"
+        ]
+      },
+      "trajectory_rule": {
+        "ok": true
+      },
+      "support_rejection": {
+        "ok": true,
+        "n_rejected": 22865,
+        "q_nan_rate": 1.0,
+        "nov_nan_rate": 1.0
+      },
+      "release_label_yield": {
+        "ok": true,
+        "n_labels": 4530,
+        "n_hit": 4397
+      },
+      "manifest": {
+        "n_files": 27,
+        "n_missing": 0,
+        "n_mismatched": 0,
+        "n_duplicate_paths": 0,
+        "missing": [],
+        "mismatched": [],
+        "duplicate_paths": [],
+        "ok": true
+      },
+      "report_phrasing": {
+        "ok": true,
+        "hits": []
+      },
+      "logo_ten_fold_coverage": {
+        "ok": true,
+        "pred_games": [
+          114086,
+          114099,
+          114169,
+          114234,
+          114243,
+          178442,
+          179612,
+          184439,
+          188630,
+          191313
+        ],
+        "n_markers": 10,
+        "n_freeze_games": 10,
+        "missing_games": []
+      },
+      "handoff_coverage_honesty": {
+        "ok": true,
+        "detail": "ok"
+      }
+    }
+  },
+  "stage5_may_begin": true,
+  "residuals": [
+    {
+      "id": "S4-M13",
+      "severity": "MAJOR",
+      "note": "GAM freeze substituted by SplineTransformer+L2; documented in STAGE4_VERIFICATION.md",
+      "blocks_stage5": false
+    }
+  ]
+}

@@ -1,0 +1,2037 @@
+{
+  "model_version": "stage4_sklearn_logo_v2",
+  "freeze_id": "passing_windows_stage0_20250924",
+  "n_rows": 190348,
+  "overall_passability": {
+    "n": 17588.0,
+    "base_rate": 0.25,
+    "log_loss": 0.3475089980885733,
+    "brier": 0.10967549806288553,
+    "calibration_slope": 0.9998580939851295,
+    "calibration_intercept": -0.0013281376407314196
+  },
+  "per_game_passability": [
+    {
+      "n": 1924.0,
+      "base_rate": 0.25,
+      "log_loss": 0.3085827338310299,
+      "brier": 0.0969277434626617,
+      "calibration_slope": 1.1615005971427064,
+      "calibration_intercept": 0.17977233355209332,
+      "gameId": 114086
+    },
+    {
+      "n": 1692.0,
+      "base_rate": 0.25,
+      "log_loss": 0.4043701823815749,
+      "brier": 0.12884461700684574,
+      "calibration_slope": 0.8286035145957162,
+      "calibration_intercept": -0.22315474284696835,
+      "gameId": 114099
+    },
+    {
+      "n": 1704.0,
+      "base_rate": 0.25,
+      "log_loss": 0.324747194723179,
+      "brier": 0.10101986643819752,
+      "calibration_slope": 1.074159242951142,
+      "calibration_intercept": 0.017238335258855077,
+      "gameId": 114169
+    },
+    {
+      "n": 1660.0,
+      "base_rate": 0.25,
+      "log_loss": 0.34137175101824274,
+      "brier": 0.10834350674224051,
+      "calibration_slope": 1.0267885886854673,
+      "calibration_intercept": -0.06541253872387093,
+      "gameId": 114234
+    },
+    {
+      "n": 1968.0,
+      "base_rate": 0.25,
+      "log_loss": 0.34382188388188445,
+      "brier": 0.10700895757019936,
+      "calibration_slope": 1.021675224546366,
+      "calibration_intercept": 0.0931180098279603,
+      "gameId": 114243
+    },
+    {
+      "n": 1716.0,
+      "base_rate": 0.25,
+      "log_loss": 0.35384987743925644,
+      "brier": 0.11199185954431486,
+      "calibration_slope": 0.9688885656782626,
+      "calibration_intercept": 0.08215514752895232,
+      "gameId": 178442
+    },
+    {
+      "n": 1956.0,
+      "base_rate": 0.25,
+      "log_loss": 0.3366634319178435,
+      "brier": 0.10728108054318693,
+      "calibration_slope": 1.0484556122508266,
+      "calibration_intercept": 0.06358403070124097,
+      "gameId": 179612
+    },
+    {
+      "n": 1684.0,
+      "base_rate": 0.25,
+      "log_loss": 0.35776074693897375,
+      "brier": 0.11382542964483867,
+      "calibration_slope": 0.9361990655623821,
+      "calibration_intercept": 0.02600014026447183,
+      "gameId": 184439
+    },
+    {
+      "n": 1716.0,
+      "base_rate": 0.25,
+      "log_loss": 0.34809916420806664,
+      "brier": 0.10875702327894878,
+      "calibration_slope": 0.9847118711592866,
+      "calibration_intercept": -0.04770706376209086,
+      "gameId": 188630
+    },
+    {
+      "n": 1568.0,
+      "base_rate": 0.25,
+      "log_loss": 0.3647102103187708,
+      "brier": 0.11579591035856125,
+      "calibration_slope": 0.9704184983332877,
+      "calibration_intercept": -0.14508128758845681,
+      "gameId": 191313
+    }
+  ],
+  "ablation_overall": {
+    "distance_only": {
+      "n": 17588.0,
+      "base_rate": 0.25,
+      "log_loss": 0.46641959471931754,
+      "brier": 0.1543476958061855,
+      "calibration_slope": 1.0084656032366814,
+      "calibration_intercept": 0.007057256833209515
+    },
+    "nearest_defender_distance": {
+      "n": 17588.0,
+      "base_rate": 0.25,
+      "log_loss": 0.562335145173678,
+      "brier": 0.18750000020808144,
+      "calibration_slope": 0.5468274271369483,
+      "calibration_intercept": -0.4979985821680726
+    },
+    "static_lane_geometry_no_velocity": {
+      "n": 17588.0,
+      "base_rate": 0.25,
+      "log_loss": 0.4071944691863408,
+      "brier": 0.13145699088028667,
+      "calibration_slope": 1.0003165193789927,
+      "calibration_intercept": 0.00012212318114334405
+    },
+    "kinematic_geometry_no_uncertainty": {
+      "n": 17588.0,
+      "base_rate": 0.25,
+      "log_loss": 0.34848338446789007,
+      "brier": 0.11010355958136504,
+      "calibration_slope": 1.0008416876020858,
+      "calibration_intercept": -0.0008670904444964153
+    },
+    "full_model": {
+      "n": 17588.0,
+      "base_rate": 0.25,
+      "log_loss": 0.3475089980885733,
+      "brier": 0.10967549806288553,
+      "calibration_slope": 0.9998580939851295,
+      "calibration_intercept": -0.0013281376407314196
+    }
+  },
+  "overall_catch": {
+    "n": 8453.0,
+    "rmse": 0.6490332835124624,
+    "mae": 0.3449118368289805,
+    "r2": 0.10995125650392956,
+    "spearman": 0.31806303331494323
+  },
+  "overall_catch_ablation_all_candidates_on_observed_mask": {
+    "n": 8453.0,
+    "rmse": 0.6657166928352843,
+    "mae": 0.3862852367032513,
+    "r2": 0.06360572886936,
+    "spearman": 0.2626649411591837
+  },
+  "overall_catch_all_candidate_rows": {
+    "n": 190348.0,
+    "rmse": 0.7030015416575625,
+    "mae": 0.42632154326531285,
+    "r2": -0.0157657704625771,
+    "spearman": 0.13417132557363204
+  },
+  "per_game_catch_observed": [
+    {
+      "n": 942.0,
+      "rmse": 0.6780528953502042,
+      "mae": 0.33954611321618694,
+      "r2": 0.06758083235081147,
+      "spearman": 0.2640068493872229,
+      "gameId": 114086
+    },
+    {
+      "n": 836.0,
+      "rmse": 0.647321072446405,
+      "mae": 0.3662944025806423,
+      "r2": 0.12504191290586975,
+      "spearman": 0.3398886014110039,
+      "gameId": 114099
+    },
+    {
+      "n": 799.0,
+      "rmse": 0.6514090373133113,
+      "mae": 0.3464085089123891,
+      "r2": 0.12317501197178948,
+      "spearman": 0.3323601209185389,
+      "gameId": 114169
+    },
+    {
+      "n": 824.0,
+      "rmse": 0.6499892701615444,
+      "mae": 0.3374590795615266,
+      "r2": 0.13357972845399857,
+      "spearman": 0.33394501890193035,
+      "gameId": 114234
+    },
+    {
+      "n": 919.0,
+      "rmse": 0.587361221089172,
+      "mae": 0.3172217297977163,
+      "r2": 0.01953803025604972,
+      "spearman": 0.23851902740895659,
+      "gameId": 114243
+    },
+    {
+      "n": 782.0,
+      "rmse": 0.6697364079880985,
+      "mae": 0.35159869892702944,
+      "r2": 0.11832454965444894,
+      "spearman": 0.34127369872270885,
+      "gameId": 178442
+    },
+    {
+      "n": 937.0,
+      "rmse": 0.6348563133612799,
+      "mae": 0.33198898321156367,
+      "r2": 0.13596443201188624,
+      "spearman": 0.33794138414447356,
+      "gameId": 179612
+    },
+    {
+      "n": 780.0,
+      "rmse": 0.6640439561834717,
+      "mae": 0.35229136003560557,
+      "r2": 0.13564821652713055,
+      "spearman": 0.3531418334618451,
+      "gameId": 184439
+    },
+    {
+      "n": 869.0,
+      "rmse": 0.5081409638158816,
+      "mae": 0.2845079383792748,
+      "r2": 0.06518219570132477,
+      "spearman": 0.2858666099635238,
+      "gameId": 188630
+    },
+    {
+      "n": 765.0,
+      "rmse": 0.7891601333240633,
+      "mae": 0.43796500462088217,
+      "r2": 0.10583231608803356,
+      "spearman": 0.36007324233432964,
+      "gameId": 191313
+    }
+  ],
+  "overall_choice": {
+    "n_releases": 4397.0,
+    "rank_accuracy": 0.7557425517398226,
+    "choice_log_loss": 0.6430826195394034
+  },
+  "feature_sets": {
+    "passability": {
+      "distance_only": [
+        "pass_distance_ft"
+      ],
+      "nearest_defender_distance": [
+        "passer_pressure_ft"
+      ],
+      "static_lane_geometry_no_velocity": [
+        "direct_pass_distance_ft",
+        "direct_min_lane_clearance_ft",
+        "direct_min_temporal_margin_const35_s",
+        "direct_receiver_sep_ft",
+        "direct_passer_pressure_ft",
+        "direct_dist_to_rim_ft",
+        "direct_sideline_prox_ft",
+        "direct_baseline_prox_ft"
+      ],
+      "kinematic_geometry_no_uncertainty": [
+        "pass_distance_ft",
+        "min_lane_clearance_ft",
+        "min_temporal_margin_s",
+        "receiver_sep_ft",
+        "passer_pressure_ft",
+        "dist_to_rim_ft",
+        "target_defender_recovery_s",
+        "help_density_12ft",
+        "sideline_prox_ft",
+        "baseline_prox_ft",
+        "receiver_toward_rim_fps",
+        "shotClock",
+        "touch_age_s"
+      ],
+      "full_model": [
+        "pass_distance_ft",
+        "min_lane_clearance_ft",
+        "min_temporal_margin_s",
+        "receiver_sep_ft",
+        "passer_pressure_ft",
+        "dist_to_rim_ft",
+        "target_defender_recovery_s",
+        "help_density_12ft",
+        "sideline_prox_ft",
+        "baseline_prox_ft",
+        "receiver_toward_rim_fps",
+        "shotClock",
+        "touch_age_s",
+        "lane_predError_mean",
+        "passer_predError",
+        "receiver_predError",
+        "geometry_passability_score"
+      ]
+    },
+    "catch_value": [
+      "catch_x_norm",
+      "catch_y_norm",
+      "dist_to_rim_ft",
+      "angle_to_rim_deg",
+      "receiver_sep_ft",
+      "passer_pressure_ft",
+      "help_density_12ft",
+      "target_defender_recovery_s",
+      "sideline_prox_ft",
+      "baseline_prox_ft",
+      "shotClock",
+      "receiver_toward_rim_fps",
+      "pass_distance_ft",
+      "flight_time_s"
+    ],
+    "keep_state": [
+      "passer_x_event",
+      "passer_y_event",
+      "passer_pressure_ft",
+      "shotClock",
+      "touch_age_s",
+      "help_density_12ft",
+      "passer_predError"
+    ]
+  },
+  "game_summaries": [
+    {
+      "gameId": 114243,
+      "fold_id": "fold_holdout_114243",
+      "cached": true,
+      "elapsed_seconds": 9.71,
+      "n_rows": 18376,
+      "n_completion_eligible": 1968,
+      "n_true_receiver": 492,
+      "n_rejected_outside_support": 1969,
+      "passability_train": {
+        "distance_only": {
+          "n_train": 15620,
+          "n_pos": 3905,
+          "train_cal": {
+            "n": 15620.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4668652870516998,
+            "brier": 0.1544650697082524,
+            "calibration_slope": 1.0106369517738263,
+            "calibration_intercept": 0.008655973001116223
+          }
+        },
+        "nearest_defender_distance": {
+          "n_train": 15620,
+          "n_pos": 3905,
+          "train_cal": {
+            "n": 15620.0,
+            "base_rate": 0.25,
+            "log_loss": 0.5623351451848339,
+            "brier": 0.18750000021226504,
+            "calibration_slope": 0.5468084855908385,
+            "calibration_intercept": -0.49800939369518266
+          }
+        },
+        "static_lane_geometry_no_velocity": {
+          "n_train": 15620,
+          "n_pos": 3905,
+          "train_cal": {
+            "n": 15620.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4050961721360854,
+            "brier": 0.13079300494563564,
+            "calibration_slope": 1.0084062473975786,
+            "calibration_intercept": 0.005768401962846869
+          }
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n_train": 15620,
+          "n_pos": 3905,
+          "train_cal": {
+            "n": 15620.0,
+            "base_rate": 0.25,
+            "log_loss": 0.34631869015104116,
+            "brier": 0.1094916025744366,
+            "calibration_slope": 1.0093057863605635,
+            "calibration_intercept": 0.0037157078550416394
+          }
+        },
+        "full_model": {
+          "n_train": 15620,
+          "n_pos": 3905,
+          "train_cal": {
+            "n": 15620.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3452280361003646,
+            "brier": 0.10906880776116626,
+            "calibration_slope": 1.0093963774102077,
+            "calibration_intercept": 0.003665884633463995
+          }
+        }
+      },
+      "passability_holdout": {
+        "n": 1968.0,
+        "base_rate": 0.25,
+        "log_loss": 0.3438218838818844,
+        "brier": 0.10700895757019935,
+        "calibration_slope": 1.021675224546366,
+        "calibration_intercept": 0.09311800982796031
+      },
+      "passability_ablation_holdout": {
+        "distance_only": {
+          "n": 1968.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4600236230436795,
+          "brier": 0.15244778730837488,
+          "calibration_slope": 1.092821426337053,
+          "calibration_intercept": 0.10344347600304227
+        },
+        "nearest_defender_distance": {
+          "n": 1968.0,
+          "base_rate": 0.25,
+          "log_loss": 0.5623351451848339,
+          "brier": 0.187500000212265,
+          "calibration_slope": -0.009392735479457128,
+          "calibration_intercept": -1.1087063909944017
+        },
+        "static_lane_geometry_no_velocity": {
+          "n": 1968.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4095850447564888,
+          "brier": 0.13152309793038428,
+          "calibration_slope": 1.0029362463639742,
+          "calibration_intercept": 0.11104310935877185
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n": 1968.0,
+          "base_rate": 0.25,
+          "log_loss": 0.34506032060963154,
+          "brier": 0.10772235681494156,
+          "calibration_slope": 1.0239526122476006,
+          "calibration_intercept": 0.08869600427168504
+        },
+        "full_model": {
+          "n": 1968.0,
+          "base_rate": 0.25,
+          "log_loss": 0.3438218838818844,
+          "brier": 0.10700895757019935,
+          "calibration_slope": 1.021675224546366,
+          "calibration_intercept": 0.09311800982796031
+        }
+      },
+      "catch_train": {
+        "n": 7501.0,
+        "rmse": 0.6522443466617662,
+        "mae": 0.3643046971220893,
+        "r2": 0.12786931963153425
+      },
+      "catch_holdout": {
+        "n": 919.0,
+        "rmse": 0.587361221089172,
+        "mae": 0.3172217297977163,
+        "r2": 0.019538030256049832,
+        "spearman": 0.23851902740895659
+      },
+      "catch_holdout_ablation_all_candidates_on_observed_mask": {
+        "n": 919.0,
+        "rmse": 0.5821798779041991,
+        "mae": 0.345171037170616,
+        "r2": 0.03675981114502158,
+        "spearman": 0.23506277894515162
+      },
+      "catch_holdout_all_candidate_rows": {
+        "n": 18376.0,
+        "rmse": 0.6648315675182296,
+        "mae": 0.40330726212157547,
+        "r2": -0.05088732353316683,
+        "spearman": 0.1300925530155993
+      },
+      "catch_train_n": 7501,
+      "catch_train_population": "observed_catch",
+      "keep_train": {
+        "n": 38888.0,
+        "rmse": 0.6218419677672772,
+        "mae": 0.3398716579508892,
+        "r2": 0.07568930917556471
+      },
+      "choice_train": {
+        "n_releases": 3905.0,
+        "rank_accuracy": 0.7554417413572343,
+        "choice_log_loss": 0.6363135818731775,
+        "binary_log_loss": 0.42095668621022114
+      },
+      "choice_holdout": {
+        "n_releases": 492.0,
+        "rank_accuracy": 0.766260162601626,
+        "choice_log_loss": 0.643031885437541,
+        "binary_log_loss": 0.4056921482820231
+      },
+      "model_version": "stage4_sklearn_logo_v2"
+    },
+    {
+      "gameId": 114234,
+      "fold_id": "fold_holdout_114234",
+      "cached": true,
+      "elapsed_seconds": 8.64,
+      "n_rows": 18344,
+      "n_completion_eligible": 1660,
+      "n_true_receiver": 415,
+      "n_rejected_outside_support": 2078,
+      "passability_train": {
+        "distance_only": {
+          "n_train": 15928,
+          "n_pos": 3982,
+          "train_cal": {
+            "n": 15928.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4667053637482208,
+            "brier": 0.15452779903570021,
+            "calibration_slope": 1.010556471301423,
+            "calibration_intercept": 0.008559500942779859
+          }
+        },
+        "nearest_defender_distance": {
+          "n_train": 15928,
+          "n_pos": 3982,
+          "train_cal": {
+            "n": 15928.0,
+            "base_rate": 0.25,
+            "log_loss": 0.5623351451676291,
+            "brier": 0.18750000020581303,
+            "calibration_slope": 0.5468117105571779,
+            "calibration_intercept": -0.4980070020643152
+          }
+        },
+        "static_lane_geometry_no_velocity": {
+          "n_train": 15928,
+          "n_pos": 3982,
+          "train_cal": {
+            "n": 15928.0,
+            "base_rate": 0.25,
+            "log_loss": 0.40501560885256094,
+            "brier": 0.1305883824391258,
+            "calibration_slope": 1.0082587751580507,
+            "calibration_intercept": 0.0056891538961305645
+          }
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n_train": 15928,
+          "n_pos": 3982,
+          "train_cal": {
+            "n": 15928.0,
+            "base_rate": 0.25,
+            "log_loss": 0.34704772912582743,
+            "brier": 0.10959726742650132,
+            "calibration_slope": 1.009042184345618,
+            "calibration_intercept": 0.0036373575416406645
+          }
+        },
+        "full_model": {
+          "n_train": 15928,
+          "n_pos": 3982,
+          "train_cal": {
+            "n": 15928.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3457673918872496,
+            "brier": 0.10907655568732214,
+            "calibration_slope": 1.0091125180668814,
+            "calibration_intercept": 0.003575852705143184
+          }
+        }
+      },
+      "passability_holdout": {
+        "n": 1660.0,
+        "base_rate": 0.25,
+        "log_loss": 0.34137175101824274,
+        "brier": 0.10834350674224051,
+        "calibration_slope": 1.0267885886854673,
+        "calibration_intercept": -0.06541253872387119
+      },
+      "passability_ablation_holdout": {
+        "distance_only": {
+          "n": 1660.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4595025374536946,
+          "brier": 0.1513642844378242,
+          "calibration_slope": 1.0815014894716015,
+          "calibration_intercept": -0.0036291198074266205
+        },
+        "nearest_defender_distance": {
+          "n": 1660.0,
+          "base_rate": 0.25,
+          "log_loss": 0.5623351451676291,
+          "brier": 0.18750000020581303,
+          "calibration_slope": -0.0064607335154576815,
+          "calibration_intercept": -1.1055595914460272
+        },
+        "static_lane_geometry_no_velocity": {
+          "n": 1660.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4097996613913528,
+          "brier": 0.13368560918510763,
+          "calibration_slope": 0.9790875981432681,
+          "calibration_intercept": -0.0641105101263751
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n": 1660.0,
+          "base_rate": 0.25,
+          "log_loss": 0.34127825893507774,
+          "brier": 0.10803099057347082,
+          "calibration_slope": 1.0327504576413002,
+          "calibration_intercept": -0.05741391396006225
+        },
+        "full_model": {
+          "n": 1660.0,
+          "base_rate": 0.25,
+          "log_loss": 0.34137175101824274,
+          "brier": 0.10834350674224051,
+          "calibration_slope": 1.0267885886854673,
+          "calibration_intercept": -0.06541253872387119
+        }
+      },
+      "catch_train": {
+        "n": 7595.0,
+        "rmse": 0.6450592672931237,
+        "mae": 0.35459053346638625,
+        "r2": 0.11799645777662038
+      },
+      "catch_holdout": {
+        "n": 824.0,
+        "rmse": 0.6499892701615444,
+        "mae": 0.3374590795615266,
+        "r2": 0.13357972845399846,
+        "spearman": 0.33394501890193035
+      },
+      "catch_holdout_ablation_all_candidates_on_observed_mask": {
+        "n": 824.0,
+        "rmse": 0.6756185408094799,
+        "mae": 0.3872542571875568,
+        "r2": 0.06390624384273746,
+        "spearman": 0.2652023909085693
+      },
+      "catch_holdout_all_candidate_rows": {
+        "n": 18344.0,
+        "rmse": 0.6684740798956633,
+        "mae": 0.4113013864735285,
+        "r2": -0.039239510112791365,
+        "spearman": 0.12087453783325582
+      },
+      "catch_train_n": 7595,
+      "catch_train_population": "observed_catch",
+      "keep_train": {
+        "n": 38829.0,
+        "rmse": 0.6210272847714404,
+        "mae": 0.3397491422109516,
+        "r2": 0.07933963013343392
+      },
+      "choice_train": {
+        "n_releases": 3982.0,
+        "rank_accuracy": 0.757659467604219,
+        "choice_log_loss": 0.6418871737245846,
+        "binary_log_loss": 0.42108200963617964
+      },
+      "choice_holdout": {
+        "n_releases": 415.0,
+        "rank_accuracy": 0.763855421686747,
+        "choice_log_loss": 0.6173734408011254,
+        "binary_log_loss": 0.4295272211589837
+      },
+      "model_version": "stage4_sklearn_logo_v2"
+    },
+    {
+      "gameId": 114169,
+      "fold_id": "fold_holdout_114169",
+      "cached": true,
+      "elapsed_seconds": 8.29,
+      "n_rows": 18076,
+      "n_completion_eligible": 1704,
+      "n_true_receiver": 426,
+      "n_rejected_outside_support": 2031,
+      "passability_train": {
+        "distance_only": {
+          "n_train": 15884,
+          "n_pos": 3971,
+          "train_cal": {
+            "n": 15884.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4669878752957811,
+            "brier": 0.15447711322503857,
+            "calibration_slope": 1.0104969092309386,
+            "calibration_intercept": 0.008551168975626728
+          }
+        },
+        "nearest_defender_distance": {
+          "n_train": 15884,
+          "n_pos": 3971,
+          "train_cal": {
+            "n": 15884.0,
+            "base_rate": 0.25,
+            "log_loss": 0.5623351451700295,
+            "brier": 0.18750000020671326,
+            "calibration_slope": 0.5468112575044963,
+            "calibration_intercept": -0.4980073380344889
+          }
+        },
+        "static_lane_geometry_no_velocity": {
+          "n_train": 15884,
+          "n_pos": 3971,
+          "train_cal": {
+            "n": 15884.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4079492988683085,
+            "brier": 0.13166657660101858,
+            "calibration_slope": 1.0082206578111361,
+            "calibration_intercept": 0.0057166638430109174
+          }
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n_train": 15884,
+          "n_pos": 3971,
+          "train_cal": {
+            "n": 15884.0,
+            "base_rate": 0.25,
+            "log_loss": 0.34850503387093645,
+            "brier": 0.11027895556946023,
+            "calibration_slope": 1.0085593709724872,
+            "calibration_intercept": 0.003852575462437005
+          }
+        },
+        "full_model": {
+          "n_train": 15884,
+          "n_pos": 3971,
+          "train_cal": {
+            "n": 15884.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3475006960507538,
+            "brier": 0.1098680544891682,
+            "calibration_slope": 1.009218132342116,
+            "calibration_intercept": 0.00362766921344642
+          }
+        }
+      },
+      "passability_holdout": {
+        "n": 1704.0,
+        "base_rate": 0.25,
+        "log_loss": 0.324747194723179,
+        "brier": 0.10101986643819753,
+        "calibration_slope": 1.0741592429511422,
+        "calibration_intercept": 0.01723833525885509
+      },
+      "passability_ablation_holdout": {
+        "distance_only": {
+          "n": 1704.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4577580313408126,
+          "brier": 0.15189722555452428,
+          "calibration_slope": 1.077740150045097,
+          "calibration_intercept": 0.06309454933459517
+        },
+        "nearest_defender_distance": {
+          "n": 1704.0,
+          "base_rate": 0.25,
+          "log_loss": 0.5623351451700296,
+          "brier": 0.18750000020671323,
+          "calibration_slope": -0.0022600700147339062,
+          "calibration_intercept": -1.1010975260065863
+        },
+        "static_lane_geometry_no_velocity": {
+          "n": 1704.0,
+          "base_rate": 0.25,
+          "log_loss": 0.38489971348297325,
+          "brier": 0.12415372662234304,
+          "calibration_slope": 1.110577051485148,
+          "calibration_intercept": 0.11603139083089305
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n": 1704.0,
+          "base_rate": 0.25,
+          "log_loss": 0.32702918233538125,
+          "brier": 0.10201059717312232,
+          "calibration_slope": 1.071419794028074,
+          "calibration_intercept": -0.0012643098510335328
+        },
+        "full_model": {
+          "n": 1704.0,
+          "base_rate": 0.25,
+          "log_loss": 0.324747194723179,
+          "brier": 0.10101986643819753,
+          "calibration_slope": 1.0741592429511422,
+          "calibration_intercept": 0.01723833525885509
+        }
+      },
+      "catch_train": {
+        "n": 7618.0,
+        "rmse": 0.6451893149578164,
+        "mae": 0.355763110078221,
+        "r2": 0.11868299422865103
+      },
+      "catch_holdout": {
+        "n": 799.0,
+        "rmse": 0.6514090373133113,
+        "mae": 0.34640850891238917,
+        "r2": 0.1231750119717897,
+        "spearman": 0.3323601209185389
+      },
+      "catch_holdout_ablation_all_candidates_on_observed_mask": {
+        "n": 799.0,
+        "rmse": 0.6708165884656682,
+        "mae": 0.3993371798276452,
+        "r2": 0.0701498909429441,
+        "spearman": 0.28702741892818484
+      },
+      "catch_holdout_all_candidate_rows": {
+        "n": 18076.0,
+        "rmse": 0.7194869704684186,
+        "mae": 0.4335861915661288,
+        "r2": -0.02461870727610438,
+        "spearman": 0.11076950729732885
+      },
+      "catch_train_n": 7618,
+      "catch_train_population": "observed_catch",
+      "keep_train": {
+        "n": 38899.0,
+        "rmse": 0.6145851315419084,
+        "mae": 0.33430328734345266,
+        "r2": 0.08091434013777177
+      },
+      "choice_train": {
+        "n_releases": 3971.0,
+        "rank_accuracy": 0.754973558297658,
+        "choice_log_loss": 0.6473511774078934,
+        "binary_log_loss": 0.4234635067441852
+      },
+      "choice_holdout": {
+        "n_releases": 426.0,
+        "rank_accuracy": 0.7863849765258216,
+        "choice_log_loss": 0.5481421399931948,
+        "binary_log_loss": 0.4001967498675632
+      },
+      "model_version": "stage4_sklearn_logo_v2"
+    },
+    {
+      "gameId": 114099,
+      "fold_id": "fold_holdout_114099",
+      "cached": true,
+      "elapsed_seconds": 8.43,
+      "n_rows": 19604,
+      "n_completion_eligible": 1692,
+      "n_true_receiver": 423,
+      "n_rejected_outside_support": 2537,
+      "passability_train": {
+        "distance_only": {
+          "n_train": 15896,
+          "n_pos": 3974,
+          "train_cal": {
+            "n": 15896.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4643823691157192,
+            "brier": 0.15374818988613717,
+            "calibration_slope": 1.0104531864395931,
+            "calibration_intercept": 0.008389933578096864
+          }
+        },
+        "nearest_defender_distance": {
+          "n_train": 15896,
+          "n_pos": 3974,
+          "train_cal": {
+            "n": 15896.0,
+            "base_rate": 0.25,
+            "log_loss": 0.5623351451693731,
+            "brier": 0.18750000020646704,
+            "calibration_slope": 0.546811381313041,
+            "calibration_intercept": -0.49800724622138964
+          }
+        },
+        "static_lane_geometry_no_velocity": {
+          "n_train": 15896,
+          "n_pos": 3974,
+          "train_cal": {
+            "n": 15896.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4011055294556034,
+            "brier": 0.1293828697050139,
+            "calibration_slope": 1.0082926735679103,
+            "calibration_intercept": 0.005576141821501766
+          }
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n_train": 15896,
+          "n_pos": 3974,
+          "train_cal": {
+            "n": 15896.0,
+            "base_rate": 0.25,
+            "log_loss": 0.34039943400402656,
+            "brier": 0.10732834874654115,
+            "calibration_slope": 1.0094499171069429,
+            "calibration_intercept": 0.0037056237346524607
+          }
+        },
+        "full_model": {
+          "n_train": 15896,
+          "n_pos": 3974,
+          "train_cal": {
+            "n": 15896.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3390837389646501,
+            "brier": 0.10682327300529462,
+            "calibration_slope": 1.0095587872724046,
+            "calibration_intercept": 0.0037343974280311435
+          }
+        }
+      },
+      "passability_holdout": {
+        "n": 1692.0,
+        "base_rate": 0.25,
+        "log_loss": 0.40437018238157485,
+        "brier": 0.12884461700684574,
+        "calibration_slope": 0.8286035145957161,
+        "calibration_intercept": -0.2231547428469685
+      },
+      "passability_ablation_holdout": {
+        "distance_only": {
+          "n": 1692.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4809282009993582,
+          "brier": 0.15854269171139868,
+          "calibration_slope": 0.9315939707541957,
+          "calibration_intercept": -0.07187161432610072
+        },
+        "nearest_defender_distance": {
+          "n": 1692.0,
+          "base_rate": 0.25,
+          "log_loss": 0.5623351451693731,
+          "brier": 0.18750000020646707,
+          "calibration_slope": -0.006964898052278233,
+          "calibration_intercept": -1.106091410999212
+        },
+        "static_lane_geometry_no_velocity": {
+          "n": 1692.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4474463491247707,
+          "brier": 0.14555527651240846,
+          "calibration_slope": 0.8432479288805304,
+          "calibration_intercept": -0.22861473897761336
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n": 1692.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4034019756117476,
+          "brier": 0.12881342610118682,
+          "calibration_slope": 0.8369659897585953,
+          "calibration_intercept": -0.21744196615186895
+        },
+        "full_model": {
+          "n": 1692.0,
+          "base_rate": 0.25,
+          "log_loss": 0.40437018238157485,
+          "brier": 0.12884461700684574,
+          "calibration_slope": 0.8286035145957161,
+          "calibration_intercept": -0.2231547428469685
+        }
+      },
+      "catch_train": {
+        "n": 7584.0,
+        "rmse": 0.6460101296690066,
+        "mae": 0.3572562004770032,
+        "r2": 0.11899746334645889
+      },
+      "catch_holdout": {
+        "n": 836.0,
+        "rmse": 0.647321072446405,
+        "mae": 0.3662944025806423,
+        "r2": 0.12504191290586975,
+        "spearman": 0.3398886014110039
+      },
+      "catch_holdout_ablation_all_candidates_on_observed_mask": {
+        "n": 836.0,
+        "rmse": 0.6716659069141186,
+        "mae": 0.41111376761296436,
+        "r2": 0.05799248232749232,
+        "spearman": 0.2341917761471156
+      },
+      "catch_holdout_all_candidate_rows": {
+        "n": 19604.0,
+        "rmse": 0.6426035071790356,
+        "mae": 0.3956612180709031,
+        "r2": -0.02960158208703878,
+        "spearman": 0.1477835050447975
+      },
+      "catch_train_n": 7584,
+      "catch_train_population": "observed_catch",
+      "keep_train": {
+        "n": 38515.0,
+        "rmse": 0.6236066948748406,
+        "mae": 0.3436876370183481,
+        "r2": 0.08158809747236151
+      },
+      "choice_train": {
+        "n_releases": 3974.0,
+        "rank_accuracy": 0.7657272269753397,
+        "choice_log_loss": 0.6191371203444076,
+        "binary_log_loss": 0.4131947711109827
+      },
+      "choice_holdout": {
+        "n_releases": 423.0,
+        "rank_accuracy": 0.6997635933806147,
+        "choice_log_loss": 0.825713609352837,
+        "binary_log_loss": 0.501253165393305
+      },
+      "model_version": "stage4_sklearn_logo_v2"
+    },
+    {
+      "gameId": 114086,
+      "fold_id": "fold_holdout_114086",
+      "cached": true,
+      "elapsed_seconds": 8.89,
+      "n_rows": 20480,
+      "n_completion_eligible": 1924,
+      "n_true_receiver": 481,
+      "n_rejected_outside_support": 2234,
+      "passability_train": {
+        "distance_only": {
+          "n_train": 15664,
+          "n_pos": 3916,
+          "train_cal": {
+            "n": 15664.0,
+            "base_rate": 0.25,
+            "log_loss": 0.46904148276975677,
+            "brier": 0.15524189967731733,
+            "calibration_slope": 1.0109033060302517,
+            "calibration_intercept": 0.008937195655987856
+          }
+        },
+        "nearest_defender_distance": {
+          "n_train": 15664,
+          "n_pos": 3916,
+          "train_cal": {
+            "n": 15664.0,
+            "base_rate": 0.25,
+            "log_loss": 0.5623351451823176,
+            "brier": 0.18750000021132143,
+            "calibration_slope": 0.5468089540646447,
+            "calibration_intercept": -0.4980090462621348
+          }
+        },
+        "static_lane_geometry_no_velocity": {
+          "n_train": 15664,
+          "n_pos": 3916,
+          "train_cal": {
+            "n": 15664.0,
+            "base_rate": 0.25,
+            "log_loss": 0.41067059451194676,
+            "brier": 0.1326687513134186,
+            "calibration_slope": 1.008409957446428,
+            "calibration_intercept": 0.00591156486585836
+          }
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n_train": 15664,
+          "n_pos": 3916,
+          "train_cal": {
+            "n": 15664.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3510957317157363,
+            "brier": 0.11097860201814763,
+            "calibration_slope": 1.008499009667359,
+            "calibration_intercept": 0.003908836140644048
+          }
+        },
+        "full_model": {
+          "n_train": 15664,
+          "n_pos": 3916,
+          "train_cal": {
+            "n": 15664.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3500978896134163,
+            "brier": 0.11055497934317246,
+            "calibration_slope": 1.0085405521498807,
+            "calibration_intercept": 0.0038584381084339945
+          }
+        }
+      },
+      "passability_holdout": {
+        "n": 1924.0,
+        "base_rate": 0.25,
+        "log_loss": 0.3085827338310299,
+        "brier": 0.09692774346266167,
+        "calibration_slope": 1.1615005971427064,
+        "calibration_intercept": 0.17977233355209335
+      },
+      "passability_ablation_holdout": {
+        "distance_only": {
+          "n": 1924.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4421825215107281,
+          "brier": 0.14584366721198017,
+          "calibration_slope": 1.1537168799173254,
+          "calibration_intercept": 0.19843501973097422
+        },
+        "nearest_defender_distance": {
+          "n": 1924.0,
+          "base_rate": 0.25,
+          "log_loss": 0.5623351451823175,
+          "brier": 0.18750000021132138,
+          "calibration_slope": -0.0077437229256160645,
+          "calibration_intercept": -1.1069636134585592
+        },
+        "static_lane_geometry_no_velocity": {
+          "n": 1924.0,
+          "base_rate": 0.25,
+          "log_loss": 0.36447645765783787,
+          "brier": 0.11670460304277569,
+          "calibration_slope": 1.2172710749547544,
+          "calibration_intercept": 0.18959683356162194
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n": 1924.0,
+          "base_rate": 0.25,
+          "log_loss": 0.31095028095014565,
+          "brier": 0.09776100822747055,
+          "calibration_slope": 1.1505680841269597,
+          "calibration_intercept": 0.17644278428756538
+        },
+        "full_model": {
+          "n": 1924.0,
+          "base_rate": 0.25,
+          "log_loss": 0.3085827338310299,
+          "brier": 0.09692774346266167,
+          "calibration_slope": 1.1615005971427064,
+          "calibration_intercept": 0.17977233355209335
+        }
+      },
+      "catch_train": {
+        "n": 7480.0,
+        "rmse": 0.64144819540016,
+        "mae": 0.3543837436830964,
+        "r2": 0.12661891050251828
+      },
+      "catch_holdout": {
+        "n": 942.0,
+        "rmse": 0.6780528953502041,
+        "mae": 0.33954611321618694,
+        "r2": 0.06758083235081136,
+        "spearman": 0.2640068493872229
+      },
+      "catch_holdout_ablation_all_candidates_on_observed_mask": {
+        "n": 942.0,
+        "rmse": 0.6826376615926747,
+        "mae": 0.3859902318846276,
+        "r2": 0.054928790736025856,
+        "spearman": 0.23088334858718798
+      },
+      "catch_holdout_all_candidate_rows": {
+        "n": 20480.0,
+        "rmse": 0.698964587690226,
+        "mae": 0.41726400052627677,
+        "r2": -0.04332916237654638,
+        "spearman": 0.10651681771698256
+      },
+      "catch_train_n": 7480,
+      "catch_train_population": "observed_catch",
+      "keep_train": {
+        "n": 38357.0,
+        "rmse": 0.6173370510398086,
+        "mae": 0.3394935814346824,
+        "r2": 0.08581769164973851
+      },
+      "choice_train": {
+        "n_releases": 3916.0,
+        "rank_accuracy": 0.7538304392236976,
+        "choice_log_loss": 0.6517291089182642,
+        "binary_log_loss": 0.4261671028053565
+      },
+      "choice_holdout": {
+        "n_releases": 481.0,
+        "rank_accuracy": 0.7920997920997921,
+        "choice_log_loss": 0.5325672780426455,
+        "binary_log_loss": 0.37208003966773917
+      },
+      "model_version": "stage4_sklearn_logo_v2"
+    },
+    {
+      "gameId": 178442,
+      "fold_id": "fold_holdout_178442",
+      "cached": true,
+      "elapsed_seconds": 8.4,
+      "n_rows": 19580,
+      "n_completion_eligible": 1716,
+      "n_true_receiver": 429,
+      "n_rejected_outside_support": 2730,
+      "passability_train": {
+        "distance_only": {
+          "n_train": 15872,
+          "n_pos": 3968,
+          "train_cal": {
+            "n": 15872.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4655446032320411,
+            "brier": 0.15387976320806504,
+            "calibration_slope": 1.01015501518926,
+            "calibration_intercept": 0.008273709355897538
+          }
+        },
+        "nearest_defender_distance": {
+          "n_train": 15872,
+          "n_pos": 3968,
+          "train_cal": {
+            "n": 15872.0,
+            "base_rate": 0.25,
+            "log_loss": 0.5623351451706877,
+            "brier": 0.18750000020695992,
+            "calibration_slope": 0.5468111335087514,
+            "calibration_intercept": -0.49800742998673253
+          }
+        },
+        "static_lane_geometry_no_velocity": {
+          "n_train": 15872,
+          "n_pos": 3968,
+          "train_cal": {
+            "n": 15872.0,
+            "base_rate": 0.25,
+            "log_loss": 0.40341812485907436,
+            "brier": 0.13013773650503788,
+            "calibration_slope": 1.008267839398339,
+            "calibration_intercept": 0.005608548760754083
+          }
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n_train": 15872,
+          "n_pos": 3968,
+          "train_cal": {
+            "n": 15872.0,
+            "base_rate": 0.25,
+            "log_loss": 0.34565858670716326,
+            "brier": 0.10911239323742374,
+            "calibration_slope": 1.0091141282336427,
+            "calibration_intercept": 0.0036182636642229367
+          }
+        },
+        "full_model": {
+          "n_train": 15872,
+          "n_pos": 3968,
+          "train_cal": {
+            "n": 15872.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3445633449084667,
+            "brier": 0.10866444886693119,
+            "calibration_slope": 1.0092164416256697,
+            "calibration_intercept": 0.003587859249314733
+          }
+        }
+      },
+      "passability_holdout": {
+        "n": 1716.0,
+        "base_rate": 0.25,
+        "log_loss": 0.3538498774392565,
+        "brier": 0.11199185954431486,
+        "calibration_slope": 0.9688885656782626,
+        "calibration_intercept": 0.08215514752895235
+      },
+      "passability_ablation_holdout": {
+        "distance_only": {
+          "n": 1716.0,
+          "base_rate": 0.25,
+          "log_loss": 0.47433053770701705,
+          "brier": 0.1589922110610924,
+          "calibration_slope": 0.9313821842280278,
+          "calibration_intercept": -0.06578710847207785
+        },
+        "nearest_defender_distance": {
+          "n": 1716.0,
+          "base_rate": 0.25,
+          "log_loss": 0.5623351451706875,
+          "brier": 0.18750000020695992,
+          "calibration_slope": -0.002442399511607357,
+          "calibration_intercept": -1.1012947758146667
+        },
+        "static_lane_geometry_no_velocity": {
+          "n": 1716.0,
+          "base_rate": 0.25,
+          "log_loss": 0.42751848512738255,
+          "brier": 0.13802108076337097,
+          "calibration_slope": 0.8887346862072378,
+          "calibration_intercept": -0.007697069394834942
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n": 1716.0,
+          "base_rate": 0.25,
+          "log_loss": 0.35715293131297354,
+          "brier": 0.11337855559263668,
+          "calibration_slope": 0.957795735408266,
+          "calibration_intercept": 0.07746282655954745
+        },
+        "full_model": {
+          "n": 1716.0,
+          "base_rate": 0.25,
+          "log_loss": 0.3538498774392565,
+          "brier": 0.11199185954431486,
+          "calibration_slope": 0.9688885656782626,
+          "calibration_intercept": 0.08215514752895235
+        }
+      },
+      "catch_train": {
+        "n": 7641.0,
+        "rmse": 0.6429449524392453,
+        "mae": 0.35249575376406445,
+        "r2": 0.11945897732868072
+      },
+      "catch_holdout": {
+        "n": 782.0,
+        "rmse": 0.6697364079880985,
+        "mae": 0.35159869892702944,
+        "r2": 0.11832454965444883,
+        "spearman": 0.34127369872270885
+      },
+      "catch_holdout_ablation_all_candidates_on_observed_mask": {
+        "n": 782.0,
+        "rmse": 0.6920477469626184,
+        "mae": 0.39039358649660455,
+        "r2": 0.05860248101304055,
+        "spearman": 0.2472537609302779
+      },
+      "catch_holdout_all_candidate_rows": {
+        "n": 19580.0,
+        "rmse": 0.7468370945536862,
+        "mae": 0.45023089393441384,
+        "r2": -0.024110004527071682,
+        "spearman": 0.10716306394193911
+      },
+      "catch_train_n": 7641,
+      "catch_train_population": "observed_catch",
+      "keep_train": {
+        "n": 38533.0,
+        "rmse": 0.6128791295342121,
+        "mae": 0.33197360065931747,
+        "r2": 0.07778163725924292
+      },
+      "choice_train": {
+        "n_releases": 3968.0,
+        "rank_accuracy": 0.7580645161290323,
+        "choice_log_loss": 0.6402301548369612,
+        "binary_log_loss": 0.41990020108727377
+      },
+      "choice_holdout": {
+        "n_releases": 429.0,
+        "rank_accuracy": 0.7552447552447552,
+        "choice_log_loss": 0.639867284657748,
+        "binary_log_loss": 0.41432459342200323
+      },
+      "model_version": "stage4_sklearn_logo_v2"
+    },
+    {
+      "gameId": 179612,
+      "fold_id": "fold_holdout_179612",
+      "cached": true,
+      "elapsed_seconds": 9.24,
+      "n_rows": 18972,
+      "n_completion_eligible": 1956,
+      "n_true_receiver": 489,
+      "n_rejected_outside_support": 2680,
+      "passability_train": {
+        "distance_only": {
+          "n_train": 15632,
+          "n_pos": 3908,
+          "train_cal": {
+            "n": 15632.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4655072965007103,
+            "brier": 0.15404863384660075,
+            "calibration_slope": 1.0104873464989335,
+            "calibration_intercept": 0.008469534683921
+          }
+        },
+        "nearest_defender_distance": {
+          "n_train": 15632,
+          "n_pos": 3908,
+          "train_cal": {
+            "n": 15632.0,
+            "base_rate": 0.25,
+            "log_loss": 0.5623351451841456,
+            "brier": 0.18750000021200697,
+            "calibration_slope": 0.5468086136179539,
+            "calibration_intercept": -0.49800929874630073
+          }
+        },
+        "static_lane_geometry_no_velocity": {
+          "n_train": 15632,
+          "n_pos": 3908,
+          "train_cal": {
+            "n": 15632.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4064313409319897,
+            "brier": 0.13119677099365634,
+            "calibration_slope": 1.0084294052066312,
+            "calibration_intercept": 0.005818887189989309
+          }
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n_train": 15632,
+          "n_pos": 3908,
+          "train_cal": {
+            "n": 15632.0,
+            "base_rate": 0.25,
+            "log_loss": 0.34774380110736897,
+            "brier": 0.10971146617760001,
+            "calibration_slope": 1.0086521374358903,
+            "calibration_intercept": 0.003909855501935587
+          }
+        },
+        "full_model": {
+          "n_train": 15632,
+          "n_pos": 3908,
+          "train_cal": {
+            "n": 15632.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3463966900849866,
+            "brier": 0.10916556209885302,
+            "calibration_slope": 1.0093311373779448,
+            "calibration_intercept": 0.0036783759406477756
+          }
+        }
+      },
+      "passability_holdout": {
+        "n": 1956.0,
+        "base_rate": 0.25,
+        "log_loss": 0.3366634319178435,
+        "brier": 0.10728108054318691,
+        "calibration_slope": 1.0484556122508266,
+        "calibration_intercept": 0.06358403070124094
+      },
+      "passability_ablation_holdout": {
+        "distance_only": {
+          "n": 1956.0,
+          "base_rate": 0.25,
+          "log_loss": 0.47202150461567893,
+          "brier": 0.15629863644196113,
+          "calibration_slope": 0.9415930388771926,
+          "calibration_intercept": 0.020609160082233003
+        },
+        "nearest_defender_distance": {
+          "n": 1956.0,
+          "base_rate": 0.25,
+          "log_loss": 0.5623351451841457,
+          "brier": 0.18750000021200694,
+          "calibration_slope": -0.008949006823796346,
+          "calibration_intercept": -1.1082385571027598
+        },
+        "static_lane_geometry_no_velocity": {
+          "n": 1956.0,
+          "base_rate": 0.25,
+          "log_loss": 0.3984610635037191,
+          "brier": 0.12873343538265508,
+          "calibration_slope": 1.0414956065390784,
+          "calibration_intercept": 0.07293611825317606
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n": 1956.0,
+          "base_rate": 0.25,
+          "log_loss": 0.336365620641428,
+          "brier": 0.10723719489062698,
+          "calibration_slope": 1.0611552422612922,
+          "calibration_intercept": 0.06935261537125308
+        },
+        "full_model": {
+          "n": 1956.0,
+          "base_rate": 0.25,
+          "log_loss": 0.3366634319178435,
+          "brier": 0.10728108054318691,
+          "calibration_slope": 1.0484556122508266,
+          "calibration_intercept": 0.06358403070124094
+        }
+      },
+      "catch_train": {
+        "n": 7481.0,
+        "rmse": 0.6467281464362736,
+        "mae": 0.3600517877268666,
+        "r2": 0.11808007069145798
+      },
+      "catch_holdout": {
+        "n": 937.0,
+        "rmse": 0.6348563133612799,
+        "mae": 0.33198898321156367,
+        "r2": 0.13596443201188613,
+        "spearman": 0.33794138414447356
+      },
+      "catch_holdout_ablation_all_candidates_on_observed_mask": {
+        "n": 937.0,
+        "rmse": 0.6573597338491257,
+        "mae": 0.37652016208164174,
+        "r2": 0.07362477619372987,
+        "spearman": 0.30098697603871916
+      },
+      "catch_holdout_all_candidate_rows": {
+        "n": 18972.0,
+        "rmse": 0.732140327077211,
+        "mae": 0.4513122021247602,
+        "r2": 0.013449491070923747,
+        "spearman": 0.16633359313195487
+      },
+      "catch_train_n": 7481,
+      "catch_train_population": "observed_catch",
+      "keep_train": {
+        "n": 38735.0,
+        "rmse": 0.6118875111404106,
+        "mae": 0.33196388896386647,
+        "r2": 0.07885250577232417
+      },
+      "choice_train": {
+        "n_releases": 3908.0,
+        "rank_accuracy": 0.7563971340839304,
+        "choice_log_loss": 0.6416870665638373,
+        "binary_log_loss": 0.42161136968403395
+      },
+      "choice_holdout": {
+        "n_releases": 489.0,
+        "rank_accuracy": 0.7668711656441718,
+        "choice_log_loss": 0.6090522861574913,
+        "binary_log_loss": 0.40808511350714266
+      },
+      "model_version": "stage4_sklearn_logo_v2"
+    },
+    {
+      "gameId": 184439,
+      "fold_id": "fold_holdout_184439",
+      "cached": true,
+      "elapsed_seconds": 8.75,
+      "n_rows": 17288,
+      "n_completion_eligible": 1684,
+      "n_true_receiver": 421,
+      "n_rejected_outside_support": 2013,
+      "passability_train": {
+        "distance_only": {
+          "n_train": 15904,
+          "n_pos": 3976,
+          "train_cal": {
+            "n": 15904.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4653551353796432,
+            "brier": 0.15412295198746645,
+            "calibration_slope": 1.0105768259018337,
+            "calibration_intercept": 0.008510710618649152
+          }
+        },
+        "nearest_defender_distance": {
+          "n_train": 15904,
+          "n_pos": 3976,
+          "train_cal": {
+            "n": 15904.0,
+            "base_rate": 0.25,
+            "log_loss": 0.562335145168936,
+            "brier": 0.18750000020630317,
+            "calibration_slope": 0.5468114637482808,
+            "calibration_intercept": -0.49800718508980135
+          }
+        },
+        "static_lane_geometry_no_velocity": {
+          "n_train": 15904,
+          "n_pos": 3976,
+          "train_cal": {
+            "n": 15904.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4044660635149163,
+            "brier": 0.13050407488168467,
+            "calibration_slope": 1.008253850896932,
+            "calibration_intercept": 0.005654170798114477
+          }
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n_train": 15904,
+          "n_pos": 3976,
+          "train_cal": {
+            "n": 15904.0,
+            "base_rate": 0.25,
+            "log_loss": 0.34561867605889246,
+            "brier": 0.10900585182690745,
+            "calibration_slope": 1.0091545499620074,
+            "calibration_intercept": 0.003617768671778291
+          }
+        },
+        "full_model": {
+          "n_train": 15904,
+          "n_pos": 3976,
+          "train_cal": {
+            "n": 15904.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3443672003050289,
+            "brier": 0.10848139616135216,
+            "calibration_slope": 1.009317790776201,
+            "calibration_intercept": 0.0035969974492782676
+          }
+        }
+      },
+      "passability_holdout": {
+        "n": 1684.0,
+        "base_rate": 0.25,
+        "log_loss": 0.35776074693897375,
+        "brier": 0.11382542964483867,
+        "calibration_slope": 0.9361990655623822,
+        "calibration_intercept": 0.02600014026447188
+      },
+      "passability_ablation_holdout": {
+        "distance_only": {
+          "n": 1684.0,
+          "base_rate": 0.25,
+          "log_loss": 0.47223798380030396,
+          "brier": 0.1551835589145519,
+          "calibration_slope": 0.923922004620408,
+          "calibration_intercept": -0.06775232657035522
+        },
+        "nearest_defender_distance": {
+          "n": 1684.0,
+          "base_rate": 0.25,
+          "log_loss": 0.5623351451689361,
+          "brier": 0.1875000002063032,
+          "calibration_slope": -0.006857710100296567,
+          "calibration_intercept": -1.1059784443794731
+        },
+        "static_lane_geometry_no_velocity": {
+          "n": 1684.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4183469560577757,
+          "brier": 0.13528877555193902,
+          "calibration_slope": 0.9263925975202727,
+          "calibration_intercept": -0.08060756016321612
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n": 1684.0,
+          "base_rate": 0.25,
+          "log_loss": 0.3586509943318599,
+          "brier": 0.11410030763870843,
+          "calibration_slope": 0.9347743869492878,
+          "calibration_intercept": 0.03327916595245902
+        },
+        "full_model": {
+          "n": 1684.0,
+          "base_rate": 0.25,
+          "log_loss": 0.35776074693897375,
+          "brier": 0.11382542964483867,
+          "calibration_slope": 0.9361990655623822,
+          "calibration_intercept": 0.02600014026447188
+        }
+      },
+      "catch_train": {
+        "n": 7643.0,
+        "rmse": 0.643404193445115,
+        "mae": 0.35424444392205945,
+        "r2": 0.11789838431148503
+      },
+      "catch_holdout": {
+        "n": 780.0,
+        "rmse": 0.6640439561834717,
+        "mae": 0.35229136003560557,
+        "r2": 0.13564821652713044,
+        "spearman": 0.3531418334618451
+      },
+      "catch_holdout_ablation_all_candidates_on_observed_mask": {
+        "n": 780.0,
+        "rmse": 0.6896065715241351,
+        "mae": 0.38868386416227096,
+        "r2": 0.06782026241829153,
+        "spearman": 0.29844929795728187
+      },
+      "catch_holdout_all_candidate_rows": {
+        "n": 17288.0,
+        "rmse": 0.7480233465763928,
+        "mae": 0.45082015989979984,
+        "r2": 0.007611870997322079,
+        "spearman": 0.15611877437554245
+      },
+      "catch_train_n": 7643,
+      "catch_train_population": "observed_catch",
+      "keep_train": {
+        "n": 39088.0,
+        "rmse": 0.6108127903437519,
+        "mae": 0.329193794509719,
+        "r2": 0.07683367019450471
+      },
+      "choice_train": {
+        "n_releases": 3976.0,
+        "rank_accuracy": 0.7623239436619719,
+        "choice_log_loss": 0.6364169974155295,
+        "binary_log_loss": 0.41907381548612355
+      },
+      "choice_holdout": {
+        "n_releases": 421.0,
+        "rank_accuracy": 0.7268408551068883,
+        "choice_log_loss": 0.6805168912597379,
+        "binary_log_loss": 0.4222024257135648
+      },
+      "model_version": "stage4_sklearn_logo_v2"
+    },
+    {
+      "gameId": 188630,
+      "fold_id": "fold_holdout_188630",
+      "cached": true,
+      "elapsed_seconds": 8.18,
+      "n_rows": 21128,
+      "n_completion_eligible": 1716,
+      "n_true_receiver": 429,
+      "n_rejected_outside_support": 2369,
+      "passability_train": {
+        "distance_only": {
+          "n_train": 15872,
+          "n_pos": 3968,
+          "train_cal": {
+            "n": 15872.0,
+            "base_rate": 0.25,
+            "log_loss": 0.46680612639615104,
+            "brier": 0.15450782732963214,
+            "calibration_slope": 1.0105174413762674,
+            "calibration_intercept": 0.008542596915243707
+          }
+        },
+        "nearest_defender_distance": {
+          "n_train": 15872,
+          "n_pos": 3968,
+          "train_cal": {
+            "n": 15872.0,
+            "base_rate": 0.25,
+            "log_loss": 0.5623351451706877,
+            "brier": 0.18750000020695992,
+            "calibration_slope": 0.5468111335087514,
+            "calibration_intercept": -0.4980074299867325
+          }
+        },
+        "static_lane_geometry_no_velocity": {
+          "n_train": 15872,
+          "n_pos": 3968,
+          "train_cal": {
+            "n": 15872.0,
+            "base_rate": 0.25,
+            "log_loss": 0.40615971222742825,
+            "brier": 0.13114179853722627,
+            "calibration_slope": 1.0082878238319832,
+            "calibration_intercept": 0.005701279731802837
+          }
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n_train": 15872,
+          "n_pos": 3968,
+          "train_cal": {
+            "n": 15872.0,
+            "base_rate": 0.25,
+            "log_loss": 0.34648474464243884,
+            "brier": 0.10956775098782517,
+            "calibration_slope": 1.0093009114299158,
+            "calibration_intercept": 0.003684169418207967
+          }
+        },
+        "full_model": {
+          "n_train": 15872,
+          "n_pos": 3968,
+          "train_cal": {
+            "n": 15872.0,
+            "base_rate": 0.25,
+            "log_loss": 0.345236676748136,
+            "brier": 0.10907423630088264,
+            "calibration_slope": 1.0093769983959817,
+            "calibration_intercept": 0.003627658551298576
+          }
+        }
+      },
+      "passability_holdout": {
+        "n": 1716.0,
+        "base_rate": 0.25,
+        "log_loss": 0.34809916420806664,
+        "brier": 0.10875702327894878,
+        "calibration_slope": 0.9847118711592865,
+        "calibration_intercept": -0.047707063762090836
+      },
+      "passability_ablation_holdout": {
+        "distance_only": {
+          "n": 1716.0,
+          "base_rate": 0.25,
+          "log_loss": 0.458700852345987,
+          "brier": 0.15151170075205142,
+          "calibration_slope": 1.1159832946948223,
+          "calibration_intercept": 0.02760901622070813
+        },
+        "nearest_defender_distance": {
+          "n": 1716.0,
+          "base_rate": 0.25,
+          "log_loss": 0.5623351451706876,
+          "brier": 0.18750000020695992,
+          "calibration_slope": -0.0024423995117022687,
+          "calibration_intercept": -1.1012947758147695
+        },
+        "static_lane_geometry_no_velocity": {
+          "n": 1716.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4018571696284672,
+          "brier": 0.12925704105585592,
+          "calibration_slope": 1.0550606002791445,
+          "calibration_intercept": -0.039429971301892276
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n": 1716.0,
+          "base_rate": 0.25,
+          "log_loss": 0.3468418383873232,
+          "brier": 0.10836840746437011,
+          "calibration_slope": 0.9922127893697636,
+          "calibration_intercept": -0.048148123719971715
+        },
+        "full_model": {
+          "n": 1716.0,
+          "base_rate": 0.25,
+          "log_loss": 0.34809916420806664,
+          "brier": 0.10875702327894878,
+          "calibration_slope": 0.9847118711592865,
+          "calibration_intercept": -0.047707063762090836
+        }
+      },
+      "catch_train": {
+        "n": 7555.0,
+        "rmse": 0.6592788249273879,
+        "mae": 0.36880607764175377,
+        "r2": 0.12145975394447772
+      },
+      "catch_holdout": {
+        "n": 869.0,
+        "rmse": 0.5081409638158817,
+        "mae": 0.28450793837927474,
+        "r2": 0.06518219570132455,
+        "spearman": 0.2858666099635238
+      },
+      "catch_holdout_ablation_all_candidates_on_observed_mask": {
+        "n": 869.0,
+        "rmse": 0.513817582465182,
+        "mae": 0.3174644246616753,
+        "r2": 0.04417918465548143,
+        "spearman": 0.2757338601211651
+      },
+      "catch_holdout_all_candidate_rows": {
+        "n": 21128.0,
+        "rmse": 0.6569607711523154,
+        "mae": 0.40810528963664905,
+        "r2": -0.016069852246374472,
+        "spearman": 0.1549236097836585
+      },
+      "catch_train_n": 7555,
+      "catch_train_population": "observed_catch",
+      "keep_train": {
+        "n": 38144.0,
+        "rmse": 0.6207852881495428,
+        "mae": 0.34081955581786105,
+        "r2": 0.0807752969867711
+      },
+      "choice_train": {
+        "n_releases": 3968.0,
+        "rank_accuracy": 0.7555443548387096,
+        "choice_log_loss": 0.6398664090697901,
+        "binary_log_loss": 0.4207791740062095
+      },
+      "choice_holdout": {
+        "n_releases": 429.0,
+        "rank_accuracy": 0.7622377622377622,
+        "choice_log_loss": 0.6360369439367191,
+        "binary_log_loss": 0.4255480356748011
+      },
+      "model_version": "stage4_sklearn_logo_v2"
+    },
+    {
+      "gameId": 191313,
+      "fold_id": "fold_holdout_191313",
+      "cached": true,
+      "elapsed_seconds": 8.16,
+      "n_rows": 18500,
+      "n_completion_eligible": 1568,
+      "n_true_receiver": 392,
+      "n_rejected_outside_support": 2224,
+      "passability_train": {
+        "distance_only": {
+          "n_train": 16020,
+          "n_pos": 4005,
+          "train_cal": {
+            "n": 16020.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4635206619411401,
+            "brier": 0.15337309175569386,
+            "calibration_slope": 1.0102122146676173,
+            "calibration_intercept": 0.008197936065841146
+          }
+        },
+        "nearest_defender_distance": {
+          "n_train": 16020,
+          "n_pos": 4005,
+          "train_cal": {
+            "n": 16020.0,
+            "base_rate": 0.25,
+            "log_loss": 0.5623351451626697,
+            "brier": 0.1875000002039532,
+            "calibration_slope": 0.5468126498076645,
+            "calibration_intercept": -0.4980063055581979
+          }
+        },
+        "static_lane_geometry_no_velocity": {
+          "n_train": 16020,
+          "n_pos": 4005,
+          "train_cal": {
+            "n": 16020.0,
+            "base_rate": 0.25,
+            "log_loss": 0.4048835104424478,
+            "brier": 0.13078269031511355,
+            "calibration_slope": 1.0082012808242111,
+            "calibration_intercept": 0.005596617414082415
+          }
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n_train": 16020,
+          "n_pos": 4005,
+          "train_cal": {
+            "n": 16020.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3448254014863223,
+            "brier": 0.10888330319294502,
+            "calibration_slope": 1.0091290263719561,
+            "calibration_intercept": 0.0035874391384736587
+          }
+        },
+        "full_model": {
+          "n_train": 16020,
+          "n_pos": 4005,
+          "train_cal": {
+            "n": 16020.0,
+            "base_rate": 0.25,
+            "log_loss": 0.3436551346161079,
+            "brier": 0.10840840581746723,
+            "calibration_slope": 1.0092729175510138,
+            "calibration_intercept": 0.0035790433323864453
+          }
+        }
+      },
+      "passability_holdout": {
+        "n": 1568.0,
+        "base_rate": 0.25,
+        "log_loss": 0.3647102103187708,
+        "brier": 0.11579591035856124,
+        "calibration_slope": 0.9704184983332877,
+        "calibration_intercept": -0.14508128758845681
+      },
+      "passability_ablation_holdout": {
+        "distance_only": {
+          "n": 1568.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4918195558922371,
+          "brier": 0.16315117031195034,
+          "calibration_slope": 0.8448293700463858,
+          "calibration_intercept": -0.16465496928154408
+        },
+        "nearest_defender_distance": {
+          "n": 1568.0,
+          "base_rate": 0.25,
+          "log_loss": 0.5623351451626696,
+          "brier": 0.18750000020395316,
+          "calibration_slope": -0.003915778418651192,
+          "calibration_intercept": -1.1028537743217166
+        },
+        "static_lane_geometry_no_velocity": {
+          "n": 1568.0,
+          "base_rate": 0.25,
+          "log_loss": 0.4171618247803317,
+          "brier": 0.1343461088461144,
+          "calibration_slope": 0.9731592140232823,
+          "calibration_intercept": -0.07047438967959035
+        },
+        "kinematic_geometry_no_uncertainty": {
+          "n": 1568.0,
+          "base_rate": 0.25,
+          "log_loss": 0.3670207155685116,
+          "brier": 0.11663466141705678,
+          "calibration_slope": 0.9651626322629231,
+          "calibration_intercept": -0.1414692057504804
+        },
+        "full_model": {
+          "n": 1568.0,
+          "base_rate": 0.25,
+          "log_loss": 0.3647102103187708,
+          "brier": 0.11579591035856124,
+          "calibration_slope": 0.9704184983332877,
+          "calibration_intercept": -0.14508128758845681
+        }
+      },
+      "catch_train": {
+        "n": 7655.0,
+        "rmse": 0.6297198632434243,
+        "mae": 0.34312587003768874,
+        "r2": 0.1193230685390344
+      },
+      "catch_holdout": {
+        "n": 765.0,
+        "rmse": 0.7891601333240633,
+        "mae": 0.43796500462088206,
+        "r2": 0.10583231608803356,
+        "spearman": 0.36007324233432964
+      },
+      "catch_holdout_ablation_all_candidates_on_observed_mask": {
+        "n": 765.0,
+        "rmse": 0.8109911828030322,
+        "mae": 0.4777227769147509,
+        "r2": 0.055676146518709224,
+        "spearman": 0.2586566035558223
+      },
+      "catch_holdout_all_candidate_rows": {
+        "n": 18500.0,
+        "rmse": 0.7502069425426902,
+        "mae": 0.446470783833632,
+        "r2": 0.009988931356674002,
+        "spearman": 0.15860632143816797
+      },
+      "catch_train_n": 7655,
+      "catch_train_population": "observed_catch",
+      "keep_train": {
+        "n": 38760.0,
+        "rmse": 0.6117699864805205,
+        "mae": 0.33424898544703185,
+        "r2": 0.0815064935830182
+      },
+      "choice_train": {
+        "n_releases": 4005.0,
+        "rank_accuracy": 0.7605493133583021,
+        "choice_log_loss": 0.6317026558147703,
+        "binary_log_loss": 0.4183566752392878
+      },
+      "choice_holdout": {
+        "n_releases": 392.0,
+        "rank_accuracy": 0.7270408163265306,
+        "choice_log_loss": 0.7255661321308793,
+        "binary_log_loss": 0.4595964121127469
+      },
+      "model_version": "stage4_sklearn_logo_v2"
+    }
+  ],
+  "errors": []
+}

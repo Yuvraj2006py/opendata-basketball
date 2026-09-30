@@ -1,0 +1,194 @@
+{
+  "ok": true,
+  "stage4_present": true,
+  "missing": {
+    "pipeline": [],
+    "tests": [],
+    "tables": [],
+    "artifacts": []
+  },
+  "source_scan": {
+    "ok": true,
+    "n_files": 11,
+    "files": [
+      "pipelines/04_fit_component_models.py",
+      "src/passing_windows/models/__init__.py",
+      "src/passing_windows/models/catch_value.py",
+      "src/passing_windows/models/choice.py",
+      "src/passing_windows/models/features.py",
+      "src/passing_windows/models/keep_state.py",
+      "src/passing_windows/models/leakage.py",
+      "src/passing_windows/models/metrics.py",
+      "src/passing_windows/models/option_value.py",
+      "src/passing_windows/models/outcomes.py",
+      "src/passing_windows/models/passability.py"
+    ]
+  },
+  "no_random_group_split": {
+    "ok": true,
+    "detail": "flag raw ShuffleSplit/train_test_split if used without LOGO wrapper"
+  },
+  "no_season_aggregates": {
+    "ok": true
+  },
+  "outcome_not_ptsScored_as_feature": {
+    "ok": true,
+    "detail": "ptsScored may appear only as prohibition text"
+  },
+  "shotQuality_not_feature": {
+    "ok": true,
+    "detail": "shotQuality may appear only in forbidden lists / comments"
+  },
+  "trajectory_rule_preserved": {
+    "ok": true,
+    "detail": "require lead_if_velocity_ok_else_direct in code; prohibition phrasing OK"
+  },
+  "narrow_path_lock_id": "passing_windows_stage2_narrow_path_20260924",
+  "freeze_id": "passing_windows_stage0_20250924",
+  "stage4_tables": {
+    "ok": true,
+    "files": [
+      "stage4_candidate_predictions.parquet",
+      "stage4_passability_ablations_long.parquet"
+    ]
+  },
+  "primary_table": {
+    "ok": true,
+    "path": "stage4_candidate_predictions.parquet",
+    "n_rows": 190348,
+    "columns": [
+      "gameId",
+      "touchId",
+      "frameIdx",
+      "candidateId",
+      "fold_id",
+      "chanceId",
+      "possessionId",
+      "passId",
+      "is_pass_release_frame",
+      "is_model_5hz_frame",
+      "is_forced_release_frame",
+      "completion_label_eligible",
+      "is_true_receiver",
+      "rejected_outside_support",
+      "trajectory_choice",
+      "trajectory_choice_rule",
+      "pass_distance_ft",
+      "receiver_sep_ft",
+      "dist_to_rim_ft",
+      "geometry_passability_score",
+      "flight_time_s",
+      "sampling_role",
+      "model_version",
+      "stage4_schema_version",
+      "q_ablation_distance_only",
+      "q_ablation_nearest_defender_distance",
+      "q_ablation_static_lane_geometry_no_velocity",
+      "q_ablation_kinematic_geometry_no_uncertainty",
+      "q_passability_model",
+      "V_catch_model",
+      "V_catch_sec_any_shot_next_3s",
+      "V_catch_sec_open_shot_next_3s",
+      "V_keep_model",
+      "V_fail",
+      "Q_option_model",
+      "NOV_model",
+      "choice_prob_model",
+      "narrow_path_active",
+      "target_inference_mode",
+      "target_reliability_status",
+      "human_audit_status",
+      "usable_as_receiver_completion_label",
+      "usable_as_named_failed_target",
+      "named_failed_target_requires_sensitivity_check",
+      "usable_for_touch_level_turnover",
+      "receiver_specific_eligible",
+      "label_gate_reason",
+      "cohort",
+      "true_receiverId",
+      "interceptorId"
+    ]
+  },
+  "gate_columns": {
+    "ok": true,
+    "present": [
+      "narrow_path_active",
+      "target_inference_mode",
+      "target_reliability_status",
+      "human_audit_status",
+      "usable_as_receiver_completion_label",
+      "usable_as_named_failed_target",
+      "named_failed_target_requires_sensitivity_check",
+      "usable_for_touch_level_turnover",
+      "receiver_specific_eligible",
+      "label_gate_reason"
+    ],
+    "missing": []
+  },
+  "no_failed_completion_labels": {
+    "ok": true,
+    "n_bad": 0
+  },
+  "q_oos_predictions": {
+    "ok": true,
+    "column": "q_passability_model",
+    "n_finite": 190348
+  },
+  "components_not_nov_only": {
+    "ok": true,
+    "columns": [
+      "V_catch_model",
+      "NOV_model"
+    ]
+  },
+  "trajectory_rule": {
+    "ok": true
+  },
+  "support_rejection": {
+    "ok": true,
+    "n_rejected": 22865,
+    "q_nan_rate": 1.0,
+    "nov_nan_rate": 1.0
+  },
+  "release_label_yield": {
+    "ok": true,
+    "n_labels": 4530,
+    "n_hit": 4397
+  },
+  "manifest": {
+    "n_files": 27,
+    "n_missing": 0,
+    "n_mismatched": 0,
+    "n_duplicate_paths": 0,
+    "missing": [],
+    "mismatched": [],
+    "duplicate_paths": [],
+    "ok": true
+  },
+  "report_phrasing": {
+    "ok": true,
+    "hits": []
+  },
+  "logo_ten_fold_coverage": {
+    "ok": true,
+    "pred_games": [
+      114086,
+      114099,
+      114169,
+      114234,
+      114243,
+      178442,
+      179612,
+      184439,
+      188630,
+      191313
+    ],
+    "n_markers": 10,
+    "n_freeze_games": 10,
+    "missing_games": []
+  },
+  "handoff_coverage_honesty": {
+    "ok": true,
+    "detail": "ok"
+  }
+}

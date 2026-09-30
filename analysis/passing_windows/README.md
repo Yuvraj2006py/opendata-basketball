@@ -10,7 +10,8 @@ Self-contained study workspace for the SkillCorner ACB open-data **Passing Windo
 | 1 — Canonical data layer | **Complete** (re-audit CLEAR) |
 | 2 — Failed-pass target inference | **Accepted under the narrow path** (human audit deferred; labels provisional) |
 | 3 — Candidate pass reconstruction | **Complete** (narrow-path handoff ready for Stage 4) |
-| 4+ | Not started |
+| 4 — Cross-fitted component models | **Complete** (LOGO q / V_catch / V_keep / Q / NOV; handoff ready for Stage 5) |
+| 5+ | Not started |
 
 ## Setup
 
@@ -18,10 +19,11 @@ Self-contained study workspace for the SkillCorner ACB open-data **Passing Windo
 cd analysis\passing_windows
 python -m venv .venv
 .\.venv\Scripts\pip.exe install -r requirements.txt
-.\.venv\Scripts\python.exe -m pytest tests\test_stage1.py tests\test_stage2.py tests\test_stage3.py -q
+.\.venv\Scripts\python.exe -m pytest tests\test_stage1.py tests\test_stage2.py tests\test_stage3.py tests\test_stage4.py -q
 .\.venv\Scripts\python.exe pipelines\01_build_canonical_data.py
 .\.venv\Scripts\python.exe pipelines\02_infer_failed_pass_targets.py
 .\.venv\Scripts\python.exe pipelines\03_build_candidate_states.py
+.\.venv\Scripts\python.exe pipelines\04_fit_component_models.py
 ```
 
 Full Stage 0–3 rebuild commands (with `--force` / `--verify-manifest`): see
@@ -149,3 +151,22 @@ choice is `lead_if_velocity_ok_else_direct`. Flight time is leave-one-game-out
 join `tables/stage2_label_eligibility.parquet` via
 `receiver_completion_training_labels`. Stage 4 model columns remain NaN
 placeholders.
+
+## Stage 4 artifacts
+
+| Artifact | Path |
+|---|---|
+| Candidate predictions (aggregate) | `tables/stage4_candidate_predictions.parquet` |
+| Passability ablations (long) | `tables/stage4_passability_ablations_long.parquet` |
+| Per-game caches + `_DONE_STAGE4` | `tables/by_game/{id}/` |
+| Model report | [`artifacts/stage4_model_report.md`](artifacts/stage4_model_report.md) |
+| Verification checklist | [`artifacts/STAGE4_VERIFICATION.md`](artifacts/STAGE4_VERIFICATION.md) |
+| Fold metrics JSON | [`artifacts/stage4_fold_metrics.json`](artifacts/stage4_fold_metrics.json) |
+| Output manifest (SHA-256) | [`artifacts/stage4_output_manifest.json`](artifacts/stage4_output_manifest.json) |
+| Regression lock | [`artifacts/STAGE4_REGRESSION_LOCK.md`](artifacts/STAGE4_REGRESSION_LOCK.md) |
+| Stage 5 handoff | [`artifacts/STAGE4_HANDOFF_STAGE5.md`](artifacts/STAGE4_HANDOFF_STAGE5.md) |
+
+Stage 4 fits nested leave-one-game-out passability (5 ablations), V_catch,
+V_keep, Q/NOV, and a descriptive release-time choice model. Sklearn B-spline +
+L2 logistic/Ridge substitutes for the freeze GAM (documented in verification).
+Counterfactual `Q`/`NOV` are NaN where `rejected_outside_support`.
