@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "tables\\stage4_candidate_predictions.parquet",
-      "bytes": 27930210,
-      "sha256": "5b516996a2acff10116fbab0265aa46b0b53ec71d28cedb741a86e22a98b45f9"
+      "bytes": 33261582,
+      "sha256": "c1fd9225e2fb5a18185d3194e144cd665aa5fb4b21680b5b22572b28ace53313"
     },
     {
       "path": "tables\\stage4_passability_ablations_long.parquet",
@@ -13,23 +13,23 @@
     },
     {
       "path": "artifacts\\stage4_fold_metrics.json",
-      "bytes": 66351,
-      "sha256": "d0a8f08695477aa6748b18caa3d316b616e4f6f2a061c326d133a4afe0d33df4"
+      "bytes": 74793,
+      "sha256": "5b8236c6d4033d5395a259729ad6bf9413c5aad9c95c0d4228145dfcbbc03ce1"
     },
     {
       "path": "artifacts\\stage4_model_report.md",
-      "bytes": 4600,
-      "sha256": "c2deea8631f71c8c04278574cccf5b978e257bad52fc66686057dbf6491aab20"
+      "bytes": 4976,
+      "sha256": "bfa8097e9f6950c3a750f53d65330f362c02c087c65141cfe519f021e8b4253d"
     },
     {
       "path": "artifacts\\STAGE4_VERIFICATION.md",
-      "bytes": 2649,
-      "sha256": "741e387b8c4844bd33d5de0774b5aaa2087a88932744f5c0d2c99094c43ac0d0"
+      "bytes": 2665,
+      "sha256": "9f9f850402cc37be5fb34d0dbf748b31a9ad96a0fd3a0c37fc8289c7eff9e497"
     },
     {
       "path": "artifacts\\STAGE4_HANDOFF_STAGE5.md",
-      "bytes": 1720,
-      "sha256": "90af9b2e114ceb761ea7f761721885b2eebea928484dae7f2efd7648f5a6a7e2"
+      "bytes": 1790,
+      "sha256": "9f9960f18a659a8ad38d641ab7b0f42273a3075314df121dc0b4e703f619d098"
     },
     {
       "path": "artifacts\\STAGE4_REGRESSION_LOCK.md",
@@ -38,103 +38,103 @@
     },
     {
       "path": "tables\\by_game\\114243\\stage4_candidate_predictions.parquet",
-      "bytes": 2793256,
-      "sha256": "7bcdc396b9d1c4f3411115a686a1010a9432371264fe69310621f7868f3cb1b3"
+      "bytes": 3327683,
+      "sha256": "e44ce333d13162769458913b9b245dfe002ee2f8acfb2fb2a0cc2b672c6595bc"
     },
     {
       "path": "tables\\by_game\\114243\\stage4_game_summary.json",
-      "bytes": 5007,
-      "sha256": "2f50b4581c55f1f441f12965a3f555a4dd8edee38d09963831ccc9f94776c809"
+      "bytes": 5692,
+      "sha256": "bc12b1e4926e1ca7b8801368edf54dcd7f9800471d26547822d9765666f5a4f5"
     },
     {
       "path": "tables\\by_game\\114234\\stage4_candidate_predictions.parquet",
-      "bytes": 2764034,
-      "sha256": "2a2e94b1cdededffaa8d9c75ce6ab1a8dfb64882aa7f503661ad8ba02c336e23"
+      "bytes": 3293140,
+      "sha256": "57d42362a8946bf51b4d2037c45be28307b0b7f5fc3c11c8cd34b1ced2c3ee43"
     },
     {
       "path": "tables\\by_game\\114234\\stage4_game_summary.json",
-      "bytes": 5022,
-      "sha256": "ca1c9211ebd6297a1fac667e1d27f058db33416da6fd1b4a9c6ddf33d9c18222"
+      "bytes": 5706,
+      "sha256": "0896c73402721e772b1e82f2abbf6c3dba0887e3807c5bc537d687579522bbfb"
     },
     {
       "path": "tables\\by_game\\114169\\stage4_candidate_predictions.parquet",
-      "bytes": 2716212,
-      "sha256": "d9b44c49f0550b8e663beeab7da3c1a1af9704deec49d0cdc026e6b71d3e2e29"
+      "bytes": 3237281,
+      "sha256": "a3c1c7d0be7c34f1a6005f338ca33bf1845aee613df2468aab0ad620405b10bf"
     },
     {
       "path": "tables\\by_game\\114169\\stage4_game_summary.json",
-      "bytes": 5009,
-      "sha256": "d2246dc29466c1966b42e56afcc91b5c9487968d0d4c1f75dfa312d63e647a6c"
+      "bytes": 5693,
+      "sha256": "e1ee7478373cb9304203967a9e9df1b6b2bccbca8b75c4773e679f59f27b519b"
     },
     {
       "path": "tables\\by_game\\114099\\stage4_candidate_predictions.parquet",
-      "bytes": 2957647,
-      "sha256": "f51711d8e4c75d686e739eae4a2ca79647f6f348b4a9bb67ff3edde6cc3e066c"
+      "bytes": 3526558,
+      "sha256": "e63257bc19620fa5cc0171f1a82415aea6d4b2b0f10d91defe11c083e9753586"
     },
     {
       "path": "tables\\by_game\\114099\\stage4_game_summary.json",
-      "bytes": 5013,
-      "sha256": "152635c24d8b8b39a8f9794641e155defb9a80e7a5369841f41f1713fdfc8543"
+      "bytes": 5695,
+      "sha256": "b6cd33ed3e30a680f7b1a4e5a1e5d56b3f3b3a3c5f8cb4ba57428276344d4f63"
     },
     {
       "path": "tables\\by_game\\114086\\stage4_candidate_predictions.parquet",
-      "bytes": 3099768,
-      "sha256": "16734410943d1ae22d5d824ba67b7b561c40f8b9112b1bbcef5302099af28137"
+      "bytes": 3677412,
+      "sha256": "ca8322ddd8d9c3a39dfc9e2e988dcbd208630d59ab8e79f684d1f7b50b868d27"
     },
     {
       "path": "tables\\by_game\\114086\\stage4_game_summary.json",
-      "bytes": 5014,
-      "sha256": "1ae7bb263a45fcadcf95c02ab85f9189c8e9622f2232896ebd3bf5885fd38778"
+      "bytes": 5681,
+      "sha256": "45bef4428c1bea09e1ebe57b0571168997934fb476c59e1ee24ae7e8635f29b7"
     },
     {
       "path": "tables\\by_game\\178442\\stage4_candidate_predictions.parquet",
-      "bytes": 2913855,
-      "sha256": "d8594d0e00f19bd289cacde8949bea59575be5ef8bb85d8b0ee381a84133101a"
+      "bytes": 3486520,
+      "sha256": "1996f22424c0a807381d6d2106c47269fd0908beb7ed8a92bc497795932ccef6"
     },
     {
       "path": "tables\\by_game\\178442\\stage4_game_summary.json",
-      "bytes": 5022,
-      "sha256": "125aee885268181b667767965f09119057a7ec7e0e65f99f22eb7e07d10a214c"
+      "bytes": 5701,
+      "sha256": "ef12875bbdb30bee0b77faf71dee1f7c360e3191c4373a165b4caf7394c215b0"
     },
     {
       "path": "tables\\by_game\\179612\\stage4_candidate_predictions.parquet",
-      "bytes": 2831626,
-      "sha256": "97c9e23cb289f3c179eceb0f2cf7298f71e5fc0a27ffe9328568ea77ccc1f1e1"
+      "bytes": 3373831,
+      "sha256": "206302b29f95cb32a5895f990ab539a01efecece49ed2412e6fc50a855076ea1"
     },
     {
       "path": "tables\\by_game\\179612\\stage4_game_summary.json",
-      "bytes": 5017,
-      "sha256": "21a188d1d38834c7ef34b9a1939ed2ba0c13e9fe2f12a151e7fd919fd52a921e"
+      "bytes": 5691,
+      "sha256": "9c9e1991c81f506fa9b3a9adcbea6f5244f4c73a236a50b9f013dda87a25b2ac"
     },
     {
       "path": "tables\\by_game\\184439\\stage4_candidate_predictions.parquet",
-      "bytes": 2599864,
-      "sha256": "deec930b1c87a7345b7e45565587d8506dfb2feeea7b9d4227085703b263bca7"
+      "bytes": 3086521,
+      "sha256": "367a09e76a2f472266a5738ce47e6a700d1b77934912a7604fe9f9e91b0f45be"
     },
     {
       "path": "tables\\by_game\\184439\\stage4_game_summary.json",
-      "bytes": 5016,
-      "sha256": "02d65d76d514fa06969d4117a1e74c4d517c40362b5f6b77ffdd39f417c05aae"
+      "bytes": 5699,
+      "sha256": "d418d2987d85d6504b7954b698683bca2a3cda47ad59be905ca7becb31b84ded"
     },
     {
       "path": "tables\\by_game\\188630\\stage4_candidate_predictions.parquet",
-      "bytes": 3185666,
-      "sha256": "aa179f641ff4ce954ca93bb8c4a0b83bd347097367a282160a516c9e390a5553"
+      "bytes": 3787078,
+      "sha256": "c87dda1f1cc02d0497e4bb9ba40cb5ccafcdd9a9e3b1fe06758b5d25078d012c"
     },
     {
       "path": "tables\\by_game\\188630\\stage4_game_summary.json",
-      "bytes": 5024,
-      "sha256": "25d9e8b77067f254fdeba39b44c029067df05d880327ce3ace66a8e0201ee7fd"
+      "bytes": 5703,
+      "sha256": "ec0f743ca68554cc02243a9e284b314fe8d59c8ab7106c19368d275a1bdd0fc2"
     },
     {
       "path": "tables\\by_game\\191313\\stage4_candidate_predictions.parquet",
-      "bytes": 2794955,
-      "sha256": "63019284788f208e843cd2f8e951d6c331454cbc92df4a98df2845a5cb07202f"
+      "bytes": 3327099,
+      "sha256": "bafe4fded67c9866fdd907f75544f66ab76de912defd3df4055b4d80d548cab3"
     },
     {
       "path": "tables\\by_game\\191313\\stage4_game_summary.json",
-      "bytes": 5016,
-      "sha256": "6da5415989fe7ecd0395bbdce1ef4a869216d155a476372260bb81546798a2f8"
+      "bytes": 5699,
+      "sha256": "a28c194ad04b03f9d33ebb923bdb0a9cf74a32eefa4d8cf95daefe34a9bb6fe9"
     }
   ],
   "verification": "`files` must hash-verify exactly (see verify_output_manifest). `sign_off_files` are expected to change when a human records approval, so they are provenance only."

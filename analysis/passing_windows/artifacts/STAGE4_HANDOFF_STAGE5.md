@@ -1,6 +1,6 @@
 # Stage 4 → Stage 5 handoff
 
-**Status:** Stage 4 component models complete (`stage4_sklearn_logo_v2`).
+**Status:** Stage 4 component models complete (`stage4_sklearn_logo_v3`).
 
 ## Primary table Stage 5 must consume
 
@@ -15,8 +15,9 @@ Join keys: `(gameId, touchId, frameIdx, candidateId)` — aligns 1:1 with
 |---|---|
 | `q_passability_model` | Calibrated P(complete to j \| state) |
 | `q_ablation_*` | Ablation probabilities |
-| `V_catch_model` | E[next-3s points \| projected catch]; trained on observed-catch mask |
-| `V_catch_ablation_all_candidates` | Same target; all-candidate training sensitivity |
+| `V_catch_model` | Stacked E[next-3s points \| projected catch]; observed-catch train |
+| `V_catch_ablation_ridge_splines` / `_hist_gbrt` / `_two_stage` | Family components |
+| `V_catch_ablation_all_candidates` | All-candidate ridge sensitivity |
 | `V_keep_model` | E[next-3s points \| keep / no-pass state] |
 | `V_fail` | Primary 0 |
 | `Q_option_model` | q·V_catch (NaN if rejected_outside_support) |
@@ -27,7 +28,7 @@ Join keys: `(gameId, touchId, frameIdx, candidateId)` — aligns 1:1 with
 
 - Rows: **190348**
 - Held-out passability log loss: **0.3475089980885733**
-- Choice rank accuracy: **0.7557425517398226**
+- Choice rank accuracy: **0.7566522629065272**
 
 ## Dual sampling (unchanged from Stage 3)
 

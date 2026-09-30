@@ -2,7 +2,7 @@
 
 **Freeze ID:** `passing_windows_stage0_20250924`  
 **Narrow-path lock:** `passing_windows_stage2_narrow_path_20260924`  
-**Model version:** `stage4_sklearn_logo_v2`  
+**Model version:** `stage4_sklearn_logo_v3`  
 **Validation:** nested leave-one-game-out (never random frame/touch/chance splits)
 
 ## Population
@@ -31,33 +31,42 @@
 ## Catch value V_catch (held-out, observed-catch mask)
 
 - Training population: true-receiver release ∪ ±0.4s 5 Hz true-receiver rows
-- RMSE: **0.6490**
-- MAE: **0.3449**
-- R²: **0.1100**
-- Spearman: **0.3181**
+- Primary predictor: stacked ridge + HistGBRT + two-stage shot composition
+- RMSE: **0.6458**
+- MAE: **0.3346**
+- R²: **0.1188**
+- Spearman: **0.3230**
 - N: **8453**
-- Ablation all-candidates on same mask — RMSE: **0.6657**, R²: **0.0636**
+- Ablation all-candidates ridge on same mask — RMSE: **0.6657**, R²: **0.0636**
 - Outcome source: shots + free_throws next-3s points (not chances.ptsScored)
+
+### Family ablations on observed-catch mask
+
+| Family | RMSE | MAE | R² | Spearman | N |
+|---|---:|---:|---:|---:|---:|
+| `ridge_splines` | 0.6490 | 0.3449 | 0.1100 | 0.3181 | 8453 |
+| `hist_gbrt` | 0.6516 | 0.3235 | 0.1029 | 0.3061 | 8453 |
+| `two_stage` | 0.6517 | 0.3215 | 0.1027 | 0.3119 | 8453 |
 
 ### Per-game observed-catch V_catch
 
 | Game | RMSE | MAE | R² | Spearman | N |
 |---:|---:|---:|---:|---:|---:|
-| 114086 | 0.6781 | 0.3395 | 0.0676 | 0.2640 | 942 |
-| 114099 | 0.6473 | 0.3663 | 0.1250 | 0.3399 | 836 |
-| 114169 | 0.6514 | 0.3464 | 0.1232 | 0.3324 | 799 |
-| 114234 | 0.6500 | 0.3375 | 0.1336 | 0.3339 | 824 |
-| 114243 | 0.5874 | 0.3172 | 0.0195 | 0.2385 | 919 |
-| 178442 | 0.6697 | 0.3516 | 0.1183 | 0.3413 | 782 |
-| 179612 | 0.6349 | 0.3320 | 0.1360 | 0.3379 | 937 |
-| 184439 | 0.6640 | 0.3523 | 0.1356 | 0.3531 | 780 |
-| 188630 | 0.5081 | 0.2845 | 0.0652 | 0.2859 | 869 |
-| 191313 | 0.7892 | 0.4380 | 0.1058 | 0.3601 | 765 |
+| 114086 | 0.6695 | 0.3270 | 0.0909 | 0.2778 | 942 |
+| 114099 | 0.6379 | 0.3571 | 0.1502 | 0.3609 | 836 |
+| 114169 | 0.6455 | 0.3325 | 0.1391 | 0.3449 | 799 |
+| 114234 | 0.6553 | 0.3359 | 0.1193 | 0.3275 | 824 |
+| 114243 | 0.5898 | 0.3060 | 0.0113 | 0.2448 | 919 |
+| 178442 | 0.6651 | 0.3398 | 0.1305 | 0.3534 | 782 |
+| 179612 | 0.6331 | 0.3195 | 0.1408 | 0.3421 | 937 |
+| 184439 | 0.6661 | 0.3423 | 0.1302 | 0.3401 | 780 |
+| 188630 | 0.4988 | 0.2720 | 0.0993 | 0.2887 | 869 |
+| 191313 | 0.7861 | 0.4312 | 0.1127 | 0.3600 | 765 |
 
 ## Choice model (held-out release states)
 
-- Rank accuracy: **0.756**
-- Choice log loss: **0.6431**
+- Rank accuracy: **0.757**
+- Choice log loss: **0.6424**
 - N release sets: **4397**
 
 ## Formulas
@@ -73,14 +82,14 @@
 - Loss weighting for class imbalance applied **inside training folds only**
 - Fold-internal logistic (Platt) recalibration of passability scores
 - Narrow-path: completion labels only on `completion_label_eligible`
-- V_catch v2: trained on observed-catch mask; scored on all candidates;
-  `V_catch_ablation_all_candidates` retains v1-style training for comparison
+- V_catch v3: observed-catch training + stacked ridge/HistGBRT/two-stage
+  (inner-LOGO non-negative blend); `V_catch_ablation_*` retain components
 
 ## Observed-catch accept check (design §2)
 
-- ΔR² vs all-candidate ablation on same mask: **0.0463** (accept ≥ +0.05)
-- Relative RMSE drop vs ablation: **0.0251** (accept ≥ 0.10)
-- Per-game R² wins vs ablation: see table above (target ≥ 7/10; measured 9/10 on v2 ship)
+- ΔR² vs all-candidate ablation on same mask: **0.0552** (accept ≥ +0.05)
+- Relative RMSE drop vs ablation: **0.0299** (accept ≥ 0.10)
+- Per-game R² wins vs ablation: see table above (target ≥ 7/10)
 
 ## Per-game passability
 
@@ -99,13 +108,13 @@
 
 ## Game run summaries
 
-- game `114243` fold `fold_holdout_114243`: 18376 rows, cached=True, elapsed=9.71s
-- game `114234` fold `fold_holdout_114234`: 18344 rows, cached=True, elapsed=8.64s
-- game `114169` fold `fold_holdout_114169`: 18076 rows, cached=True, elapsed=8.29s
-- game `114099` fold `fold_holdout_114099`: 19604 rows, cached=True, elapsed=8.43s
-- game `114086` fold `fold_holdout_114086`: 20480 rows, cached=True, elapsed=8.89s
-- game `178442` fold `fold_holdout_178442`: 19580 rows, cached=True, elapsed=8.4s
-- game `179612` fold `fold_holdout_179612`: 18972 rows, cached=True, elapsed=9.24s
-- game `184439` fold `fold_holdout_184439`: 17288 rows, cached=True, elapsed=8.75s
-- game `188630` fold `fold_holdout_188630`: 21128 rows, cached=True, elapsed=8.18s
-- game `191313` fold `fold_holdout_191313`: 18500 rows, cached=True, elapsed=8.16s
+- game `114243` fold `fold_holdout_114243`: 18376 rows, cached=True, elapsed=29.22s
+- game `114234` fold `fold_holdout_114234`: 18344 rows, cached=True, elapsed=25.67s
+- game `114169` fold `fold_holdout_114169`: 18076 rows, cached=True, elapsed=24.24s
+- game `114099` fold `fold_holdout_114099`: 19604 rows, cached=True, elapsed=24.28s
+- game `114086` fold `fold_holdout_114086`: 20480 rows, cached=True, elapsed=23.52s
+- game `178442` fold `fold_holdout_178442`: 19580 rows, cached=True, elapsed=23.76s
+- game `179612` fold `fold_holdout_179612`: 18972 rows, cached=True, elapsed=23.26s
+- game `184439` fold `fold_holdout_184439`: 17288 rows, cached=True, elapsed=24.18s
+- game `188630` fold `fold_holdout_188630`: 21128 rows, cached=True, elapsed=33.31s
+- game `191313` fold `fold_holdout_191313`: 18500 rows, cached=True, elapsed=43.05s

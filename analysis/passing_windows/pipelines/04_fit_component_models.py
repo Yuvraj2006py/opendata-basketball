@@ -172,7 +172,7 @@ def process_fold(
     )
     pass_pred = predict_passability_table(test, pass_fits, primary=PRIMARY_ABLATION)
 
-    # B. Catch value (primary: observed-catch; ablation: all-candidates)
+    # B. Catch value (primary: stacked observed-catch; ablation: all-candidates ridge)
     catch_fit = fit_catch_value(
         train,
         shots,
@@ -182,6 +182,7 @@ def process_fold(
         random_state=random_state,
         events_index=events_index,
         training_population="observed_catch",
+        model_family="stack",
     )
     catch_pred = predict_catch_value(test, catch_fit)
     catch_fit_all = fit_catch_value(
@@ -193,6 +194,8 @@ def process_fold(
         random_state=random_state,
         events_index=events_index,
         training_population="all_candidates",
+        model_family="ridge_splines",
+        stack_inner_logo=False,
     )
     catch_pred_all = predict_catch_value(test, catch_fit_all)
 
@@ -248,7 +251,7 @@ def process_fold(
     pred["V_catch_model"] = catch_pred["V_catch_model"].to_numpy()
     pred["V_catch_ablation_all_candidates"] = catch_pred_all["V_catch_model"].to_numpy()
     for c in catch_pred.columns:
-        if c.startswith("V_catch_sec_"):
+        if c.startswith("V_catch_ablation_") or c.startswith("V_catch_sec_"):
             pred[c] = catch_pred[c].to_numpy()
     pred["V_keep_model"] = v_keep.to_numpy()
     pred = attach_option_columns(pred, mask_rejected_for_counterfactual=True)
@@ -343,6 +346,9 @@ def process_fold(
         "catch_holdout_all_candidate_rows": holdout_catch_all_rows,
         "catch_train_n": catch_fit.n_train,
         "catch_train_population": catch_fit.training_population,
+        "catch_model_family": catch_fit.model_family,
+        "catch_blend_weights": catch_fit.blend_weights,
+        "catch_family_train_metrics": catch_fit.family_train_metrics,
         "keep_train": keep_fit.train_metrics,
         "choice_train": choice_fit.train_metrics,
         "choice_holdout": choice_holdout,
@@ -406,15 +412,31 @@ def render_model_report(
             "## Catch value V_catch (held-out, observed-catch mask)",
             "",
             "- Training population: true-receiver release ∪ ±0.4s 5 Hz true-receiver rows",
+            "- Primary predictor: stacked ridge + HistGBRT + two-stage shot composition",
             f"- RMSE: **{catch.get('rmse', float('nan')):.4f}**",
             f"- MAE: **{catch.get('mae', float('nan')):.4f}**",
             f"- R²: **{catch.get('r2', float('nan')):.4f}**",
             f"- Spearman: **{catch.get('spearman', float('nan')):.4f}**",
             f"- N: **{int(catch.get('n', 0))}**",
-            f"- Ablation all-candidates on same mask — RMSE: "
+            f"- Ablation all-candidates ridge on same mask — RMSE: "
             f"**{catch_abl.get('rmse', float('nan')):.4f}**, R²: "
             f"**{catch_abl.get('r2', float('nan')):.4f}**",
             "- Outcome source: shots + free_throws next-3s points (not chances.ptsScored)",
+            "",
+            "### Family ablations on observed-catch mask",
+            "",
+            "| Family | RMSE | MAE | R² | Spearman | N |",
+            "|---|---:|---:|---:|---:|---:|",
+        ]
+    )
+    for name, m in fold_metrics.get("catch_family_holdout", {}).items():
+        lines.append(
+            f"| `{name}` | {m.get('rmse', float('nan')):.4f} | "
+            f"{m.get('mae', float('nan')):.4f} | {m.get('r2', float('nan')):.4f} | "
+            f"{m.get('spearman', float('nan')):.4f} | {int(m.get('n', 0))} |"
+        )
+    lines.extend(
+        [
             "",
             "### Per-game observed-catch V_catch",
             "",
@@ -450,8 +472,8 @@ def render_model_report(
             "- Loss weighting for class imbalance applied **inside training folds only**",
             "- Fold-internal logistic (Platt) recalibration of passability scores",
             "- Narrow-path: completion labels only on `completion_label_eligible`",
-            "- V_catch v2: trained on observed-catch mask; scored on all candidates;",
-            "  `V_catch_ablation_all_candidates` retains v1-style training for comparison",
+            "- V_catch v3: observed-catch training + stacked ridge/HistGBRT/two-stage",
+            "  (inner-LOGO non-negative blend); `V_catch_ablation_*` retain components",
             "",
             "## Observed-catch accept check (design §2)",
             "",
@@ -469,7 +491,7 @@ def render_model_report(
         [
             f"- ΔR² vs all-candidate ablation on same mask: **{delta_r2:.4f}** (accept ≥ +0.05)",
             f"- Relative RMSE drop vs ablation: **{rmse_rel:.4f}** (accept ≥ 0.10)",
-            "- Per-game R² wins vs ablation: see table above (target ≥ 7/10; measured 9/10 on v2 ship)",
+            "- Per-game R² wins vs ablation: see table above (target ≥ 7/10)",
             "",
             "## Per-game passability",
             "",
@@ -529,13 +551,13 @@ def render_verification(fold_metrics: dict[str, Any], n_rows: int) -> str:
             "`predError`, followed by L2 `LogisticRegression` / `Ridge`. This is a",
             "documented pragmatic substitute; coefficients are not GAM smooths.",
             "",
-            "## V_catch training population (v2)",
+            "## V_catch training population (v3)",
             "",
-            "`stage4_sklearn_logo_v2` trains `V_catch` on observed true-receiver states",
-            "(completion-eligible release ∪ `is_model_5hz_frame` within ±0.4s on the",
-            "true-receiver trajectory). Predictions remain on all candidate rows.",
-            "`V_catch_ablation_all_candidates` retains the prior all-candidate training",
-            "recipe for sensitivity comparison on the observed-catch evaluation mask.",
+            "`stage4_sklearn_logo_v3` trains `V_catch` on observed true-receiver states",
+            "(completion-eligible release ∪ `is_model_5hz_frame` within ±0.4s).",
+            "Primary score is a non-negative blend of ridge+splines, HistGradientBoosting,",
+            "and two-stage P(any_shot)×E[points|shot] with blend weights from leave-one-game",
+            "OOF inside each outer training fold. Predictions remain on all candidate rows.",
             "",
             "## Key metrics snapshot",
             "",
@@ -578,8 +600,9 @@ def render_handoff(n_rows: int, fold_metrics: dict[str, Any]) -> str:
             "|---|---|",
             "| `q_passability_model` | Calibrated P(complete to j \\| state) |",
             "| `q_ablation_*` | Ablation probabilities |",
-            "| `V_catch_model` | E[next-3s points \\| projected catch]; trained on observed-catch mask |",
-            "| `V_catch_ablation_all_candidates` | Same target; all-candidate training sensitivity |",
+            "| `V_catch_model` | Stacked E[next-3s points \\| projected catch]; observed-catch train |",
+            "| `V_catch_ablation_ridge_splines` / `_hist_gbrt` / `_two_stage` | Family components |",
+            "| `V_catch_ablation_all_candidates` | All-candidate ridge sensitivity |",
             "| `V_keep_model` | E[next-3s points \\| keep / no-pass state] |",
             "| `V_fail` | Primary 0 |",
             "| `Q_option_model` | q·V_catch (NaN if rejected_outside_support) |",
@@ -732,9 +755,23 @@ def main(argv: list[str] | None = None) -> int:
         features, shots, free_throws, use_projected_catch=True, events_index=events_index
     )
     merged_catch = all_pred[
-        JOIN_KEYS + ["V_catch_model", "V_catch_ablation_all_candidates"]
+        JOIN_KEYS
+        + [
+            c
+            for c in all_pred.columns
+            if c == "V_catch_model" or c.startswith("V_catch_ablation_")
+        ]
     ].merge(
-        catch_y[JOIN_KEYS + ["catch_points_next_3s", "completion_label_eligible", "is_true_receiver", "is_model_5hz_frame", "is_pass_release_frame"]],
+        catch_y[
+            JOIN_KEYS
+            + [
+                "catch_points_next_3s",
+                "completion_label_eligible",
+                "is_true_receiver",
+                "is_model_5hz_frame",
+                "is_pass_release_frame",
+            ]
+        ],
         on=JOIN_KEYS,
         how="left",
     )
@@ -750,11 +787,19 @@ def main(argv: list[str] | None = None) -> int:
     overall_catch_ablation = evaluate_catch_predictions(
         merged_catch.loc[obs_mask, "catch_points_next_3s"].to_numpy(),
         merged_catch.loc[obs_mask, "V_catch_ablation_all_candidates"].to_numpy(),
-    )
+    ) if "V_catch_ablation_all_candidates" in merged_catch.columns else {}
     overall_catch_all_rows = evaluate_catch_predictions(
         merged_catch["catch_points_next_3s"].to_numpy(),
         merged_catch["V_catch_model"].to_numpy(),
     )
+    catch_family_holdout: dict[str, Any] = {}
+    for fam in ("ridge_splines", "hist_gbrt", "two_stage"):
+        col = f"V_catch_ablation_{fam}"
+        if col in merged_catch.columns:
+            catch_family_holdout[fam] = evaluate_catch_predictions(
+                merged_catch.loc[obs_mask, "catch_points_next_3s"].to_numpy(),
+                merged_catch.loc[obs_mask, col].to_numpy(),
+            )
     per_game_catch: list[dict[str, Any]] = []
     for gid, grp in merged_catch.loc[obs_mask].groupby("gameId", sort=True):
         m = evaluate_catch_predictions(
@@ -812,6 +857,7 @@ def main(argv: list[str] | None = None) -> int:
         "overall_catch": overall_catch,
         "overall_catch_ablation_all_candidates_on_observed_mask": overall_catch_ablation,
         "overall_catch_all_candidate_rows": overall_catch_all_rows,
+        "catch_family_holdout": catch_family_holdout,
         "per_game_catch_observed": per_game_catch,
         "overall_choice": overall_choice,
         "feature_sets": {

@@ -4,7 +4,7 @@
       "gameId": 114243,
       "fold_id": "fold_holdout_114243",
       "cached": true,
-      "elapsed_seconds": 9.71,
+      "elapsed_seconds": 29.22,
       "n_rows": 18376,
       "n_completion_eligible": 1968,
       "n_true_receiver": 492,
@@ -123,16 +123,16 @@
       },
       "catch_train": {
         "n": 7501.0,
-        "rmse": 0.6522443466617662,
-        "mae": 0.3643046971220893,
-        "r2": 0.12786931963153425
+        "rmse": 0.5915664375899725,
+        "mae": 0.3067611781381817,
+        "r2": 0.28258910075791643
       },
       "catch_holdout": {
         "n": 919.0,
-        "rmse": 0.587361221089172,
-        "mae": 0.3172217297977163,
-        "r2": 0.019538030256049832,
-        "spearman": 0.23851902740895659
+        "rmse": 0.5898211171625454,
+        "mae": 0.30598572366522786,
+        "r2": 0.011308392682981894,
+        "spearman": 0.24476896001556966
       },
       "catch_holdout_ablation_all_candidates_on_observed_mask": {
         "n": 919.0,
@@ -143,13 +143,39 @@
       },
       "catch_holdout_all_candidate_rows": {
         "n": 18376.0,
-        "rmse": 0.6648315675182296,
-        "mae": 0.40330726212157547,
-        "r2": -0.05088732353316683,
-        "spearman": 0.1300925530155993
+        "rmse": 0.6689307430628436,
+        "mae": 0.39687396785455886,
+        "r2": -0.06388626076150294,
+        "spearman": 0.11963965021844992
       },
       "catch_train_n": 7501,
       "catch_train_population": "observed_catch",
+      "catch_model_family": "stack",
+      "catch_blend_weights": {
+        "ridge_splines": 0.4260058363778649,
+        "hist_gbrt": 0.31774006923468473,
+        "two_stage": 0.2562540943874504
+      },
+      "catch_family_train_metrics": {
+        "ridge_splines": {
+          "n": 7501.0,
+          "rmse": 0.6502141493519814,
+          "mae": 0.3482469404811821,
+          "r2": 0.13329011556539283
+        },
+        "hist_gbrt": {
+          "n": 7501.0,
+          "rmse": 0.5473491729622098,
+          "mae": 0.2701638160137525,
+          "r2": 0.38582823072676886
+        },
+        "two_stage": {
+          "n": 7501.0,
+          "rmse": 0.5759629534922945,
+          "mae": 0.28317931103051674,
+          "r2": 0.3199356364575998
+        }
+      },
       "keep_train": {
         "n": 38888.0,
         "rmse": 0.6218419677672772,
@@ -158,23 +184,23 @@
       },
       "choice_train": {
         "n_releases": 3905.0,
-        "rank_accuracy": 0.7554417413572343,
-        "choice_log_loss": 0.6363135818731775,
-        "binary_log_loss": 0.42095668621022114
+        "rank_accuracy": 0.7572343149807939,
+        "choice_log_loss": 0.6344099688273027,
+        "binary_log_loss": 0.42061566241847914
       },
       "choice_holdout": {
         "n_releases": 492.0,
         "rank_accuracy": 0.766260162601626,
-        "choice_log_loss": 0.643031885437541,
-        "binary_log_loss": 0.4056921482820231
+        "choice_log_loss": 0.6425540405934337,
+        "binary_log_loss": 0.4057213200229248
       },
-      "model_version": "stage4_sklearn_logo_v2"
+      "model_version": "stage4_sklearn_logo_v3"
     },
     {
       "gameId": 114234,
       "fold_id": "fold_holdout_114234",
       "cached": true,
-      "elapsed_seconds": 8.64,
+      "elapsed_seconds": 25.67,
       "n_rows": 18344,
       "n_completion_eligible": 1660,
       "n_true_receiver": 415,
@@ -293,16 +319,16 @@
       },
       "catch_train": {
         "n": 7595.0,
-        "rmse": 0.6450592672931237,
-        "mae": 0.35459053346638625,
-        "r2": 0.11799645777662038
+        "rmse": 0.5827205332075692,
+        "mae": 0.2989341080416817,
+        "r2": 0.28023332602533524
       },
       "catch_holdout": {
         "n": 824.0,
-        "rmse": 0.6499892701615444,
-        "mae": 0.3374590795615266,
-        "r2": 0.13357972845399846,
-        "spearman": 0.33394501890193035
+        "rmse": 0.6553239844244069,
+        "mae": 0.33585189552312267,
+        "r2": 0.11929927030926524,
+        "spearman": 0.3274869170872376
       },
       "catch_holdout_ablation_all_candidates_on_observed_mask": {
         "n": 824.0,
@@ -313,13 +339,39 @@
       },
       "catch_holdout_all_candidate_rows": {
         "n": 18344.0,
-        "rmse": 0.6684740798956633,
-        "mae": 0.4113013864735285,
-        "r2": -0.039239510112791365,
-        "spearman": 0.12087453783325582
+        "rmse": 0.6826518946911513,
+        "mae": 0.41806811950787126,
+        "r2": -0.08378991416187942,
+        "spearman": 0.10162627903262646
       },
       "catch_train_n": 7595,
       "catch_train_population": "observed_catch",
+      "catch_model_family": "stack",
+      "catch_blend_weights": {
+        "ridge_splines": 0.4255158930531552,
+        "hist_gbrt": 0.5312327095171272,
+        "two_stage": 0.043251397429717724
+      },
+      "catch_family_train_metrics": {
+        "ridge_splines": {
+          "n": 7595.0,
+          "rmse": 0.6433399809533193,
+          "mae": 0.33983011650056877,
+          "r2": 0.12269182719256277
+        },
+        "hist_gbrt": {
+          "n": 7595.0,
+          "rmse": 0.5469036740514559,
+          "mae": 0.26757189564399525,
+          "r2": 0.36599486802576875
+        },
+        "two_stage": {
+          "n": 7595.0,
+          "rmse": 0.574607245615243,
+          "mae": 0.28179550588616337,
+          "r2": 0.30013659167445716
+        }
+      },
       "keep_train": {
         "n": 38829.0,
         "rmse": 0.6210272847714404,
@@ -329,22 +381,22 @@
       "choice_train": {
         "n_releases": 3982.0,
         "rank_accuracy": 0.757659467604219,
-        "choice_log_loss": 0.6418871737245846,
-        "binary_log_loss": 0.42108200963617964
+        "choice_log_loss": 0.6414332179699542,
+        "binary_log_loss": 0.42091237922895497
       },
       "choice_holdout": {
         "n_releases": 415.0,
-        "rank_accuracy": 0.763855421686747,
-        "choice_log_loss": 0.6173734408011254,
-        "binary_log_loss": 0.4295272211589837
+        "rank_accuracy": 0.7662650602409639,
+        "choice_log_loss": 0.6168290807165233,
+        "binary_log_loss": 0.4294844613059373
       },
-      "model_version": "stage4_sklearn_logo_v2"
+      "model_version": "stage4_sklearn_logo_v3"
     },
     {
       "gameId": 114169,
       "fold_id": "fold_holdout_114169",
       "cached": true,
-      "elapsed_seconds": 8.29,
+      "elapsed_seconds": 24.24,
       "n_rows": 18076,
       "n_completion_eligible": 1704,
       "n_true_receiver": 426,
@@ -463,16 +515,16 @@
       },
       "catch_train": {
         "n": 7618.0,
-        "rmse": 0.6451893149578164,
-        "mae": 0.355763110078221,
-        "r2": 0.11868299422865103
+        "rmse": 0.5955207627300583,
+        "mae": 0.3093724884392885,
+        "r2": 0.24915268360133935
       },
       "catch_holdout": {
         "n": 799.0,
-        "rmse": 0.6514090373133113,
-        "mae": 0.34640850891238917,
-        "r2": 0.1231750119717897,
-        "spearman": 0.3323601209185389
+        "rmse": 0.645451549876071,
+        "mae": 0.33246601263379993,
+        "r2": 0.13913974962138365,
+        "spearman": 0.34494518772055105
       },
       "catch_holdout_ablation_all_candidates_on_observed_mask": {
         "n": 799.0,
@@ -483,13 +535,39 @@
       },
       "catch_holdout_all_candidate_rows": {
         "n": 18076.0,
-        "rmse": 0.7194869704684186,
-        "mae": 0.4335861915661288,
-        "r2": -0.02461870727610438,
-        "spearman": 0.11076950729732885
+        "rmse": 0.7240937480271807,
+        "mae": 0.4325151319646783,
+        "r2": -0.037781702663768346,
+        "spearman": 0.10771486791025114
       },
       "catch_train_n": 7618,
       "catch_train_population": "observed_catch",
+      "catch_model_family": "stack",
+      "catch_blend_weights": {
+        "ridge_splines": 0.5522637595496186,
+        "hist_gbrt": 0.38499698879202715,
+        "two_stage": 0.06273925165835419
+      },
+      "catch_family_train_metrics": {
+        "ridge_splines": {
+          "n": 7618.0,
+          "rmse": 0.6434048403989495,
+          "mae": 0.3404819864854996,
+          "r2": 0.12355137272355987
+        },
+        "hist_gbrt": {
+          "n": 7618.0,
+          "rmse": 0.5445836657812307,
+          "mae": 0.2685168419632588,
+          "r2": 0.3721049786525066
+        },
+        "two_stage": {
+          "n": 7618.0,
+          "rmse": 0.5818774670239785,
+          "mae": 0.2862394825153047,
+          "r2": 0.2831622024833712
+        }
+      },
       "keep_train": {
         "n": 38899.0,
         "rmse": 0.6145851315419084,
@@ -498,23 +576,23 @@
       },
       "choice_train": {
         "n_releases": 3971.0,
-        "rank_accuracy": 0.754973558297658,
-        "choice_log_loss": 0.6473511774078934,
-        "binary_log_loss": 0.4234635067441852
+        "rank_accuracy": 0.7559808612440191,
+        "choice_log_loss": 0.6463643964984095,
+        "binary_log_loss": 0.423300334602632
       },
       "choice_holdout": {
         "n_releases": 426.0,
         "rank_accuracy": 0.7863849765258216,
-        "choice_log_loss": 0.5481421399931948,
-        "binary_log_loss": 0.4001967498675632
+        "choice_log_loss": 0.5478623027213156,
+        "binary_log_loss": 0.39996083522174103
       },
-      "model_version": "stage4_sklearn_logo_v2"
+      "model_version": "stage4_sklearn_logo_v3"
     },
     {
       "gameId": 114099,
       "fold_id": "fold_holdout_114099",
       "cached": true,
-      "elapsed_seconds": 8.43,
+      "elapsed_seconds": 24.28,
       "n_rows": 19604,
       "n_completion_eligible": 1692,
       "n_true_receiver": 423,
@@ -633,16 +711,16 @@
       },
       "catch_train": {
         "n": 7584.0,
-        "rmse": 0.6460101296690066,
-        "mae": 0.3572562004770032,
-        "r2": 0.11899746334645889
+        "rmse": 0.6087984266351912,
+        "mae": 0.31813041578540907,
+        "r2": 0.2175699064991421
       },
       "catch_holdout": {
         "n": 836.0,
-        "rmse": 0.647321072446405,
-        "mae": 0.3662944025806423,
-        "r2": 0.12504191290586975,
-        "spearman": 0.3398886014110039
+        "rmse": 0.6379370530443653,
+        "mae": 0.35714907310856886,
+        "r2": 0.15022604652396143,
+        "spearman": 0.3609135967495101
       },
       "catch_holdout_ablation_all_candidates_on_observed_mask": {
         "n": 836.0,
@@ -653,13 +731,39 @@
       },
       "catch_holdout_all_candidate_rows": {
         "n": 19604.0,
-        "rmse": 0.6426035071790356,
-        "mae": 0.3956612180709031,
-        "r2": -0.02960158208703878,
-        "spearman": 0.1477835050447975
+        "rmse": 0.6455025985911292,
+        "mae": 0.3943814107439626,
+        "r2": -0.03891258722959012,
+        "spearman": 0.14081462022763452
       },
       "catch_train_n": 7584,
       "catch_train_population": "observed_catch",
+      "catch_model_family": "stack",
+      "catch_blend_weights": {
+        "ridge_splines": 0.6283691503400448,
+        "hist_gbrt": 0.21348138886312784,
+        "two_stage": 0.15814946079682732
+      },
+      "catch_family_train_metrics": {
+        "ridge_splines": {
+          "n": 7584.0,
+          "rmse": 0.6441093628389314,
+          "mae": 0.3420801222989788,
+          "r2": 0.12417421444860244
+        },
+        "hist_gbrt": {
+          "n": 7584.0,
+          "rmse": 0.5502395659054296,
+          "mae": 0.2722312930040009,
+          "r2": 0.360850969197801
+        },
+        "two_stage": {
+          "n": 7584.0,
+          "rmse": 0.579002473262536,
+          "mae": 0.2849298710134202,
+          "r2": 0.2922834679600461
+        }
+      },
       "keep_train": {
         "n": 38515.0,
         "rmse": 0.6236066948748406,
@@ -668,23 +772,23 @@
       },
       "choice_train": {
         "n_releases": 3974.0,
-        "rank_accuracy": 0.7657272269753397,
-        "choice_log_loss": 0.6191371203444076,
-        "binary_log_loss": 0.4131947711109827
+        "rank_accuracy": 0.7654755913437342,
+        "choice_log_loss": 0.6187546932949616,
+        "binary_log_loss": 0.413201909891781
       },
       "choice_holdout": {
         "n_releases": 423.0,
         "rank_accuracy": 0.6997635933806147,
-        "choice_log_loss": 0.825713609352837,
-        "binary_log_loss": 0.501253165393305
+        "choice_log_loss": 0.8247249873151306,
+        "binary_log_loss": 0.5013947942792449
       },
-      "model_version": "stage4_sklearn_logo_v2"
+      "model_version": "stage4_sklearn_logo_v3"
     },
     {
       "gameId": 114086,
       "fold_id": "fold_holdout_114086",
       "cached": true,
-      "elapsed_seconds": 8.89,
+      "elapsed_seconds": 23.52,
       "n_rows": 20480,
       "n_completion_eligible": 1924,
       "n_true_receiver": 481,
@@ -803,16 +907,16 @@
       },
       "catch_train": {
         "n": 7480.0,
-        "rmse": 0.64144819540016,
-        "mae": 0.3543837436830964,
-        "r2": 0.12661891050251828
+        "rmse": 0.5905638328865732,
+        "mae": 0.30642019153880623,
+        "r2": 0.25968883022925526
       },
       "catch_holdout": {
         "n": 942.0,
-        "rmse": 0.6780528953502041,
-        "mae": 0.33954611321618694,
-        "r2": 0.06758083235081136,
-        "spearman": 0.2640068493872229
+        "rmse": 0.6695098866268965,
+        "mae": 0.32695578757959903,
+        "r2": 0.09092852140605023,
+        "spearman": 0.277817587509517
       },
       "catch_holdout_ablation_all_candidates_on_observed_mask": {
         "n": 942.0,
@@ -823,13 +927,39 @@
       },
       "catch_holdout_all_candidate_rows": {
         "n": 20480.0,
-        "rmse": 0.698964587690226,
-        "mae": 0.41726400052627677,
-        "r2": -0.04332916237654638,
-        "spearman": 0.10651681771698256
+        "rmse": 0.7049768363944298,
+        "mae": 0.414514428685634,
+        "r2": -0.061355061068066874,
+        "spearman": 0.09586692424135922
       },
       "catch_train_n": 7480,
       "catch_train_population": "observed_catch",
+      "catch_model_family": "stack",
+      "catch_blend_weights": {
+        "ridge_splines": 0.5429554351161424,
+        "hist_gbrt": 0.4570445648838576,
+        "two_stage": 0.0
+      },
+      "catch_family_train_metrics": {
+        "ridge_splines": {
+          "n": 7480.0,
+          "rmse": 0.6396556694553354,
+          "mae": 0.33936027845736455,
+          "r2": 0.13149341416107596
+        },
+        "hist_gbrt": {
+          "n": 7480.0,
+          "rmse": 0.5455716164388137,
+          "mae": 0.2672883418248198,
+          "r2": 0.36819341968129793
+        },
+        "two_stage": {
+          "n": 7480.0,
+          "rmse": 0.5766429283419524,
+          "mae": 0.2828509677513843,
+          "r2": 0.29417904185534116
+        }
+      },
       "keep_train": {
         "n": 38357.0,
         "rmse": 0.6173370510398086,
@@ -838,23 +968,23 @@
       },
       "choice_train": {
         "n_releases": 3916.0,
-        "rank_accuracy": 0.7538304392236976,
-        "choice_log_loss": 0.6517291089182642,
-        "binary_log_loss": 0.4261671028053565
+        "rank_accuracy": 0.7548518896833504,
+        "choice_log_loss": 0.6513165476023615,
+        "binary_log_loss": 0.4260954915741592
       },
       "choice_holdout": {
         "n_releases": 481.0,
-        "rank_accuracy": 0.7920997920997921,
-        "choice_log_loss": 0.5325672780426455,
-        "binary_log_loss": 0.37208003966773917
+        "rank_accuracy": 0.7941787941787942,
+        "choice_log_loss": 0.532486902726328,
+        "binary_log_loss": 0.37196328797665185
       },
-      "model_version": "stage4_sklearn_logo_v2"
+      "model_version": "stage4_sklearn_logo_v3"
     },
     {
       "gameId": 178442,
       "fold_id": "fold_holdout_178442",
       "cached": true,
-      "elapsed_seconds": 8.4,
+      "elapsed_seconds": 23.76,
       "n_rows": 19580,
       "n_completion_eligible": 1716,
       "n_true_receiver": 429,
@@ -973,16 +1103,16 @@
       },
       "catch_train": {
         "n": 7641.0,
-        "rmse": 0.6429449524392453,
-        "mae": 0.35249575376406445,
-        "r2": 0.11945897732868072
+        "rmse": 0.5982555695880046,
+        "mae": 0.3094092331275318,
+        "r2": 0.23761294720689397
       },
       "catch_holdout": {
         "n": 782.0,
-        "rmse": 0.6697364079880985,
-        "mae": 0.35159869892702944,
-        "r2": 0.11832454965444883,
-        "spearman": 0.34127369872270885
+        "rmse": 0.6650937364145778,
+        "mae": 0.33975325437716286,
+        "r2": 0.13050588500324534,
+        "spearman": 0.35343638645702846
       },
       "catch_holdout_ablation_all_candidates_on_observed_mask": {
         "n": 782.0,
@@ -993,13 +1123,39 @@
       },
       "catch_holdout_all_candidate_rows": {
         "n": 19580.0,
-        "rmse": 0.7468370945536862,
-        "mae": 0.45023089393441384,
-        "r2": -0.024110004527071682,
-        "spearman": 0.10716306394193911
+        "rmse": 0.7503129759376568,
+        "mae": 0.44485323532238863,
+        "r2": -0.033664882169482935,
+        "spearman": 0.09600859389877557
       },
       "catch_train_n": 7641,
       "catch_train_population": "observed_catch",
+      "catch_model_family": "stack",
+      "catch_blend_weights": {
+        "ridge_splines": 0.5493854815975137,
+        "hist_gbrt": 0.28041191135441534,
+        "two_stage": 0.170202607048071
+      },
+      "catch_family_train_metrics": {
+        "ridge_splines": {
+          "n": 7641.0,
+          "rmse": 0.6412517724179184,
+          "mae": 0.3380853567432123,
+          "r2": 0.12409063768546835
+        },
+        "hist_gbrt": {
+          "n": 7641.0,
+          "rmse": 0.5478725136704714,
+          "mae": 0.2699640417778699,
+          "r2": 0.36061707079283745
+        },
+        "two_stage": {
+          "n": 7641.0,
+          "rmse": 0.5751917224942732,
+          "mae": 0.2818464783004043,
+          "r2": 0.2952626866308702
+        }
+      },
       "keep_train": {
         "n": 38533.0,
         "rmse": 0.6128791295342121,
@@ -1008,23 +1164,23 @@
       },
       "choice_train": {
         "n_releases": 3968.0,
-        "rank_accuracy": 0.7580645161290323,
-        "choice_log_loss": 0.6402301548369612,
-        "binary_log_loss": 0.41990020108727377
+        "rank_accuracy": 0.7598286290322581,
+        "choice_log_loss": 0.6390731275213211,
+        "binary_log_loss": 0.4198735295939461
       },
       "choice_holdout": {
         "n_releases": 429.0,
-        "rank_accuracy": 0.7552447552447552,
-        "choice_log_loss": 0.639867284657748,
-        "binary_log_loss": 0.41432459342200323
+        "rank_accuracy": 0.7575757575757576,
+        "choice_log_loss": 0.6395919837525122,
+        "binary_log_loss": 0.41425664383848376
       },
-      "model_version": "stage4_sklearn_logo_v2"
+      "model_version": "stage4_sklearn_logo_v3"
     },
     {
       "gameId": 179612,
       "fold_id": "fold_holdout_179612",
       "cached": true,
-      "elapsed_seconds": 9.24,
+      "elapsed_seconds": 23.26,
       "n_rows": 18972,
       "n_completion_eligible": 1956,
       "n_true_receiver": 489,
@@ -1143,16 +1299,16 @@
       },
       "catch_train": {
         "n": 7481.0,
-        "rmse": 0.6467281464362736,
-        "mae": 0.3600517877268666,
-        "r2": 0.11808007069145798
+        "rmse": 0.5994736498526547,
+        "mae": 0.312843028050985,
+        "r2": 0.2422502035195423
       },
       "catch_holdout": {
         "n": 937.0,
-        "rmse": 0.6348563133612799,
-        "mae": 0.33198898321156367,
-        "r2": 0.13596443201188613,
-        "spearman": 0.33794138414447356
+        "rmse": 0.6330933849624666,
+        "mae": 0.319453054017707,
+        "r2": 0.14075643889803058,
+        "spearman": 0.3420534629979817
       },
       "catch_holdout_ablation_all_candidates_on_observed_mask": {
         "n": 937.0,
@@ -1163,13 +1319,39 @@
       },
       "catch_holdout_all_candidate_rows": {
         "n": 18972.0,
-        "rmse": 0.732140327077211,
-        "mae": 0.4513122021247602,
-        "r2": 0.013449491070923747,
-        "spearman": 0.16633359313195487
+        "rmse": 0.738474340707918,
+        "mae": 0.44966018158913335,
+        "r2": -0.0036943666593378666,
+        "spearman": 0.1507454875844343
       },
       "catch_train_n": 7481,
       "catch_train_population": "observed_catch",
+      "catch_model_family": "stack",
+      "catch_blend_weights": {
+        "ridge_splines": 0.514767796425708,
+        "hist_gbrt": 0.24616605090628405,
+        "two_stage": 0.239066152668008
+      },
+      "catch_family_train_metrics": {
+        "ridge_splines": {
+          "n": 7481.0,
+          "rmse": 0.6448299296324839,
+          "mae": 0.3444262454671259,
+          "r2": 0.12324953314030962
+        },
+        "hist_gbrt": {
+          "n": 7481.0,
+          "rmse": 0.5484369353693689,
+          "mae": 0.2719682607058672,
+          "r2": 0.36578132985229783
+        },
+        "two_stage": {
+          "n": 7481.0,
+          "rmse": 0.5785309050330097,
+          "mae": 0.28692533495586653,
+          "r2": 0.2942697070068896
+        }
+      },
       "keep_train": {
         "n": 38735.0,
         "rmse": 0.6118875111404106,
@@ -1178,23 +1360,23 @@
       },
       "choice_train": {
         "n_releases": 3908.0,
-        "rank_accuracy": 0.7563971340839304,
-        "choice_log_loss": 0.6416870665638373,
-        "binary_log_loss": 0.42161136968403395
+        "rank_accuracy": 0.7574206755373593,
+        "choice_log_loss": 0.6400863930733434,
+        "binary_log_loss": 0.42135994376297836
       },
       "choice_holdout": {
         "n_releases": 489.0,
-        "rank_accuracy": 0.7668711656441718,
-        "choice_log_loss": 0.6090522861574913,
-        "binary_log_loss": 0.40808511350714266
+        "rank_accuracy": 0.7607361963190185,
+        "choice_log_loss": 0.609045835106096,
+        "binary_log_loss": 0.4083513120238934
       },
-      "model_version": "stage4_sklearn_logo_v2"
+      "model_version": "stage4_sklearn_logo_v3"
     },
     {
       "gameId": 184439,
       "fold_id": "fold_holdout_184439",
       "cached": true,
-      "elapsed_seconds": 8.75,
+      "elapsed_seconds": 24.18,
       "n_rows": 17288,
       "n_completion_eligible": 1684,
       "n_true_receiver": 421,
@@ -1313,16 +1495,16 @@
       },
       "catch_train": {
         "n": 7643.0,
-        "rmse": 0.643404193445115,
-        "mae": 0.35424444392205945,
-        "r2": 0.11789838431148503
+        "rmse": 0.5837154763021324,
+        "mae": 0.2987028492108469,
+        "r2": 0.27397218478440366
       },
       "catch_holdout": {
         "n": 780.0,
-        "rmse": 0.6640439561834717,
-        "mae": 0.35229136003560557,
-        "r2": 0.13564821652713044,
-        "spearman": 0.3531418334618451
+        "rmse": 0.6661313540699817,
+        "mae": 0.3423186024536267,
+        "r2": 0.13020555912476262,
+        "spearman": 0.3401087908310954
       },
       "catch_holdout_ablation_all_candidates_on_observed_mask": {
         "n": 780.0,
@@ -1333,13 +1515,39 @@
       },
       "catch_holdout_all_candidate_rows": {
         "n": 17288.0,
-        "rmse": 0.7480233465763928,
-        "mae": 0.45082015989979984,
-        "r2": 0.007611870997322079,
-        "spearman": 0.15611877437554245
+        "rmse": 0.7542333134841421,
+        "mae": 0.44112093908476674,
+        "r2": -0.008933811219204557,
+        "spearman": 0.14774787748206866
       },
       "catch_train_n": 7643,
       "catch_train_population": "observed_catch",
+      "catch_model_family": "stack",
+      "catch_blend_weights": {
+        "ridge_splines": 0.39781274713826165,
+        "hist_gbrt": 0.3363783552706542,
+        "two_stage": 0.26580889759108417
+      },
+      "catch_family_train_metrics": {
+        "ridge_splines": {
+          "n": 7643.0,
+          "rmse": 0.6415526466681042,
+          "mae": 0.33895202570340205,
+          "r2": 0.12296798872601511
+        },
+        "hist_gbrt": {
+          "n": 7643.0,
+          "rmse": 0.5431010765409129,
+          "mae": 0.2658020439124549,
+          "r2": 0.37149003093963595
+        },
+        "two_stage": {
+          "n": 7643.0,
+          "rmse": 0.5720698221121511,
+          "mae": 0.28010107650115523,
+          "r2": 0.30265302692243723
+        }
+      },
       "keep_train": {
         "n": 39088.0,
         "rmse": 0.6108127903437519,
@@ -1348,23 +1556,23 @@
       },
       "choice_train": {
         "n_releases": 3976.0,
-        "rank_accuracy": 0.7623239436619719,
-        "choice_log_loss": 0.6364169974155295,
-        "binary_log_loss": 0.41907381548612355
+        "rank_accuracy": 0.7645875251509054,
+        "choice_log_loss": 0.6343790697980836,
+        "binary_log_loss": 0.4187060310380549
       },
       "choice_holdout": {
         "n_releases": 421.0,
-        "rank_accuracy": 0.7268408551068883,
-        "choice_log_loss": 0.6805168912597379,
-        "binary_log_loss": 0.4222024257135648
+        "rank_accuracy": 0.7315914489311164,
+        "choice_log_loss": 0.6799147173491613,
+        "binary_log_loss": 0.4216237551830457
       },
-      "model_version": "stage4_sklearn_logo_v2"
+      "model_version": "stage4_sklearn_logo_v3"
     },
     {
       "gameId": 188630,
       "fold_id": "fold_holdout_188630",
       "cached": true,
-      "elapsed_seconds": 8.18,
+      "elapsed_seconds": 33.31,
       "n_rows": 21128,
       "n_completion_eligible": 1716,
       "n_true_receiver": 429,
@@ -1483,16 +1691,16 @@
       },
       "catch_train": {
         "n": 7555.0,
-        "rmse": 0.6592788249273879,
-        "mae": 0.36880607764175377,
-        "r2": 0.12145975394447772
+        "rmse": 0.6119902537632136,
+        "mae": 0.32295703326830305,
+        "r2": 0.2429711702300067
       },
       "catch_holdout": {
         "n": 869.0,
-        "rmse": 0.5081409638158817,
-        "mae": 0.28450793837927474,
-        "r2": 0.06518219570132455,
-        "spearman": 0.2858666099635238
+        "rmse": 0.49879285995451317,
+        "mae": 0.2720078633999134,
+        "r2": 0.09926089572081376,
+        "spearman": 0.2886617991915677
       },
       "catch_holdout_ablation_all_candidates_on_observed_mask": {
         "n": 869.0,
@@ -1503,13 +1711,39 @@
       },
       "catch_holdout_all_candidate_rows": {
         "n": 21128.0,
-        "rmse": 0.6569607711523154,
-        "mae": 0.40810528963664905,
-        "r2": -0.016069852246374472,
-        "spearman": 0.1549236097836585
+        "rmse": 0.6588800750838615,
+        "mae": 0.39955068366725993,
+        "r2": -0.022015399117956802,
+        "spearman": 0.14128304798487945
       },
       "catch_train_n": 7555,
       "catch_train_population": "observed_catch",
+      "catch_model_family": "stack",
+      "catch_blend_weights": {
+        "ridge_splines": 0.5242626254930329,
+        "hist_gbrt": 0.2667351570264931,
+        "two_stage": 0.209002217480474
+      },
+      "catch_family_train_metrics": {
+        "ridge_splines": {
+          "n": 7555.0,
+          "rmse": 0.6575263540501936,
+          "mae": 0.35418450876470103,
+          "r2": 0.12612415347247397
+        },
+        "hist_gbrt": {
+          "n": 7555.0,
+          "rmse": 0.5591662246511412,
+          "mae": 0.2805788447854765,
+          "r2": 0.3680171852006596
+        },
+        "two_stage": {
+          "n": 7555.0,
+          "rmse": 0.5933707130339793,
+          "mae": 0.2987101827186459,
+          "r2": 0.2883349773581143
+        }
+      },
       "keep_train": {
         "n": 38144.0,
         "rmse": 0.6207852881495428,
@@ -1518,23 +1752,23 @@
       },
       "choice_train": {
         "n_releases": 3968.0,
-        "rank_accuracy": 0.7555443548387096,
-        "choice_log_loss": 0.6398664090697901,
-        "binary_log_loss": 0.4207791740062095
+        "rank_accuracy": 0.7580645161290323,
+        "choice_log_loss": 0.6384923961665554,
+        "binary_log_loss": 0.4206968551265914
       },
       "choice_holdout": {
         "n_releases": 429.0,
-        "rank_accuracy": 0.7622377622377622,
-        "choice_log_loss": 0.6360369439367191,
-        "binary_log_loss": 0.4255480356748011
+        "rank_accuracy": 0.7668997668997669,
+        "choice_log_loss": 0.6338522498459906,
+        "binary_log_loss": 0.42488774306000066
       },
-      "model_version": "stage4_sklearn_logo_v2"
+      "model_version": "stage4_sklearn_logo_v3"
     },
     {
       "gameId": 191313,
       "fold_id": "fold_holdout_191313",
       "cached": true,
-      "elapsed_seconds": 8.16,
+      "elapsed_seconds": 43.05,
       "n_rows": 18500,
       "n_completion_eligible": 1568,
       "n_true_receiver": 392,
@@ -1653,16 +1887,16 @@
       },
       "catch_train": {
         "n": 7655.0,
-        "rmse": 0.6297198632434243,
-        "mae": 0.34312587003768874,
-        "r2": 0.1193230685390344
+        "rmse": 0.5733703840892437,
+        "mae": 0.29186056087221535,
+        "r2": 0.26988318708778847
       },
       "catch_holdout": {
         "n": 765.0,
-        "rmse": 0.7891601333240633,
-        "mae": 0.43796500462088206,
-        "r2": 0.10583231608803356,
-        "spearman": 0.36007324233432964
+        "rmse": 0.7861206698279614,
+        "mae": 0.43121939557057165,
+        "r2": 0.112706855520877,
+        "spearman": 0.3599873762382776
       },
       "catch_holdout_ablation_all_candidates_on_observed_mask": {
         "n": 765.0,
@@ -1673,13 +1907,39 @@
       },
       "catch_holdout_all_candidate_rows": {
         "n": 18500.0,
-        "rmse": 0.7502069425426902,
-        "mae": 0.446470783833632,
-        "r2": 0.009988931356674002,
-        "spearman": 0.15860632143816797
+        "rmse": 0.7552006511970987,
+        "mae": 0.442045364784722,
+        "r2": -0.0032348358662857013,
+        "spearman": 0.14608588761787208
       },
       "catch_train_n": 7655,
       "catch_train_population": "observed_catch",
+      "catch_model_family": "stack",
+      "catch_blend_weights": {
+        "ridge_splines": 0.4976877343511074,
+        "hist_gbrt": 0.4625112388883775,
+        "two_stage": 0.03980102676051517
+      },
+      "catch_family_train_metrics": {
+        "ridge_splines": {
+          "n": 7655.0,
+          "rmse": 0.6277653492753147,
+          "mae": 0.32753199871642635,
+          "r2": 0.12478144519310763
+        },
+        "hist_gbrt": {
+          "n": 7655.0,
+          "rmse": 0.5290361727400158,
+          "mae": 0.2553926910764433,
+          "r2": 0.37842638447514887
+        },
+        "two_stage": {
+          "n": 7655.0,
+          "rmse": 0.5596437384043109,
+          "mae": 0.26966507655105126,
+          "r2": 0.3044231273825836
+        }
+      },
       "keep_train": {
         "n": 38760.0,
         "rmse": 0.6117699864805205,
@@ -1688,17 +1948,17 @@
       },
       "choice_train": {
         "n_releases": 4005.0,
-        "rank_accuracy": 0.7605493133583021,
-        "choice_log_loss": 0.6317026558147703,
-        "binary_log_loss": 0.4183566752392878
+        "rank_accuracy": 0.7615480649188514,
+        "choice_log_loss": 0.6306583734920314,
+        "binary_log_loss": 0.41823223973400964
       },
       "choice_holdout": {
         "n_releases": 392.0,
         "rank_accuracy": 0.7270408163265306,
-        "choice_log_loss": 0.7255661321308793,
-        "binary_log_loss": 0.4595964121127469
+        "choice_log_loss": 0.7235554672328259,
+        "binary_log_loss": 0.4596821661109762
       },
-      "model_version": "stage4_sklearn_logo_v2"
+      "model_version": "stage4_sklearn_logo_v3"
     }
   ],
   "n_rows": 190348,

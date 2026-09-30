@@ -374,9 +374,12 @@ def test_fit_catch_and_keep_toy():
         train, shots, _toy_ft(), fold_id="f", held_out_gameId=3, max_train_rows=None
     )
     assert catch.training_population == "observed_catch"
+    assert catch.model_family == "stack"
     assert catch.n_train > 0
+    assert set(catch.blend_weights) <= {"ridge_splines", "hist_gbrt", "two_stage"}
     pred = predict_catch_value(df, catch)
     assert "V_catch_model" in pred.columns
+    assert "V_catch_ablation_hist_gbrt" in pred.columns
     # Ablation population still works.
     catch_all = fit_catch_value(
         train,
@@ -386,6 +389,8 @@ def test_fit_catch_and_keep_toy():
         held_out_gameId=3,
         max_train_rows=None,
         training_population="all_candidates",
+        model_family="ridge_splines",
+        stack_inner_logo=False,
     )
     assert catch_all.n_train >= catch.n_train
     keep = fit_keep_state(

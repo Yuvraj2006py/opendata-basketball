@@ -1,6 +1,6 @@
 # Stage 4 verification
 
-**Model version:** `stage4_sklearn_logo_v2`
+**Model version:** `stage4_sklearn_logo_v3`
 
 ## Freeze faithfulness
 
@@ -30,22 +30,22 @@ on distance, clearance, temporal margin, separation, pressure, and
 `predError`, followed by L2 `LogisticRegression` / `Ridge`. This is a
 documented pragmatic substitute; coefficients are not GAM smooths.
 
-## V_catch training population (v2)
+## V_catch training population (v3)
 
-`stage4_sklearn_logo_v2` trains `V_catch` on observed true-receiver states
-(completion-eligible release ∪ `is_model_5hz_frame` within ±0.4s on the
-true-receiver trajectory). Predictions remain on all candidate rows.
-`V_catch_ablation_all_candidates` retains the prior all-candidate training
-recipe for sensitivity comparison on the observed-catch evaluation mask.
+`stage4_sklearn_logo_v3` trains `V_catch` on observed true-receiver states
+(completion-eligible release ∪ `is_model_5hz_frame` within ±0.4s).
+Primary score is a non-negative blend of ridge+splines, HistGradientBoosting,
+and two-stage P(any_shot)×E[points|shot] with blend weights from leave-one-game
+OOF inside each outer training fold. Predictions remain on all candidate rows.
 
 ## Key metrics snapshot
 
 - Rows: 190348
 - Passability log loss: 0.3475089980885733
 - Passability Brier: 0.10967549806288553
-- V_catch observed-catch R²: 0.10995125650392956
-- V_catch observed-catch RMSE: 0.6490332835124624
-- Choice rank accuracy: 0.7557425517398226
+- V_catch observed-catch R²: 0.11877956645041055
+- V_catch observed-catch RMSE: 0.6458064117012655
+- Choice rank accuracy: 0.7566522629065272
 
 ## Residual risks
 

@@ -16,7 +16,8 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression, Ridge
-from sklearn.preprocessing import SplineTransformer
+from sklearn.preprocessing import SplineTransformer, StandardScaler
+from sklearn.ensemble import HistGradientBoostingClassifier, HistGradientBoostingRegressor
 
 from . import ABLATION_NAMES, PRIMARY_ABLATION
 
@@ -275,6 +276,66 @@ def make_regressor_pipeline(
         )
     pre = ColumnTransformer(transformers, remainder="drop")
     return Pipeline([("pre", pre), ("reg", Ridge(alpha=alpha))])
+
+
+def make_hgb_regressor_pipeline(
+    feature_names: Sequence[str],
+    *,
+    random_state: int = 0,
+    max_depth: int = 4,
+    max_iter: int = 160,
+    learning_rate: float = 0.06,
+    min_samples_leaf: int = 35,
+    l2_regularization: float = 1.0,
+) -> Pipeline:
+    """Impute + HistGradientBoostingRegressor (native NaN handling after impute)."""
+    assert_no_forbidden_features(feature_names)
+    names = list(feature_names)
+    return Pipeline(
+        [
+            ("impute", SimpleImputer(strategy="median")),
+            (
+                "reg",
+                HistGradientBoostingRegressor(
+                    max_depth=max_depth,
+                    max_iter=max_iter,
+                    learning_rate=learning_rate,
+                    min_samples_leaf=min_samples_leaf,
+                    l2_regularization=l2_regularization,
+                    random_state=random_state,
+                ),
+            ),
+        ]
+    )
+
+
+def make_hgb_classifier_pipeline(
+    feature_names: Sequence[str],
+    *,
+    random_state: int = 0,
+    max_depth: int = 3,
+    max_iter: int = 120,
+    learning_rate: float = 0.06,
+    min_samples_leaf: int = 40,
+    l2_regularization: float = 1.0,
+) -> Pipeline:
+    assert_no_forbidden_features(feature_names)
+    return Pipeline(
+        [
+            ("impute", SimpleImputer(strategy="median")),
+            (
+                "clf",
+                HistGradientBoostingClassifier(
+                    max_depth=max_depth,
+                    max_iter=max_iter,
+                    learning_rate=learning_rate,
+                    min_samples_leaf=min_samples_leaf,
+                    l2_regularization=l2_regularization,
+                    random_state=random_state,
+                ),
+            ),
+        ]
+    )
 
 
 def passability_feature_names(ablation: str = PRIMARY_ABLATION) -> tuple[str, ...]:

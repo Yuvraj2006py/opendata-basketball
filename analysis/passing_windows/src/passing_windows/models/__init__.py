@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-MODEL_VERSION = "stage4_sklearn_logo_v2"
+MODEL_VERSION = "stage4_sklearn_logo_v3"
 SCHEMA_VERSION = 1
 
 ABLATION_NAMES: tuple[str, ...] = (
