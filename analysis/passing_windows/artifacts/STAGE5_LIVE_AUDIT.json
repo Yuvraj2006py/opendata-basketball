@@ -1,0 +1,117 @@
+{
+  "verdict": "SAFE TO ACCEPT",
+  "note": "live audit complete",
+  "results": [
+    {
+      "check": "tables_present",
+      "status": "PASS",
+      "detail": "all present"
+    },
+    {
+      "check": "exists:05_segment_windows.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "exists:windows",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "exists:test_stage5.py",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "exists:STAGE5_REGRESSION_LOCK.md",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_random_splits",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "no_season_aggregates",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "no_component_refit",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "forbidden_claim_language",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "series_5hz_only",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "n_series_176004",
+      "status": "PASS",
+      "detail": "176004"
+    },
+    {
+      "check": "ten_folds",
+      "status": "PASS",
+      "detail": "10"
+    },
+    {
+      "check": "grid_rows_ge_50",
+      "status": "PASS",
+      "detail": "50"
+    },
+    {
+      "check": "gate_columns",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "col_q_smooth",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "col_V_catch_smooth",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "col_Q_smooth",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "col_NOV_smooth",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "rejection_rate_finite",
+      "status": "PASS",
+      "detail": "0.1172"
+    },
+    {
+      "check": "labels_subset",
+      "status": "PASS",
+      "detail": "['late', 'never_open', 'unused', 'used']"
+    },
+    {
+      "check": "regression_lock_blockers",
+      "status": "PASS",
+      "detail": "[]"
+    },
+    {
+      "check": "manifest_n_files",
+      "status": "PASS",
+      "detail": "40"
+    }
+  ],
+  "blockers_failed": []
+}

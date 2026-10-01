@@ -11,7 +11,7 @@ Self-contained study workspace for the SkillCorner ACB open-data **Passing Windo
 | 2 — Failed-pass target inference | **Accepted under the narrow path** (human audit deferred; labels provisional) |
 | 3 — Candidate pass reconstruction | **Complete** (narrow-path handoff ready for Stage 4) |
 | 4 — Cross-fitted component models | **Complete** (LOGO q / V_catch / V_keep / Q / NOV; handoff ready for Stage 5) |
-| 5 — Window segmentation | **MVP** (unit tests green; 1-game smoke; full 10-game run pending) |
+| 5 — Window segmentation | **Complete** (SAFE TO ACCEPT; live audit PASS) |
 | 6+ | Not started |
 
 ## Setup
@@ -182,11 +182,15 @@ Counterfactual `Q`/`NOV` are NaN where `rejected_outside_support`.
 | Windows (+ never_open stubs) | `tables/stage5_windows.parquet` |
 | Option-set frames | `tables/stage5_option_set_frames.parquet` |
 | Threshold selections | `tables/stage5_threshold_selections.parquet` |
+| Threshold robustness grid | `tables/stage5_threshold_grid_windows.parquet` |
 | Fold thresholds JSON | [`artifacts/stage5_fold_thresholds.json`](artifacts/stage5_fold_thresholds.json) |
+| Window report | [`artifacts/stage5_window_report.md`](artifacts/stage5_window_report.md) |
 | Verification | [`artifacts/STAGE5_VERIFICATION.md`](artifacts/STAGE5_VERIFICATION.md) |
+| Adversarial audit | [`artifacts/STAGE5_ADVERSARIAL_AUDIT.md`](artifacts/STAGE5_ADVERSARIAL_AUDIT.md) |
+| Regression lock | [`artifacts/STAGE5_REGRESSION_LOCK.md`](artifacts/STAGE5_REGRESSION_LOCK.md) |
 | Stage 6 handoff | [`artifacts/STAGE5_HANDOFF_STAGE6.md`](artifacts/STAGE5_HANDOFF_STAGE6.md) |
-| Builder status / gaps | [`artifacts/STAGE5_BUILDER_STATUS.md`](artifacts/STAGE5_BUILDER_STATUS.md) |
+| Builder status | [`artifacts/STAGE5_BUILDER_STATUS.md`](artifacts/STAGE5_BUILDER_STATUS.md) |
 | Output manifest | [`artifacts/stage5_output_manifest.json`](artifacts/stage5_output_manifest.json) |
 
 Stage 5 segments causal, LOGO-thresholded windows from Stage 4 OOS scores.
-Do not refit component models. Full 10-game run: `pipelines/05_segment_windows.py`.
+Live audit: `pipelines/_stage5_adversarial_live_audit.py`. Do not refit component models.

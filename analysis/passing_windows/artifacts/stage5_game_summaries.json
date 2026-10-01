@@ -3,17 +3,9 @@
     {
       "gameId": 114243,
       "fold_id": "fold_holdout_114243",
-      "cached": false,
+      "cached": true,
       "n_series": 16832,
       "n_windows": 1312,
-      "n_option_frames": 4208,
-      "n_rejected_5hz": 1748,
-      "label_counts": {
-        "never_open": 1112,
-        "unused": 159,
-        "late": 21,
-        "used": 20
-      },
       "thresholds": {
         "fold_id": "fold_holdout_114243",
         "held_out_game_id": 114243,
@@ -69,23 +61,14 @@
             "delta_from_primary": 0.1
           }
         ]
-      },
-      "elapsed_s": 22.391
+      }
     },
     {
       "gameId": 114234,
       "fold_id": "fold_holdout_114234",
-      "cached": false,
+      "cached": true,
       "n_series": 16940,
       "n_windows": 1278,
-      "n_option_frames": 4235,
-      "n_rejected_5hz": 1892,
-      "label_counts": {
-        "never_open": 1045,
-        "unused": 183,
-        "late": 36,
-        "used": 14
-      },
       "thresholds": {
         "fold_id": "fold_holdout_114234",
         "held_out_game_id": 114234,
@@ -141,23 +124,14 @@
             "delta_from_primary": 0.1
           }
         ]
-      },
-      "elapsed_s": 22.327
+      }
     },
     {
       "gameId": 114169,
       "fold_id": "fold_holdout_114169",
-      "cached": false,
+      "cached": true,
       "n_series": 16632,
       "n_windows": 1221,
-      "n_option_frames": 4158,
-      "n_rejected_5hz": 1837,
-      "label_counts": {
-        "never_open": 1002,
-        "unused": 190,
-        "late": 20,
-        "used": 9
-      },
       "thresholds": {
         "fold_id": "fold_holdout_114169",
         "held_out_game_id": 114169,
@@ -213,23 +187,14 @@
             "delta_from_primary": 0.1
           }
         ]
-      },
-      "elapsed_s": 20.952
+      }
     },
     {
       "gameId": 114099,
       "fold_id": "fold_holdout_114099",
-      "cached": false,
+      "cached": true,
       "n_series": 18212,
       "n_windows": 1307,
-      "n_option_frames": 4553,
-      "n_rejected_5hz": 2353,
-      "label_counts": {
-        "never_open": 1011,
-        "unused": 241,
-        "late": 41,
-        "used": 14
-      },
       "thresholds": {
         "fold_id": "fold_holdout_114099",
         "held_out_game_id": 114099,
@@ -285,23 +250,14 @@
             "delta_from_primary": 0.1
           }
         ]
-      },
-      "elapsed_s": 23.17
+      }
     },
     {
       "gameId": 114086,
       "fold_id": "fold_holdout_114086",
-      "cached": false,
+      "cached": true,
       "n_series": 18968,
       "n_windows": 1386,
-      "n_option_frames": 4742,
-      "n_rejected_5hz": 1935,
-      "label_counts": {
-        "never_open": 1152,
-        "unused": 176,
-        "late": 35,
-        "used": 23
-      },
       "thresholds": {
         "fold_id": "fold_holdout_114086",
         "held_out_game_id": 114086,
@@ -357,23 +313,14 @@
             "delta_from_primary": 0.1
           }
         ]
-      },
-      "elapsed_s": 25.048
+      }
     },
     {
       "gameId": 178442,
       "fold_id": "fold_holdout_178442",
-      "cached": false,
+      "cached": true,
       "n_series": 18128,
       "n_windows": 1190,
-      "n_option_frames": 4532,
-      "n_rejected_5hz": 2497,
-      "label_counts": {
-        "never_open": 944,
-        "unused": 207,
-        "late": 29,
-        "used": 10
-      },
       "thresholds": {
         "fold_id": "fold_holdout_178442",
         "held_out_game_id": 178442,
@@ -429,23 +376,14 @@
             "delta_from_primary": 0.1
           }
         ]
-      },
-      "elapsed_s": 22.456
+      }
     },
     {
       "gameId": 179612,
       "fold_id": "fold_holdout_179612",
-      "cached": false,
+      "cached": true,
       "n_series": 17392,
       "n_windows": 1378,
-      "n_option_frames": 4348,
-      "n_rejected_5hz": 2395,
-      "label_counts": {
-        "never_open": 1127,
-        "unused": 199,
-        "late": 39,
-        "used": 13
-      },
       "thresholds": {
         "fold_id": "fold_holdout_179612",
         "held_out_game_id": 179612,
@@ -501,23 +439,14 @@
             "delta_from_primary": 0.1
           }
         ]
-      },
-      "elapsed_s": 23.654
+      }
     },
     {
       "gameId": 184439,
       "fold_id": "fold_holdout_184439",
-      "cached": false,
+      "cached": true,
       "n_series": 15940,
       "n_windows": 1154,
-      "n_option_frames": 3985,
-      "n_rejected_5hz": 1765,
-      "label_counts": {
-        "never_open": 916,
-        "unused": 198,
-        "late": 22,
-        "used": 18
-      },
       "thresholds": {
         "fold_id": "fold_holdout_184439",
         "held_out_game_id": 184439,
@@ -573,23 +502,14 @@
             "delta_from_primary": 0.1
           }
         ]
-      },
-      "elapsed_s": 20.429
+      }
     },
     {
       "gameId": 188630,
       "fold_id": "fold_holdout_188630",
-      "cached": false,
+      "cached": true,
       "n_series": 19736,
       "n_windows": 1379,
-      "n_option_frames": 4934,
-      "n_rejected_5hz": 2160,
-      "label_counts": {
-        "never_open": 1140,
-        "unused": 192,
-        "late": 37,
-        "used": 10
-      },
       "thresholds": {
         "fold_id": "fold_holdout_188630",
         "held_out_game_id": 188630,
@@ -645,23 +565,14 @@
             "delta_from_primary": 0.1
           }
         ]
-      },
-      "elapsed_s": 25.306
+      }
     },
     {
       "gameId": 191313,
       "fold_id": "fold_holdout_191313",
-      "cached": false,
+      "cached": true,
       "n_series": 17224,
       "n_windows": 1222,
-      "n_option_frames": 4306,
-      "n_rejected_5hz": 2037,
-      "label_counts": {
-        "never_open": 988,
-        "unused": 183,
-        "late": 35,
-        "used": 16
-      },
       "thresholds": {
         "fold_id": "fold_holdout_191313",
         "held_out_game_id": 191313,
@@ -717,9 +628,10 @@
             "delta_from_primary": 0.1
           }
         ]
-      },
-      "elapsed_s": 23.396
+      }
     }
   ],
-  "errors": []
+  "errors": [],
+  "support_rejection_rate_5hz": 0.1171507465739415,
+  "n_grid_rows": 50
 }

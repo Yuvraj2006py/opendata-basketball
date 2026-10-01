@@ -28,3 +28,12 @@ option_set:
 existence_probability:
   status: deferred_stage7
   note: Full geometry MC remains Stage 7; Stage 5 ships NaN + status column.
+
+label_stability:
+  status: deferred_stage7
+  kill_criterion: window_label_instability_gt_15pct
+  note: Stage 5 documents the hook; Stage 7 adjudicates.
+
+robustness_grid:
+  open_deltas: [-0.10, -0.05, 0.0, 0.05, 0.10]
+  output_table: tables/stage5_threshold_grid_windows.parquet

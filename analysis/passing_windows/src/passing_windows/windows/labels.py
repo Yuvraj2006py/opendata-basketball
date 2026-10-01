@@ -79,6 +79,9 @@ def label_windows(
     out["delay_peak_to_release_s"] = np.nan
     out["value_at_use_vs_peak"] = np.nan
     out["NOV_at_release"] = np.nan
+    out["existence_prob_status"] = "deferred_stage7"
+    out["window_existence_probability_under_tracking_perturbation"] = np.nan
+    out["censored_at_touch_end"] = False
 
     uses = _release_uses(releases)
 

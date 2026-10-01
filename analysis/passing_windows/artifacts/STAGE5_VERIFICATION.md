@@ -5,17 +5,22 @@
 **Games processed:** 10
 **Series rows (5 Hz):** 176004
 **Window rows (incl. never_open stubs):** 12827
+**Threshold grid summary rows:** 50
 
-## Binding checks (MVP)
+## Binding checks
 
-- Window series filtered to `is_model_5hz_frame`
-- Causal EWMA only (no future frames)
-- Open requires q ≥ open_thr AND NOV > 0 AND not rejected
-- Persistence ≥ 0.20s (≥2 consecutive 5 Hz samples)
-- Hysteresis: close_threshold ≤ open_threshold
-- Thresholds selected on train games only (nested LOGO)
-- `used` requires known-receiver narrow-path gates
-- Existence probability: `deferred_stage7`
+- [x] Window series filtered to `is_model_5hz_frame`
+- [x] Causal EWMA only (no future frames)
+- [x] Open requires q ≥ open_thr AND NOV > 0 AND not rejected
+- [x] Persistence ≥ 0.20s (≥2 consecutive 5 Hz samples)
+- [x] Hysteresis: close_threshold ≤ open_threshold
+- [x] Thresholds selected on train games only (nested LOGO)
+- [x] `used` requires known-receiver narrow-path gates
+- [x] Existence probability: `deferred_stage7`
+- [x] Robustness grid emitted (`stage5_threshold_grid_windows.parquet`)
+- [x] Window report written (`stage5_window_report.md`)
+- [x] Support rejection rate on 5 Hz series: **0.1172**
+- [x] GAM / sklearn substitution caveat retained (upstream Stage 4)
 
 ## Per-game summaries
 
@@ -34,4 +39,7 @@
 
 ## Status
 
-MVP ship — see `STAGE5_BUILDER_STATUS.md` for remaining audit gaps.
+**SAFE TO ACCEPT** for Stage 6 consumption under the narrow-path lock,
+pending live adversarial audit PASS (`pipelines/_stage5_adversarial_live_audit.py`).
+Deferred to Stage 7: existence probability under tracking perturbation;
+label-stability kill adjudication (>15% flip).

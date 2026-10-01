@@ -1,5 +1,5 @@
 {
-  "n_files": 38,
+  "n_files": 40,
   "files": [
     {
       "path": "tables\\stage5_candidate_series.parquet",
@@ -8,8 +8,8 @@
     },
     {
       "path": "tables\\stage5_windows.parquet",
-      "bytes": 242828,
-      "sha256": "dd646846c5d968b65b69931e63d61279de7a98db257f3ab75f221e5071764513"
+      "bytes": 246003,
+      "sha256": "f96e4288539e105ad2c271bae61ac8d47a4688ac3a2543b2a03b614e39b05ac8"
     },
     {
       "path": "tables\\stage5_option_set_frames.parquet",
@@ -22,24 +22,34 @@
       "sha256": "80b0b75ca78054f06954862f21aa0c5faf0a37416c292fa330825874aeb5d736"
     },
     {
+      "path": "tables\\stage5_threshold_grid_windows.parquet",
+      "bytes": 9303,
+      "sha256": "c432967fd5298ab56cb05e0b1d2700f1fb0a7650dbadfd20edfd40eba619d6c3"
+    },
+    {
       "path": "artifacts\\stage5_fold_thresholds.json",
-      "bytes": 16342,
-      "sha256": "82e64be43dc96aa64651512a3f0b2be6a2b7c5a80c9272c9f431500d9491e033"
+      "bytes": 16429,
+      "sha256": "fb249c977fe691dc24d60329bdba500a93079bfffd4fa7f7e95396615a4430c0"
+    },
+    {
+      "path": "artifacts\\stage5_window_report.md",
+      "bytes": 1363,
+      "sha256": "e3bb2f9eb26d9e359ecd719c3aafddbe1f524b9a140175bfe66899f781efb66b"
     },
     {
       "path": "artifacts\\STAGE5_VERIFICATION.md",
-      "bytes": 1809,
-      "sha256": "42114d77394d983ca2d0d469d5a78ac8900918067cb3c7779ec365772807e62a"
+      "bytes": 2336,
+      "sha256": "140a8f54950bdaa78a39301a2b1aa7311686b8031b99e849e141d1faf62b97ee"
     },
     {
       "path": "artifacts\\STAGE5_HANDOFF_STAGE6.md",
-      "bytes": 1102,
-      "sha256": "34bf490705f3e3abedf5bee86925d5cd237499487b310521df42bee4632a8529"
+      "bytes": 1470,
+      "sha256": "c00ac9e9d9dd5d41f2bd0eeb2b72f393d52593c1cb519c2b39c42bdd9bf76074"
     },
     {
       "path": "artifacts\\STAGE5_REGRESSION_LOCK.md",
-      "bytes": 722,
-      "sha256": "7e99e59b9d3ebd400fcb3b21077114c12f75ead35f13fdd036a4e950a516367a"
+      "bytes": 2575,
+      "sha256": "6131f3688d4460a4583ebe93faa5b5dbf8f21eb5aaf4670dd3a9a0b76e0e5608"
     },
     {
       "path": "tables\\by_game\\114243\\stage5_candidate_series.parquet",

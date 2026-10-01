@@ -562,6 +562,7 @@
       ]
     }
   ],
-  "robustness_grid_note": "Primary selection per fold; grid deltas in ThresholdSelection.robustness_grid()",
-  "existence_prob_status": "deferred_stage7"
+  "robustness_grid_note": "Primary selection per fold; grid deltas applied via emit_threshold_grid_summaries",
+  "existence_prob_status": "deferred_stage7",
+  "label_stability_hook": "deferred_stage7_kill_window_label_instability_gt_15pct"
 }

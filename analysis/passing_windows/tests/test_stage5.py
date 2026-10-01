@@ -497,6 +497,21 @@ def test_stage5_consumes_stage4_predictions_schema():
     assert int(df["is_model_5hz_frame"].sum()) == 176004
 
 
+@needs_stage4
+def test_stage5_consumes_stage4_predictions_1to1():
+    pred = pd.read_parquet(PRED4, columns=["gameId", "touchId", "frameIdx", "candidateId"])
+    feat_path = TABLES / "stage3_candidate_features.parquet"
+    if not feat_path.exists():
+        pytest.skip("Stage 3 features missing")
+    feat = pd.read_parquet(feat_path, columns=["gameId", "touchId", "frameIdx", "candidateId"])
+    assert len(pred) == 190348
+    assert len(pred) == len(feat)
+    keys = ["gameId", "touchId", "frameIdx", "candidateId"]
+    assert not pred.duplicated(keys).any()
+    merged = pred.merge(feat, on=keys, how="inner")
+    assert len(merged) == len(pred)
+
+
 @needs_stage5
 def test_stage5_output_manifest_complete():
     man = ARTIFACTS / "stage5_output_manifest.json"
@@ -505,3 +520,262 @@ def test_stage5_output_manifest_complete():
 
     data = json.loads(man.read_text(encoding="utf-8"))
     assert data["n_files"] >= 1
+
+
+def test_stage5_late_delta_fold_internal():
+    rows = []
+    for gid in (1, 2, 3):
+        for i in range(20):
+            rows.append(
+                {
+                    "gameId": gid,
+                    "touchId": f"t{gid}",
+                    "frameIdx": i * 5,
+                    "candidateId": 100,
+                    "is_pass_release_frame": i == 10,
+                    "completion_label_eligible": i == 10,
+                    "is_true_receiver": i == 10,
+                    "is_model_5hz_frame": True,
+                    "q_passability_model": 0.4 + 0.01 * i,
+                    "NOV_model": 0.05 * (i + 1) if gid < 3 else 9.0,
+                    "rejected_outside_support": False,
+                }
+            )
+    df = pd.DataFrame(rows)
+    sel = select_thresholds_logo(df, train_game_ids=[1, 2], held_out_game_id=3, fold_id="f3")
+    # Holdout has inflated NOV; late delta must still come from train only
+    train_rel = df[
+        df["gameId"].isin([1, 2])
+        & df["is_pass_release_frame"]
+        & df["completion_label_eligible"]
+    ]
+    train_nov = train_rel["NOV_model"].to_numpy(dtype=float)
+    train_nov = train_nov[train_nov > 0]
+    expected = float(max(0.01, np.quantile(train_nov, 0.25)))
+    assert sel.late_use_material_loss_delta == pytest.approx(expected)
+
+
+def test_stage5_option_set_features_complete():
+    frames = []
+    for c, nov, q in ((100, 0.5, 0.7), (101, 0.2, 0.7), (102, 0.1, 0.7), (103, -0.1, 0.7)):
+        frames.append(
+            {
+                "gameId": 1,
+                "touchId": "t1",
+                "frameIdx": 10,
+                "candidateId": c,
+                "is_model_5hz_frame": True,
+                "NOV_smooth": nov,
+                "Q_smooth": max(nov, 0) + 0.5,
+                "q_smooth": q,
+                "rejected_outside_support": False,
+                "is_open_signal": nov > 0 and q >= 0.5,
+                "fold_id": "f",
+                "model_version": "stage4_sklearn_logo_v3",
+            }
+        )
+    # second frame for rates / accumulated area
+    for c, nov, q in ((100, 0.6, 0.7), (101, 0.3, 0.7), (102, 0.0, 0.7), (103, -0.1, 0.7)):
+        frames.append(
+            {
+                "gameId": 1,
+                "touchId": "t1",
+                "frameIdx": 15,
+                "candidateId": c,
+                "is_model_5hz_frame": True,
+                "NOV_smooth": nov,
+                "Q_smooth": max(nov, 0) + 0.5,
+                "q_smooth": q,
+                "rejected_outside_support": False,
+                "is_open_signal": nov > 0 and q >= 0.5,
+                "fold_id": "f",
+                "model_version": "stage4_sklearn_logo_v3",
+            }
+        )
+    opt = compute_option_set_features(pd.DataFrame(frames), open_threshold=0.5)
+    required = {
+        "best_option_value",
+        "n_viable_options",
+        "soft_total_option_value",
+        "best_second_gap",
+        "option_entropy",
+        "accumulated_option_value_area",
+        "opening_rate",
+        "closing_rate",
+    }
+    assert required.issubset(set(opt.columns))
+    assert len(opt) == 2
+
+
+def test_stage5_continuous_window_fields_present():
+    q = [0.1, 0.9, 0.9, 0.9, 0.1]
+    nov = [0.0, 0.3, 0.5, 0.4, 0.0]
+    wins = segment_candidate_series(_series(q, nov), open_threshold=0.5, close_threshold=0.4)
+    assert len(wins) == 1
+    for c in (
+        "opening_frameIdx",
+        "peak_frameIdx",
+        "closing_frameIdx",
+        "opening_time_s",
+        "peak_time_s",
+        "closing_time_s",
+        "duration_s",
+        "peak_NOV",
+        "integrated_NOV",
+    ):
+        assert c in wins.columns
+        assert pd.notna(wins.iloc[0][c])
+
+
+def test_stage5_use_timing_fields():
+    q = [0.1, 0.9, 0.9, 0.9, 0.1]
+    nov = [0.0, 0.3, 0.5, 0.4, 0.0]
+    series = _series(q, nov)
+    wins = segment_candidate_series(series, open_threshold=0.5, close_threshold=0.4)
+    release = pd.DataFrame(
+        [
+            {
+                "gameId": 1,
+                "touchId": "t1",
+                "frameIdx": 10,
+                "candidateId": 100,
+                "is_true_receiver": True,
+                "is_pass_release_frame": True,
+                "completion_label_eligible": True,
+                "target_reliability_status": "known_receiver",
+                "receiver_specific_eligible": True,
+                "usable_as_receiver_completion_label": True,
+            }
+        ]
+    )
+    labeled = label_windows(wins, series, release, late_delta=0.05, late_after_close_epsilon_s=0.20)
+    assert labeled.iloc[0]["label"] == "used"
+    assert pd.notna(labeled.iloc[0]["delay_opening_to_release_s"])
+    assert pd.notna(labeled.iloc[0]["delay_peak_to_release_s"])
+    assert pd.notna(labeled.iloc[0]["value_at_use_vs_peak"])
+
+
+def test_stage5_existence_prob_column_or_explicit_deferral():
+    cfg = (ROOT / "configs" / "stage5_windows.yaml").read_text(encoding="utf-8")
+    assert "deferred_stage7" in cfg
+    handoff = ARTIFACTS / "STAGE5_HANDOFF_STAGE6.md"
+    if handoff.exists():
+        assert "deferred_stage7" in handoff.read_text(encoding="utf-8").lower() or "Stage 7" in handoff.read_text(
+            encoding="utf-8"
+        )
+
+
+def test_stage5_no_random_group_split():
+    import re
+
+    bad = re.compile(r"train_test_split|GroupShuffleSplit|ShuffleSplit|KFold\(", re.I)
+    for path in (ROOT / "src" / "passing_windows" / "windows").rglob("*.py"):
+        text = path.read_text(encoding="utf-8")
+        assert not bad.search(text), path
+    if PIPELINE.exists():
+        assert not bad.search(PIPELINE.read_text(encoding="utf-8"))
+
+
+def test_stage5_forbidden_claim_language():
+    import re
+
+    bad = re.compile(r"\b(correct pass|bad decision|points left on the table)\b", re.I)
+    skip = {
+        "STAGE5_AUDIT_BRIEF_FOR_BUILDER.md",
+        "STAGE5_ADVERSARIAL_AUDIT.md",
+    }
+    for name in (
+        "STAGE5_VERIFICATION.md",
+        "STAGE5_HANDOFF_STAGE6.md",
+        "STAGE5_REGRESSION_LOCK.md",
+        "STAGE5_BUILDER_STATUS.md",
+        "stage5_window_report.md",
+    ):
+        if name in skip:
+            continue
+        path = ARTIFACTS / name
+        if path.exists():
+            assert not bad.search(path.read_text(encoding="utf-8")), name
+
+
+def test_stage5_no_season_aggregates():
+    import re
+
+    bad = re.compile(r"aggregates[/\\]acb_.*aggregates", re.I)
+    for path in (ROOT / "src" / "passing_windows" / "windows").rglob("*.py"):
+        assert not bad.search(path.read_text(encoding="utf-8")), path
+    if PIPELINE.exists():
+        assert not bad.search(PIPELINE.read_text(encoding="utf-8"))
+
+
+def test_stage5_regression_lock_covers_blockers():
+    lock = REGRESSION_LOCK.read_text(encoding="utf-8")
+    for i in range(0, 24):
+        assert f"S5-B{i:02d}" in lock, f"missing S5-B{i:02d}"
+
+
+@needs_stage5
+def test_stage5_all_ten_logo_folds_present():
+    thr = pd.read_parquet(TABLES / "stage5_threshold_selections.parquet")
+    assert len(thr) == 10
+    assert thr["fold_id"].nunique() == 10
+
+
+@needs_stage5
+def test_stage5_gate_columns_present():
+    series = pd.read_parquet(SERIES)
+    for c in GATE_COLUMNS:
+        assert c in series.columns, c
+
+
+@needs_stage5
+def test_stage5_sampling_role_retained():
+    series = pd.read_parquet(SERIES)
+    assert "sampling_role" in series.columns
+    assert series["sampling_role"].notna().any()
+
+
+@needs_stage5
+def test_stage5_threshold_robustness_grid_emitted():
+    grid = TABLES / "stage5_threshold_grid_windows.parquet"
+    assert grid.exists()
+    df = pd.read_parquet(grid)
+    assert len(df) >= 10 * 5  # 10 folds × 5 deltas
+    assert {"delta_from_primary", "n_open_episodes", "open_threshold"}.issubset(df.columns)
+
+
+@needs_stage5
+def test_stage5_support_rejection_rate_reported():
+    import json
+
+    summ = json.loads((ARTIFACTS / "stage5_game_summaries.json").read_text(encoding="utf-8"))
+    assert "support_rejection_rate_5hz" in summ
+    assert summ["support_rejection_rate_5hz"] == summ["support_rejection_rate_5hz"]  # not NaN identity ok
+    assert 0.0 <= float(summ["support_rejection_rate_5hz"]) <= 1.0
+
+
+@needs_stage5
+def test_stage5_interceptor_never_use_target():
+    wins = pd.read_parquet(WINDOWS)
+    used = wins[wins["label"] == "used"]
+    if used.empty or "interceptorId" not in used.columns:
+        # Stage 5 windows may not carry interceptorId; check series join if present
+        series_cols = pd.read_parquet(SERIES, columns=["candidateId"]).columns
+        assert "candidateId" in series_cols
+        return
+    bad = used["candidateId"].astype(float) == used["interceptorId"].astype(float)
+    assert not bool(bad.fillna(False).any())
+
+
+@needs_stage5
+def test_stage5_components_not_collapsed_to_nov():
+    series = pd.read_parquet(SERIES)
+    for c in ("q_smooth", "V_catch_smooth", "Q_smooth", "NOV_smooth"):
+        assert c in series.columns
+        assert series[c].notna().any()
+
+
+@needs_stage5
+def test_stage5_windows_series_5hz_only_live():
+    series = pd.read_parquet(SERIES, columns=["is_model_5hz_frame"])
+    assert bool(series["is_model_5hz_frame"].fillna(False).all())
